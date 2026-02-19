@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meet the Iteron Team</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url("/images/bg4.jpeg");
+      color: #f6eded;
+      font-family: Georgia, 'Times New Roman', serif;
+      min-height: 100vh;
+      padding: 80px 40px;
+    }
+
+    /* ── HEADER ── */
+    header 
+    {margin-top: 60px;   
+
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    header .label {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #c56363;
+      margin-bottom: 14px;
+    }
+
+    header h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 2.8rem;
+      font-weight: normal;
+      color: #eee9e9;
+      line-height: 1.2;
+      
+
+    }
+    
+
+    header h1 {
+    opacity: 0;
+    transform: translateX(-60px);
+    animation: slideInLeft 1s ease-out forwards;
+     }
+     @keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+    header h1 em {
+      font-style: italic;
+      color: #888;
+    }
+
+    
+
+    header .divider {
+      width: 40px;
+      height: 1px;
+      background: #ccc;
+      margin: 22px auto 0;
+    }
+
+    /* ── TEAM GRID ── */
+    .team {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 50px 40px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ── CARD ── */
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+
+
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: #e4e0db;
+      overflow: hidden;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #bbb;
+      flex-shrink: 0;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-name {
+      font-family:Lucida Console;
+      font-size: 1.1rem;
+      font-weight: normal;
+      color: #f5f4f4;
+      margin-bottom: 5px;
+    }
+
+    .card-role {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #70f6f6;
+      margin-bottom: 12px;
+    }
+
+    
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #ccc;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .team {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 20px;
+      }
+      header h1 { font-size: 2rem; }
+    }
+
+    @media (max-width: 440px) {
+      .team { grid-template-columns: 1fr; }
+      body { padding: 60px 24px; }
+    }
+
+    header h1 {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    
+    <h1>Meet the <em>Iteron</em> Team</h1>
+    <div class="divider"></div>
+  </header>
+
+  <div class="team">
+
+    <div class="card">
+      <div class="avatar">
+        <img src="member1.jpg" alt="Harsh Vardhan Shresht" onerror="this.parentElement.innerHTML='&#128100;'" />
+      </div>
+      <p class="card-name">Harsh Vardhan Shresht</p>
+      <p class="card-role"></p>
+     
+    </div>
+
+    <div class="card">
+      <div class="avatar">
+        <img src="member2.jpg" alt="Sarah Lin" onerror="this.parentElement.innerHTML='&#128100;'" />
+      </div>
+      <p class="card-name">Kshitij Salunke</p>
+      <p class="card-role"></p>
+      
+    </div>
+
+    <div class="card">
+      <div class="avatar">
+        <img src="member3.jpg" alt="Tamaghna Dey" onerror="this.parentElement.innerHTML='&#128100;'" />
+      </div>
+      <p class="card-name">Tamaghna Dey</p>
+      <p class="card-role">T</p>
+     
+    </div>
+
+    <div class="card">
+      <div class="avatar">
+        <img src="member4.jpg" alt="Priya Shah" onerror="this.parentElement.innerHTML='&#128100;'" />
+      </div>
+      <p class="card-name">Sampreeti Kar</p>
+      <p class="card-role"></p>
+      
+    </div>
+
+    <div class="card">
+      <div class="avatar">
+        <img src="member5.jpg" alt="Tom Reeves" onerror="this.parentElement.innerHTML='&#128100;'" />
+      </div>
+      <p class="card-name">Zayed Darmi</p>
+      <p class="card-role">r</p>
+      
+    </div>
+
+    <div class="card">
+      <div class="avatar">
+        <img src="member6.jpg" alt="Nina Wolff" onerror="this.parentElement.innerHTML='&#128100;'" />
+      </div>
+      <p class="card-name">Pinjika</p>
+      <p class="card-role"></p>
+     
+    </div>
+
+  </div>
+
+  <footer>&mdash; Iteron 2026 &mdash;</footer>
+
+</body>
+</html>

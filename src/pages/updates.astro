@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+</head>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background-image: url("/images/bg6.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: 'Playfair Display', serif;
+        
+    }
+    .page-wrapper {
+    display: flex;
+    flex-direction: column;   
+    align-items: center;
+    margin-top: 80px;
+}
+
+
+    .welcome {
+        text-align: center;
+        color: white;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        font-family:Cormorant Garamond;
+         
+            font-size: 2rem;
+             
+    background: rgba(20, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+
+   
+    box-shadow:
+        0 0 20px rgba(255, 0, 0, 0.6),
+        0 0 40px rgba(255, 0, 0, 0.4),
+        0 20px 40px rgba(0, 0, 0, 0.6);
+
+    
+    animation: float 4s ease-in-out infinite;
+
+    transition: transform 0.3s ease;
+}
+
+
+.welcome:hover {
+    transform: translateY(-8px);
+}
+
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+    
+
+.submission-box {
+    display: block;
+    margin: 60px auto;
+    padding: 25px;
+    width: 70%;
+
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-family: "Cormorant Garamond", serif;
+
+    background: rgba(15, 0, 0, 0.6);
+    border-radius: 15px;
+
+    
+    transition: all 0.3s ease;
+}
+
+/* Glow stronger + lift on hover */
+.submission-box:hover {
+    box-shadow:
+        0 0 35px rgb(223, 208, 208),
+        0 0 60px rgba(227, 220, 220, 0.8);
+
+    transform: translateY(-8px) scale(1.02);
+}
+
+
+  </style>
+</style>
+
+<body>
+
+  
+    <div class="page-wrapper">
+
+  <div class="welcome">
+    <p class="update">
+      The tournament is now officially live.<br>
+      Submit your code to participate.
+    </p>
+  </div>
+
+  <a href="/submissions" class="submission-box">
+    <h2>Click to Submit</h2>
+  </a>
+
+</div>
+</body>
+</html>

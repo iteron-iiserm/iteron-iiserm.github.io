@@ -1,0 +1,81 @@
+---
+---
+
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    
+  </head>
+
+  <body>
+    <div class="welcome">
+      <h1 class="title">Welcome to Iteron</h1>
+
+      <a href="/home" class="enter-btn">Enter</a>
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background-image: url("/images/bg2.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Cinzel', serif;
+  }
+  <a href="/Home" class="enter-btn">Enter</a>
+
+
+  .welcome {
+    text-align: center;
+  }
+
+  
+.cinzel-<uniquifier> {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
+  .title {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1.5s ease forwards;
+  }
+
+  .enter-btn {
+    padding: 12px 30px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+
+  .enter-btn:hover {
+    background: white;
+    color: black;
+  }
+
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
