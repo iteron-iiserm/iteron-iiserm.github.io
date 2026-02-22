@@ -12,6 +12,7 @@
 </head>
 
 <style>
+  
     body {
         margin: 0;
         height: 100vh;
@@ -27,6 +28,38 @@
         font-family: 'Playfair Display', serif;
         
     }
+
+
+  nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #000102;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      height: 60px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    nav ul a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      color: #ecf0f1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    nav ul a:hover { background-color: #663d58; }
+    nav ul a.active { background-color: #4b053c; }
     .page-wrapper {
     display: flex;
     flex-direction: column;   
@@ -91,7 +124,7 @@
     transition: all 0.3s ease;
 }
 
-
+/* Glow stronger + lift on hover */
 .submission-box:hover {
     box-shadow:
         0 0 35px rgb(223, 208, 208),
@@ -105,7 +138,19 @@
 </style>
 
 <body>
-<div class="page-wrapper">
+
+<nav>
+    <ul>
+      <li><a href="/home" class="active">Home</a></li>
+<li><a href="/updates">Updates</a></li>
+<li><a href="/results">Results</a></li>
+<li><a href="/submissions">Submission</a></li>
+<li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+
+  
+    <div class="page-wrapper">
 
   <div class="welcome">
     <p class="update">
@@ -114,12 +159,10 @@
     </p>
   </div>
 
-  <a href="/ITERON/submissions" class="submission-box">
-    Click to Submit
+  <a href="/submissions" class="submission-box">
+    <h2>Click to Submit</h2>
   </a>
 
-</div>
-  
 </div>
 </body>
 </html>
