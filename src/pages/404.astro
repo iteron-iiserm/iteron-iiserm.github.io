@@ -1,5 +1,5 @@
 ---
-// 404 Not Found page
+import Navbar from "../components/common/Navbar.astro"
 ---
 
 <!DOCTYPE html>
@@ -29,42 +29,6 @@
       align-items: center;
       padding: 20px;
     }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #000102;
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      height: 60px;
-      z-index: 100;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    nav ul li {
-      list-style: none;
-    }
-
-    nav ul a {
-      display: block;
-      padding: 0.5rem 1.2rem;
-      color: #ecf0f1;
-      text-decoration: none;
-      font-size: 0.95rem;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-
-    nav ul a:hover { background-color: #663d58; }
-    nav ul a.active { background-color: #4b053c; }
 
     .error-container {
       text-align: center;
@@ -268,15 +232,7 @@
 </head>
 
 <body>
-  <nav>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/updates">Updates</a></li>
-      <li><a href="/results">Results</a></li>
-      <li><a href="/submissions">Submission</a></li>
-      <li><a href="/about">About</a></li>
-    </ul>
-  </nav>
+  <Navbar/>
 
   <div class="error-container">
     <div class="error-code">404</div>
