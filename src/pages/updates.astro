@@ -1,36 +1,32 @@
+---
+// Astro component script section (empty for now)
+---
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Updates</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Updates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-</head>
-
-<style>
-  
+  <style>
     body {
-        margin: 0;
-        height: 100vh;
-        background-image: url("/images/bg6.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        font-family: 'Playfair Display', serif;
-        
+      margin: 0;
+      min-height: 100vh;
+      background-image: url("/images/bg6.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Playfair Display', serif;
     }
 
-
-  nav {
+    nav {
       position: fixed;
       top: 0;
       left: 0;
@@ -40,6 +36,7 @@
       display: flex;
       align-items: center;
       height: 60px;
+      z-index: 100;
     }
 
     nav ul {
@@ -60,105 +57,81 @@
 
     nav ul a:hover { background-color: #663d58; }
     nav ul a.active { background-color: #4b053c; }
-    .page-wrapper {
-    display: flex;
-    flex-direction: column;   
-    align-items: center;
-    margin-top: 80px;
-}
 
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 80px;
+    }
 
     .welcome {
-        text-align: center;
-        color: white;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
-        font-family:Cormorant Garamond;
-         
-            font-size: 2rem;
-             
-    background: rgba(20, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
+      text-align: center;
+      color: white;
+      padding: 20px;
+      font-family: Cormorant Garamond;
+      font-size: 2rem;
+      background: rgba(20, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 0, 0, 0.4), 0 20px 40px rgba(0, 0, 0, 0.6);
+      animation: float 4s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
 
-   
-    box-shadow:
-        0 0 20px rgba(255, 0, 0, 0.6),
-        0 0 40px rgba(255, 0, 0, 0.4),
-        0 20px 40px rgba(0, 0, 0, 0.6);
+    .welcome:hover {
+      transform: translateY(-8px);
+    }
 
-    
-    animation: float 4s ease-in-out infinite;
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
 
-    transition: transform 0.3s ease;
-}
+    .submission-box {
+      display: block;
+      margin: 60px auto;
+      padding: 25px;
+      width: 70%;
+      text-align: center;
+      color: white;
+      text-decoration: none;
+      font-family: "Cormorant Garamond", serif;
+      background: rgba(15, 0, 0, 0.6);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+    }
 
-
-.welcome:hover {
-    transform: translateY(-8px);
-}
-
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-    
-
-.submission-box {
-    display: block;
-    margin: 60px auto;
-    padding: 25px;
-    width: 70%;
-
-    text-align: center;
-    color: white;
-    text-decoration: none;
-    font-family: "Cormorant Garamond", serif;
-
-    background: rgba(15, 0, 0, 0.6);
-    border-radius: 15px;
-
-    
-    transition: all 0.3s ease;
-}
-
-
-.submission-box:hover {
-    box-shadow:
-        0 0 35px rgb(223, 208, 208),
-        0 0 60px rgba(227, 220, 220, 0.8);
-
-    transform: translateY(-8px) scale(1.02);
-}
-
-
+    .submission-box:hover {
+      box-shadow: 0 0 35px rgb(223, 208, 208), 0 0 60px rgba(227, 220, 220, 0.8);
+      transform: translateY(-8px) scale(1.02);
+    }
   </style>
-</style>
+</head>
 
 <body>
+  <nav>
+    <ul>
+      <li><a href="/home" class="active">Home</a></li>
+      <li><a href="/updates">Updates</a></li>
+      <li><a href="/results">Results</a></li>
+      <li><a href="/submissions">Submission</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
 
-<li><a href="home.html" class="active">Home</a></li>
-<li><a href="updates.html">Updates</a></li>
-<li><a href="results.html">Results</a></li>
-<li><a href="submissions.html">Submission</a></li>
-<li><a href="about.html">About</a></li>
+  <div class="page-wrapper">
+    <div class="welcome">
+      <p class="update">
+        The tournament is now officially live.<br>
+        Submit your code to participate.
+      </p>
+    </div>
 
-  
-    <div class="page-wrapper">
-
-  <div class="welcome">
-    <p class="update">
-      The tournament is now officially live.<br>
-      Submit your code to participate.
-    </p>
+    <a href="/submissions" class="submission-box">
+      <h2>Click to Submit</h2>
+    </a>
   </div>
-
-  <a href="/submissions" class="submission-box">
-    <h2>Click to Submit</h2>
-  </a>
-
-</div>
 </body>
 </html>

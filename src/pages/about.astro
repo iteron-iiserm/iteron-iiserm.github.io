@@ -1,3 +1,7 @@
+---
+// Astro component script section (empty for now)
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,9 +24,8 @@
     }
 
     /* ── HEADER ── */
-    header 
-    {margin-top: 60px;   
-
+    header {
+      margin-top: 60px;
       text-align: center;
       margin-bottom: 70px;
     }
@@ -42,35 +45,27 @@
       font-weight: normal;
       color: #eee9e9;
       line-height: 1.2;
-      
-
+      opacity: 0;
+      transform: translateX(-60px);
+      animation: slideInLeft 1s ease-out forwards;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
     }
-    
 
-    header h1 {
-    opacity: 0;
-    transform: translateX(-60px);
-    animation: slideInLeft 1s ease-out forwards;
-     }
-     @keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
     header h1 em {
       font-style: italic;
       color: #888;
     }
-
-    
 
     header .divider {
       width: 40px;
@@ -94,26 +89,27 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
     }
 
+    .card:nth-child(1) { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
+    .card:nth-child(4) { animation-delay: 0.4s; }
+    .card:nth-child(5) { animation-delay: 0.5s; }
+    .card:nth-child(6) { animation-delay: 0.6s; }
+
     @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.card {
-  opacity: 0;
-  animation: fadeIn 0.8s ease forwards;
-}
-
-
-
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
     .avatar {
       width: 96px;
@@ -138,7 +134,7 @@
     }
 
     .card-name {
-      font-family:Lucida Console;
+      font-family: Lucida Console;
       font-size: 1.1rem;
       font-weight: normal;
       color: #f5f4f4;
@@ -153,8 +149,6 @@
       color: #70f6f6;
       margin-bottom: 12px;
     }
-
-    
 
     /* ── FOOTER ── */
     footer {
@@ -180,80 +174,65 @@
       .team { grid-template-columns: 1fr; }
       body { padding: 60px 24px; }
     }
-
-    header h1 {
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-}
-
   </style>
 </head>
-<body>
 
+<body>
   <header>
-    
     <h1>Meet the <em>Iteron</em> Team</h1>
     <div class="divider"></div>
   </header>
 
   <div class="team">
-
     <div class="card">
       <div class="avatar">
-        <img src="member1.jpg" alt="Harsh Vardhan Shresht" onerror="this.parentElement.innerHTML='&#128100;'" />
+        <img src="/images/member1.jpg" alt="Harsh Vardhan Shresht" onerror="this.parentElement.innerHTML='&#128100;'" />
       </div>
       <p class="card-name">Harsh Vardhan Shresht</p>
       <p class="card-role"></p>
-     
     </div>
 
     <div class="card">
       <div class="avatar">
-        <img src="member2.jpg" alt="Sarah Lin" onerror="this.parentElement.innerHTML='&#128100;'" />
+        <img src="/images/member2.jpg" alt="Kshitij Salunke" onerror="this.parentElement.innerHTML='&#128100;'" />
       </div>
       <p class="card-name">Kshitij Salunke</p>
       <p class="card-role"></p>
-      
     </div>
 
     <div class="card">
       <div class="avatar">
-        <img src="member3.jpg" alt="Tamaghna Dey" onerror="this.parentElement.innerHTML='&#128100;'" />
+        <img src="/images/member3.jpg" alt="Tamaghna Dey" onerror="this.parentElement.innerHTML='&#128100;'" />
       </div>
       <p class="card-name">Tamaghna Dey</p>
-    
-     
+      <p class="card-role"></p>
     </div>
 
     <div class="card">
       <div class="avatar">
-        <img src="member4.jpg" alt="Priya Shah" onerror="this.parentElement.innerHTML='&#128100;'" />
+        <img src="/images/member4.jpg" alt="Sampreeti Kar" onerror="this.parentElement.innerHTML='&#128100;'" />
       </div>
       <p class="card-name">Sampreeti Kar</p>
       <p class="card-role"></p>
-      
     </div>
 
     <div class="card">
       <div class="avatar">
-        <img src="member5.jpg" alt="Tom Reeves" onerror="this.parentElement.innerHTML='&#128100;'" />
+        <img src="/images/member5.jpg" alt="Zayed Darmi" onerror="this.parentElement.innerHTML='&#128100;'" />
       </div>
       <p class="card-name">Zayed Darmi</p>
-      
-      
+      <p class="card-role"></p>
     </div>
 
     <div class="card">
       <div class="avatar">
-        <img src="member6.jpg" alt="Nina Wolff" onerror="this.parentElement.innerHTML='&#128100;'" />
+        <img src="/images/member6.jpg" alt="Pinchika" onerror="this.parentElement.innerHTML='&#128100;'" />
       </div>
       <p class="card-name">Pinchika</p>
       <p class="card-role"></p>
-     
     </div>
-
   </div>
 
   <footer>&mdash; Iteron 2026 &mdash;</footer>
-
 </body>
 </html>

@@ -1,0 +1,308 @@
+---
+// 404 Not Found page
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background-image: url("/images/bg5.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Playfair Display', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #000102;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      z-index: 100;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    nav ul li {
+      list-style: none;
+    }
+
+    nav ul a {
+      display: block;
+      padding: 0.5rem 1.2rem;
+      color: #ecf0f1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    nav ul a:hover { background-color: #663d58; }
+    nav ul a.active { background-color: #4b053c; }
+
+    .error-container {
+      text-align: center;
+      color: white;
+      max-width: 800px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .error-code {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 8rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 10px;
+      background: linear-gradient(
+        135deg,
+        #a003b5,
+        #663d58,
+        #a003b5
+      );
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+      text-shadow: 0 0 30px rgba(160, 3, 181, 0.5);
+    }
+
+    @keyframes gradientShift {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .error-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      color: #f0f7f8;
+      text-transform: uppercase;
+    }
+
+    .error-message {
+      font-size: 1.3rem;
+      color: #a9b4c2;
+      margin-bottom: 30px;
+      line-height: 1.8;
+      font-style: italic;
+    }
+
+    .error-box {
+      background: rgba(0, 1, 2, 0.7);
+      border: 1px solid rgba(160, 3, 181, 0.3);
+      border-radius: 12px;
+      padding: 40px;
+      margin: 40px 0;
+      box-shadow: 
+        0 0 20px rgba(160, 3, 181, 0.2),
+        inset 0 0 20px rgba(160, 3, 181, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .error-description {
+      font-size: 1rem;
+      color: #8d96b2;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: #a003b5;
+      color: black;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(160, 3, 181, 0.8), 0 0 60px rgba(160, 3, 181, 0.6);
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #a9b4c2;
+      border: 1px solid #663d58;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(102, 61, 88, 0.2);
+      border-color: #a003b5;
+      color: #ecf0f1;
+      box-shadow: 0 0 20px rgba(160, 3, 181, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .decoration {
+      margin-top: 60px;
+      opacity: 0.5;
+    }
+
+    .decoration-line {
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: #663d58;
+      margin: 0 15px;
+      vertical-align: middle;
+    }
+
+    .decoration-text {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #8d96b2;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .error-code {
+        font-size: 5rem;
+      }
+
+      .error-title {
+        font-size: 2rem;
+      }
+
+      .error-message {
+        font-size: 1.1rem;
+      }
+
+      .error-box {
+        padding: 30px 20px;
+      }
+
+      .button-group {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding-top: 80px;
+      }
+
+      .error-code {
+        font-size: 3.5rem;
+      }
+
+      .error-title {
+        font-size: 1.5rem;
+      }
+
+      .error-message {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/updates">Updates</a></li>
+      <li><a href="/results">Results</a></li>
+      <li><a href="/submissions">Submission</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="error-container">
+    <div class="error-code">404</div>
+
+    <div class="error-box">
+      <h1 class="error-title">Page Not Found</h1>
+
+      <p class="error-message">
+        "The strategy you're looking for has been defeated in battle."
+      </p>
+
+      <p class="error-description">
+        It seems you've ventured into uncharted territory. The page you're seeking either doesn't exist or has been removed from the tournament. Like in game theory, sometimes the path we take doesn't lead where we expected.
+      </p>
+
+      <div class="button-group">
+        <a href="/" class="btn btn-primary">Return to Home</a>
+        <a href="/submissions" class="btn btn-secondary">Explore Tournament</a>
+      </div>
+    </div>
+
+    <div class="decoration">
+      <span class="decoration-line"></span>
+      <span class="decoration-text">Iteron 2026</span>
+      <span class="decoration-line"></span>
+    </div>
+  </div>
+</body>
+</html>

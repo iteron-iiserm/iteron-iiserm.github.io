@@ -1,31 +1,28 @@
+---
+// Astro component script section (empty for now)
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iteron</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
-    
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Almendra+SC&family=Cinzel:wght@454&display=swap" rel="stylesheet">
- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
- </head>
- <style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Almendra+SC&family=Cinzel:wght@454&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-    margin: 0;
-    min-height: 100vh;
-    background-image: url("/images/bg5.jpeg");
-    font-family: 'Playfair Display', serif;
+      margin: 0;
+      min-height: 100vh;
+      background-image: url("/images/bg5.jpeg");
+      font-family: 'Playfair Display', serif;
     }
 
     nav {
@@ -58,21 +55,16 @@
     .banner {
       height: 60vh;
       background-image: url("/images/Hand.jpeg");
-       background:
-        linear-gradient(
-            rgba(0, 0, 0, 0.6),   /* darkness level */
-            rgba(0, 0, 0, 0.6)
-        ),
-        url("/images/Hand.jpeg");
-
-    background-size: cover;
-    background-position: center;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-      
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+      ), url("/images/Hand.jpeg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     .overlay {
       height: 100%;
@@ -82,20 +74,18 @@
       color: white;
     }
 
-    
     .mainsecanim {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeSlideIn 0.8s ease-out forwards;
-}
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideIn 0.8s ease-out forwards;
+    }
 
-@keyframes fadeSlideIn {
-    to {
+    @keyframes fadeSlideIn {
+      to {
         opacity: 1;
         transform: translateY(0);
+      }
     }
-}
-    
 
     .main-section {
       min-height: 20vh;
@@ -112,15 +102,10 @@
       background: black;
       padding: 30px;
       border-radius: 8px;
-      padding: 20px;
-      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(128, 0, 255, 0.6);
+    }
 
-    
-    box-shadow: 0 0 40px rgba(128, 0, 255, 0.6);
-}
-
- 
-.main-section2 {
+    .main-section2 {
       min-height: 1vh;
       display: flex;
       justify-content: center;
@@ -128,7 +113,6 @@
       padding: 50px 20px;
       color: #f0f7f8;
       font-family: 'Cinzel';
-
     }
 
     .slide-box2 {
@@ -137,303 +121,228 @@
       padding: 40px;
       border-radius: 8px;
     }
+
     .slide-box2:hover {
-  box-shadow:
-    0 0 10px #a855f7,
-    0 0 25px #9333ea,
-    0 0 40px #7e22ce;
-} 
-  .legacy {
-    margin-top: 10px;
-    margin-bottom: 120px;
-    max-width: 800px;
-    margin: 80px auto;
-    padding: 20px;
-    color: #ffffff;
-  }
+      box-shadow: 0 0 10px #a855f7, 0 0 25px #9333ea, 0 0 40px #7e22ce;
+    }
 
-  .legacy h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-    font-weight: 700;
-    text-align: center;
-  }
+    .legacy {
+      margin-top: 10px;
+      margin-bottom: 120px;
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 20px;
+      color: #ffffff;
+    }
 
-  .intro {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #a9b4c2;
-    margin-bottom: 40px;
-     text-align: center
-  }
+    .legacy h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      text-align: center;
+    }
 
-  .intro strong {
-    color: #ffffff;
-  }
+    .intro {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #a9b4c2;
+      margin-bottom: 40px;
+      text-align: center;
+    }
 
-  .points {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
+    .intro strong {
+      color: #ffffff;
+    }
 
-  .point {
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-  }
+    .points {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
 
-  .arrow {
-    background: #000710;
-    color: #9234cc;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 1.2rem;
-  }
+    .point {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+    }
 
-  .point h3 {
-    margin: 0;
-    font-size: 1.2rem;
-  }
+    .arrow {
+      background: #000710;
+      color: #9234cc;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+    }
 
-  .point p {
-    margin: 5px 0 0;
-    color: #94a3b8;
-    font-size: 0.95rem;
-  }
+    .point h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
 
-  .point:hover {
-    transform: translateX(5px);
-    transition: 0.3s ease;
-  
-  }
+    .point p {
+      margin: 5px 0 0;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
 
+    .point:hover {
+      transform: translateX(5px);
+      transition: 0.3s ease;
+    }
 
+    .strategy-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 8%;
+      background: #05070d;
+      color: white;
+      gap: 80px;
+    }
 
-.strategy-section {
-  display: flex;
-  flex-direction: column; 
-  justify-content: center;   
-  align-items: center;
-  padding: 120px 8%;
-  background: #05070d;
-  color: white;
-  gap: 80px;
-}
+    .strategy-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 500px;
+    }
 
+    .strategy-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      line-height: 0.95;
+      margin: 0;
+      font-family: Cinzel;
+      text-shadow: 0 0 5px rgba(150, 0, 255, 0.7), 0 0 15px rgba(150, 0, 255, 0.6), 0 0 30px rgba(150, 0, 255, 0.5);
+    }
 
-.strategy-left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 500px;
-}
+    .accent {
+      color: #5f1274;
+    }
 
-.strategy-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 5rem;
-  line-height: 0.95;
- 
-  margin: 0;
-  font-family: Cinzel;
+    .strategy-text {
+      font-family: 'Playfair Display', serif;
+      color: #ffffff;
+      font-size: 1.2rem;
+      margin: 40px 0;
+    }
 
-   text-shadow:
-    0 0 5px rgba(150, 0, 255, 0.7),
-    0 0 15px rgba(150, 0, 255, 0.6),
-    0 0 30px rgba(150, 0, 255, 0.5);
-}
+    .strategy-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
+    .btn-primary {
+      background: #a003b5;
+      color: black;
+      padding: 14px 28px;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-.accent {
-  color: #5f1274;
-}
+    .btn-primary:hover {
+      box-shadow: 0 0 3px rgb(131, 227, 227), 0 0 16px rgba(227, 220, 220, 0.8);
+      transform: translateY(-8px) scale(1.02);
+    }
 
-.strategy-text {
-  font-family: 'Playfair Display', serif;
-  
-  color: #ffffff;
-  font-size: 1.2rem;
-  margin: 40px 0;
-}
+    .btn-secondary {
+      border: 1px solid #2c3350;
+      padding: 14px 28px;
+      text-decoration: none;
+      color: #8d96b2;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+    }
 
+    .phase-section {
+      padding: 10px 8%;
+      background: #05070d;
+      color: white;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+    }
 
+    .phase-header {
+      color: #f9f9fa;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      margin-bottom: 60px;
+      font-family: Cinzel;
+    }
 
-.strategy-buttons {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
+    .phase-line {
+      position: absolute;
+      top: 180px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: #1b223b;
+      z-index: 0;
+    }
 
-}
+    .phase-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
 
-.btn-primary {
-  background: #600280;
-  color: black;
-  padding: 14px 28px;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  
- 
-}
+    .phase {
+      flex: 1;
+      max-width: 220px;
+      margin: 0 auto;
+    }
 
- .btn-primary:hover {
-    box-shadow:
-        0 0 3px rgb(131, 227, 227),
-        0 0 16px rgba(227, 220, 220, 0.8);
+    .phase-number {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      border: 1px solid #1b223b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #7d89c9;
+      background: rgba(20, 25, 45, 0.4);
+      box-shadow: 0 0 10px rgba(168, 85, 247, 0.25), 0 0 25px rgba(126, 34, 206, 0.15);
+    }
 
-    transform: translateY(-8px) scale(1.02);
-}
-.btn-secondary {
-  border: 1px solid #2c3350;
-  padding: 14px 28px;
-  text-decoration: none;
-  color: #8d96b2;
-  font-family: 'Inter', sans-serif;
-  text-transform: uppercase;
-}
+    .phase h3 {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
 
-.strategy-buttons {
-  border: 1px solid #2c3350;
-  padding: 14px 28px;
-  text-decoration: none;
-  color: #8d96b2;
-  font-family: 'Inter', sans-serif;
-  text-transform: uppercase
-  display: flex;
-  gap: 20px;
-}
+    .phase p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #8d96b2;
+      line-height: 1.6;
+    }
 
-/* BUTTONS */
-
-.btn-primary {
-  background: #a003b5;
-  color: black;
-  padding: 14px 28px;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.btn-secondary {
-  border: 1px solid #2c3350;
-  padding: 14px 28px;
-  text-decoration: none;
-  color: #8d96b2;
-  font-family: 'Inter', sans-serif;
-  text-transform: uppercase;
-}
-
-.phase-section {
-  padding: 10px 8%;
-  background: #05070d;
-  color: white;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  position: relative;
-}
-
-
-.phase-header {
-  color: #f9f9fa;
-  font-size: 1rem;
-  letter-spacing: 3px;
-  margin-bottom: 60px;
-  font-family: Cinzel
-  
-}
-
-
-.phase-line {
-  position: absolute;
-  top: 180px;
-  left: 10%;
-  right: 10%;
-  height: 1px;
-  background: #1b223b;
-  z-index: 0;
-}
-
-
-.phase-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 40px;
-  position: relative;
-  z-index: 1;
-}
-
-
-.phase {
-  flex: 1;
-  max-width: 220px;
-  margin: 0 auto;
-}
-
-
-.phase-number {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 20px;
-  border: 1px solid #1b223b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: #7d89c9;
-  background: rgba(20, 25, 45, 0.4);
-   box-shadow:
-    0 0 10px rgba(168, 85, 247, 0.25),
-    0 0 25px rgba(126, 34, 206, 0.15);
-}
-
-
-.phase h3 {
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
-}
-
-
-.phase p {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 0.95rem;
-  color: #8d96b2;
-  line-height: 1.6;
-}
-
-
-
-
-  
-  h1 { font-size: 4rem; }
-  p { font-size: 1.2rem; }
-</style>
-
-
-
-
-
-
-  
+    h1 { font-size: 4rem; }
+    p { font-size: 1.2rem; }
+  </style>
 </head>
 
 <body>
-
   <nav>
     <ul>
-    
-<li><a href="/ITERON/home">Home</a></li>
-<li><a href="/ITERON/updates">Updates</a></li>
-<li><a href="/ITERON/results">Results</a></li>
-<li><a href="/ITERON/submissions">Submission</a></li>
-<li><a href="/ITERON/about">About</a></li>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/updates">Updates</a></li>
+      <li><a href="/404">Results</a></li>
+      <li><a href="/submissions">Submission</a></li>
+      <li><a href="/about">About</a></li>
     </ul>
   </nav>
 
@@ -447,160 +356,107 @@
     </div>
   </div>
 
-<div class="mainsecanim">
+  <div class="mainsecanim">
     <div class="main-section">
-        <div class="slide-box">
-            <p>
-                In 1980, a political scientist asked:
-                "In a world of egoists, does it ever pay to be nice?"
-            </p>
-        </div>
-    </div>
-</div>
-
-<div>
-<!-- 
-</div>
-<div class="main-section2">
-    <div class="slide-box2">
-    
-    <p>Axelrod invited game theorists, mathematicians, and sociologists to submit computer programs (strategies)
-     to play against each other thousands of times
-     </p>
-    </div>
- </div> -->
-  
-<section class="legacy">
-
-  <h1>
-    The Legacy of Axelrod
-  </h1>
-
-  <p class="intro"
-     
-    Axelrod invited game theorists, mathematicians, and sociologists 
-    to submit computer programs (strategies) to play against each other thousands of times
-  </p>
-
-  <div class="points">
-
-    <div class="point"
-         
-      <span class="arrow">›</span>
-      <div>
-        <h3>Cooperation Evolved</h3>
-        <p>Proved altruism can be mathematically stable.</p>
+      <div class="slide-box">
+        <p>
+          In 1980, a political scientist asked:
+          "In a world of egoists, does it ever pay to be nice?"
+        </p>
       </div>
     </div>
-
-    <div class="point"
-        
-      <span class="arrow">›</span>
-      <div>
-        <h3>The 14 Original Strategies</h3>
-        <p>Ranged from extremely simple to highly complex.</p>
-      </div>
-    </div>
-
-    <div class="point"
-        
-      <span class="arrow">›</span>
-      <div>
-        <h3>Tit-For-Tat Supremacy</h3>
-        <p>Winning via simple reciprocity and trust.</p>
-      </div>
-    </div>
-
   </div>
-</section>
 
+  <section class="legacy">
+    <h1>The Legacy of Axelrod</h1>
 
-
-
-
-<section class="strategy-section">
-  <div class="strategy-left">
-    <h2 class="strategy-title">
-      Introducing<br>
-      
-      <br>ITERON
-    </h2>
-
-    <br>
-    <p class="strategy-text">
-      Inspired by Axelrod, but forged in harsher terrain,<br>
-     <br> In Iteron, strategies face multiple environments, unstable incentives, and repeated trials.
-     <br>
-     <br> Victory is not about winning once — it’s about enduring everywhere.
+    <p class="intro">
+      Axelrod invited game theorists, mathematicians, and sociologists
+      to submit computer programs (strategies) to play against each other thousands of times
     </p>
 
-    <div class="strategy-buttons">
+    <div class="points">
+      <div class="point">
+        <span class="arrow">›</span>
+        <div>
+          <h3>Cooperation Evolved</h3>
+          <p>Proved altruism can be mathematically stable.</p>
+        </div>
+      </div>
 
-      <a href="/ITERON/submissions">Explore the Tournament</a>
+      <div class="point">
+        <span class="arrow">›</span>
+        <div>
+          <h3>The 14 Original Strategies</h3>
+          <p>Ranged from extremely simple to highly complex.</p>
+        </div>
+      </div>
+
+      <div class="point">
+        <span class="arrow">›</span>
+        <div>
+          <h3>Tit-For-Tat Supremacy</h3>
+          <p>Winning via simple reciprocity and trust.</p>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
- <section class="phase-section">
+  <section class="strategy-section">
+    <div class="strategy-left">
+      <h2 class="strategy-title">
+        Introducing<br><br>ITERON
+      </h2>
 
-  <div class="phase-header">
-     TOURNAMENT PHASE FLOW
-  </div>
+      <br>
+      <p class="strategy-text">
+        Inspired by Axelrod, but forged in harsher terrain,<br><br>
+        In Iteron, strategies face multiple environments, unstable incentives, and repeated trials.
+        <br><br>
+        Victory is not about winning once — it's about enduring everywhere.
+      </p>
 
-  <div class="phase-line"></div>
-
-  <div class="phase-container">
-
-    <div class="phase">
-      <div class="phase-number">01</div>
-      <h3>SUBMISSION</h3>
-      
+      <div class="strategy-buttons">
+        <a href="/submissions">Explore the Tournament</a>
+      </div>
     </div>
 
-    <div class="phase">
-      <div class="phase-number">02</div>
-      <h3>MODIFICATION</h3>
-      
-    </div>
+    <section class="phase-section">
+      <div class="phase-header">
+        TOURNAMENT PHASE FLOW
+      </div>
 
-    <div class="phase">
-      <div class="phase-number">03</div>
-      <h3>ROUND-ROBIN</h3><wbr></wbr>
-      
-    </div>
+      <div class="phase-line"></div>
 
-    <div class="phase">
-      <div class="phase-number">04</div>
-      <h3>SELECTION</h3>
-      
-    </div>
+      <div class="phase-container">
+        <div class="phase">
+          <div class="phase-number">01</div>
+          <h3>SUBMISSION</h3>
+        </div>
 
-    <div class="phase">
-      <div class="phase-number">05</div>
-      <h3>RESULTS</h3>
-     
-    </div>
+        <div class="phase">
+          <div class="phase-number">02</div>
+          <h3>MODIFICATION</h3>
+        </div>
 
-  </div>
+        <div class="phase">
+          <div class="phase-number">03</div>
+          <h3>ROUND-ROBIN</h3>
+        </div>
 
-</section>
+        <div class="phase">
+          <div class="phase-number">04</div>
+          <h3>SELECTION</h3>
+        </div>
 
+        <div class="phase">
+          <div class="phase-number">05</div>
+          <h3>RESULTS</h3>
+        </div>
+      </div>
+    </section>
+  </section>
 
-  
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
- <footer>&mdash; Iteron 2026 &mdash;</footer>
-
+  <footer>&mdash; Iteron 2026 &mdash;</footer>
 </body>
 </html>

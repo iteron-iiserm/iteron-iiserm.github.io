@@ -1,178 +1,159 @@
+---
+// Astro component script section (empty for now)
+---
+
+<!DOCTYPE html>
 <html>
-    <head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submissions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
-    
-</head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
 
-<style>
-    body {
+    <style>
+      body {
         margin: 0;
         height: 100vh;
         background-color: black;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-
-        
-
         font-family: 'Playfair Display', serif;
-        
-    }
-    .page-wrapper {
-    display: flex;
-    flex-direction: column;   
-    align-items: center;
-    margin-top: 80px;
-}
+      }
 
+      .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 80px;
+      }
 
-.stack-section {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  max-width: 600px;
-  margin: 100px auto;
-  color: white;
-  font-family: Cinzel;
-  font-style: italic;
-}
+      .stack-section {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 600px;
+        margin: 100px auto;
+        color: white;
+        font-family: Cinzel;
+        font-style: italic;
+      }
 
-.box {
-  padding: 40px;
-  background: #1f0631;
-  color: white;
-  border-radius: 12px;
+      .box {
+        padding: 40px;
+        background: #1f0631;
+        color: white;
+        border-radius: 12px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 0.8s ease forwards;
+      }
 
+      /* Stagger effect */
+      .box:nth-child(1) { animation-delay: 0.2s; }
+      .box:nth-child(2) { animation-delay: 0.5s; }
+      .box:nth-child(3) { animation-delay: 0.8s; }
+      .box:nth-child(4) { animation-delay: 1.1s; }
 
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 0.8s ease forwards;
-}
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-/* Stagger effect */
-.box:nth-child(1) { animation-delay: 0.2s; }
-.box:nth-child(2) { animation-delay: 0.5s; }
-.box:nth-child(3) { animation-delay: 0.8s; }
-.box:nth-child(4) { animation-delay: 1.1s; }
+      .hero-header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 60px;
+      }
 
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+      .header-box {
+        width: 70%;
+        max-width: 800px;
+        padding: 80px 40px;
+        background-image: url("/images/Sban.png");
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        box-shadow: 0 10px 10px rgba(241, 44, 234, 0.6);
+        text-align: center;
+        position: relative;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1.2s ease forwards;
+      }
 
+      .header-box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.2)
+        );
+        border-radius: 10px;
+      }
 
-.hero-header {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 60px;
-}
+      .header-box h1 {
+        position: relative;
+        z-index: 2;
+        font-style: italic;
+        font-size: 3.2rem;
+        letter-spacing: 4px;
+        color: white;
+      }
 
-.header-box {
-  width: 70%;
-  max-width: 800px;
-  padding: 80px 40px;
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
-  background-image: url("/images/Sban.png"); 
-  background-size: cover;
-  background-position: center;
+      .submission-pdf {
+        width: 85%;
+        margin: 100px auto;
+      }
 
-  border-radius: 10px;
-  box-shadow: 0 10px 10px rgba(241, 44, 234, 0.6);
+      .submission-pdf iframe {
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      }
+    </style>
+  </head>
 
-  text-align: center;
+  <body>
+    <header class="hero-header">
+      <div class="header-box">
+        <h1>STRATEGY SUBMISSIONS</h1>
+      </div>
+    </header>
 
-  /* Animation start state */
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1.2s ease forwards;
-}
+    <section class="stack-section">
+      <div class="box">
+        <p>Iteron is an open tournament. Any strategy that follows the interface contract can compete</p>
+      </div>
+      <div class="box">
+        <p>Read the rules</p>
+        <p>write your code</p>
+        <p>AND SUBMIT</p>
+      </div>
 
-.header-box::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.2)
-  );
-}
-.header-box h1 {
-  position: relative;
-  z-index: 2;
-  font-style: italic;
-  font-size: 3.2rem;
-  letter-spacing: 4px;
-  color: white;
-}
-
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-.submission-pdf {
-  width: 85%;
-  margin: 100px auto;
-}
-
-.submission-pdf iframe {
-  border: none;
-  border-radius: 16px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-}
- </style>
-
-
-<body>
-
-    
-
-<header class="hero-header">
-  <div class="header-box">
-    <h1>STRATEGY SUBMISSIONS</h1>
-  </div>
-</header>
-
-
-  </div>
-
-<section class="stack-section">
-  <div class="box">
-    <p>Iteron is an open tournament.Any strategy that follows the interface contract can compete </p>
-
-  </div>
-  <div class="box">
-    <p>Read the rules
-         </p>
-    <p>write your code</p>
-    <p>AND SUBMIT</p>
-
-  </div>
-  
-  
-
-<section class="submission-pdf">
-  <iframe 
-    src="/rulebook.pdf"
-    width="100%" 
-    height="900px">
-  </iframe>
-</section>
-
-</body>
+      <section class="submission-pdf">
+        <iframe
+          src="/rulebook.pdf"
+          width="100%"
+          height="900px">
+        </iframe>
+      </section>
+    </section>
+  </body>
 </html>
