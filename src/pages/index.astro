@@ -304,6 +304,58 @@ import Navbar from "../components/common/Navbar.astro";
       line-height: 1.6;
     }
 
+.contact-section {
+        max-width: 600px;
+        margin: 60px auto 80px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.8s ease forwards;
+        animation-delay: 1.3s;
+      }
+
+      .contact-divider {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+      }
+      .contact-divider-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+      }
+      .contact-divider-ornament {
+        font-family: 'Cinzel', serif;
+        color: rgba(255, 255, 255, 0.3);
+        font-size: 0.7rem;
+        letter-spacing: 6px;
+      }
+
+      .contact-text {
+        font-family: 'Cinzel', serif;
+        font-style: italic;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.45);
+        margin: 0;
+      }
+
+      .contact-email {
+        font-family: 'Cinzel', serif;
+        font-size: 0.95rem;
+        letter-spacing: 3px;
+        color: #ff69b4;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 105, 180, 0.3);
+        padding-bottom: 3px;
+        transition: color 0.3s ease, border-color 0.3s ease, text-shadow 0.3s ease;
+      }
+
     h1 { font-size: 4rem; }
     p { font-size: 1.2rem; }
   </style>
@@ -422,6 +474,16 @@ import Navbar from "../components/common/Navbar.astro";
       </div>
     </section>
   </section>
+
+<div class="contact-section">
+      <div class="contact-divider">
+        <div class="contact-divider-line"></div>
+        <span class="contact-divider-ornament">✦</span>
+        <div class="contact-divider-line"></div>
+      </div>
+      <p class="contact-text">In case of any queries, reach us at</p>
+      <a href="mailto:ali@email.com" class="contact-email">ali@email.com</a>
+    </div>
 
   <footer>&mdash; Iteron 2026 &mdash;</footer>
 </body>
