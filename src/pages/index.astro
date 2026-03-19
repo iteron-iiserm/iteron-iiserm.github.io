@@ -135,4 +135,327 @@ import Navbar from "../components/common/Navbar.astro";
       background: #000710;
       color: #9234cc;
       padding: 6px 12px;
-      border-radi
+      border-radius: 8px;
+      font-size: 1.2rem;
+    }
+
+    .point h3 { margin: 0; font-size: 1.2rem; }
+    .point p { margin: 5px 0 0; color: #94a3b8; font-size: 0.95rem; }
+    .point:hover { transform: translateX(5px); transition: 0.3s ease; }
+
+    .strategy-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 8%;
+      background: #05070d;
+      color: white;
+      gap: 80px;
+    }
+
+    .strategy-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 500px;
+    }
+
+    .strategy-title {
+      font-size: 5rem;
+      line-height: 0.95;
+      margin: 0;
+      font-family: Cinzel;
+      text-shadow: 0 0 5px rgba(150,0,255,0.7), 0 0 15px rgba(150,0,255,0.6), 0 0 30px rgba(150,0,255,0.5);
+    }
+
+    .accent { color: #5f1274; }
+
+    .strategy-text {
+      font-family: 'Playfair Display', serif;
+      color: #ffffff;
+      font-size: 1.2rem;
+      margin: 40px 0;
+    }
+
+    .strategy-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: #a003b5;
+      color: black;
+      padding: 14px 28px;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 3px rgb(131,227,227), 0 0 16px rgba(227,220,220,0.8);
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .btn-secondary {
+      border: 1px solid #2c3350;
+      padding: 14px 28px;
+      text-decoration: none;
+      color: #8d96b2;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .phase-section {
+      width: 100%;
+      padding: 10px 8%;
+      background: #05070d;
+      color: white;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+    }
+
+    .phase-header {
+      color: #f9f9fa;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      margin-bottom: 60px;
+      font-family: Cinzel;
+    }
+
+    .phase-line {
+      position: absolute;
+      top: 180px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: #1b223b;
+      z-index: 0;
+    }
+
+    .phase-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .phase { flex: 1; max-width: 220px; margin: 0 auto; }
+
+    .phase-number {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      border: 1px solid #1b223b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #7d89c9;
+      background: rgba(20,25,45,0.4);
+      box-shadow: 0 0 10px rgba(168,85,247,0.25), 0 0 25px rgba(126,34,206,0.15);
+    }
+
+    .phase h3 { font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 15px; }
+    .phase p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: #8d96b2;
+      line-height: 1.6;
+    }
+
+    /* ── Contact Section ── */
+    .contact-section {
+      max-width: 600px;
+      margin: 60px auto 80px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
+      animation-delay: 1.3s;
+    }
+
+    .contact-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+    }
+    .contact-divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+    }
+    .contact-divider-ornament {
+      font-family: 'Cinzel', serif;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.7rem;
+      letter-spacing: 6px;
+    }
+
+    .contact-text {
+      font-family: 'Cinzel', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.45);
+      margin: 0;
+    }
+
+    .contact-email {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      letter-spacing: 3px;
+      color: #ff69b4;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,105,180,0.3);
+      padding-bottom: 3px;
+      transition: color 0.3s ease, border-color 0.3s ease, text-shadow 0.3s ease;
+    }
+    /* ── FIX: added missing hover rule ── */
+    .contact-email:hover {
+      color: white;
+      border-color: white;
+      text-shadow: 0 0 12px rgba(255,105,180,0.5);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      color: rgba(255,255,255,0.2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    h1 { font-size: 4rem; }
+    p { font-size: 1.2rem; }
+  </style>
+</head>
+
+<body>
+  <Navbar/>
+
+  <div class="banner">
+    <div class="overlay">
+      <div>
+        <h1>Iteron</h1>
+        <br>
+        <p>The Game of Trust and Strategy</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mainsecanim">
+    <div class="main-section">
+      <div class="slide-box">
+        <p>
+          In 1980, a political scientist asked:
+          "In a world of egoists, does it ever pay to be nice?"
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <section class="legacy">
+    <h1>The Legacy of Axelrod</h1>
+    <p class="intro">
+      Axelrod invited game theorists, mathematicians, and sociologists
+      to submit computer programs (strategies) to play against each other thousands of times
+    </p>
+    <div class="points">
+      <div class="point">
+        <span class="arrow">›</span>
+        <div>
+          <h3>Cooperation Evolved</h3>
+          <p>Proved altruism can be mathematically stable.</p>
+        </div>
+      </div>
+      <div class="point">
+        <span class="arrow">›</span>
+        <div>
+          <h3>The 14 Original Strategies</h3>
+          <p>Ranged from extremely simple to highly complex.</p>
+        </div>
+      </div>
+      <div class="point">
+        <span class="arrow">›</span>
+        <div>
+          <h3>Tit-For-Tat Supremacy</h3>
+          <p>Winning via simple reciprocity and trust.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIX: phase-section moved outside strategy-section -->
+  <section class="strategy-section">
+    <div class="strategy-left">
+      <h2 class="strategy-title">
+        Introducing<br><br>ITERON
+      </h2>
+      <br>
+      <p class="strategy-text">
+        Inspired by Axelrod, but forged in harsher terrain,<br><br>
+        In Iteron, strategies face multiple environments, unstable incentives, and repeated trials.
+        <br><br>
+        Victory is not about winning once — it's about enduring everywhere.
+      </p>
+      <div class="strategy-buttons">
+        <a href="/submissions">Explore the Tournament</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="phase-section">
+    <div class="phase-header">TOURNAMENT PHASE FLOW</div>
+    <div class="phase-line"></div>
+    <div class="phase-container">
+      <div class="phase">
+        <div class="phase-number">01</div>
+        <h3>SUBMISSION</h3>
+      </div>
+      <div class="phase">
+        <div class="phase-number">02</div>
+        <h3>MODIFICATION</h3>
+      </div>
+      <div class="phase">
+        <div class="phase-number">03</div>
+        <h3>ROUND-ROBIN</h3>
+      </div>
+      <div class="phase">
+        <div class="phase-number">04</div>
+        <h3>SELECTION</h3>
+      </div>
+      <div class="phase">
+        <div class="phase-number">05</div>
+        <h3>RESULTS</h3>
+      </div>
+    </div>
+  </section>
+
+  <div class="contact-section">
+    <div class="contact-divider">
+      <div class="contact-divider-line"></div>
+      <span class="contact-divider-ornament">✦</span>
+      <div class="contact-divider-line"></div>
+    </div>
+    <p class="contact-text">In case of any queries, reach us at</p>
+    <a href="mailto:iteron.iiserm@gmail.com" class="contact-email">iteron.iiserm@gmail.com</a>
+  </div>
+
+  <footer>&mdash; Iteron 2026 &mdash;</footer>
+</body>
+</html>
