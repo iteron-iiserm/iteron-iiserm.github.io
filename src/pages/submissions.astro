@@ -107,17 +107,18 @@ import Navbar from "../components/common/Navbar.astro"
 
       /* Submission Guidelines heading */
       .guidelines-heading {
-        color: #ff69b4;
-        font-family: Cinzel, serif;
-        font-size: 1.6rem;
-        letter-spacing: 3px;
-        margin: 40 40 10px 40;
-        font-style: italic;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp 0.8s ease forwards;
-        animation-delay: 0.8s;
-      }
+       color: #ff69b4;
+       font-family: Cinzel, serif;
+       font-size: 1.6rem;
+       letter-spacing: 3px;
+      margin: 40px 40px 10px 40px;   /* fixed: all four values need units */
+     font-style: italic;
+     opacity: 0;
+     transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+    animation-delay: 0.8s;
+} 
+      
 
       /* PDF download link */
       .pdf-download-link {
@@ -146,13 +147,15 @@ import Navbar from "../components/common/Navbar.astro"
         font-size: 1rem;
       }
 
-      .guidelines-block {
-        max-width: 600px;
-        margin: 0 auto 60px auto;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
+     .guidelines-block {
+  max-width: 600px;
+  margin: 30px auto 60px auto;   
+  display: flex;
+  flex-direction: column;
+  align-items: center;           
+  gap: 16px;
+  text-align: center;            
+}
     </style>
   </head>
   <body>
