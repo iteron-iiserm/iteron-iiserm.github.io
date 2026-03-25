@@ -107,18 +107,17 @@ import Navbar from "../components/common/Navbar.astro"
 
       /* Submission Guidelines heading */
       .guidelines-heading {
-       color: #ff69b4;
-       font-family: Cinzel, serif;
-       font-size: 1.6rem;
-       letter-spacing: 3px;
-      margin: 40px 40px 10px 40px;   /* fixed: all four values need units */
-     font-style: italic;
-     opacity: 0;
-     transform: translateY(20px);
-    animation: fadeUp 0.8s ease forwards;
-    animation-delay: 0.8s;
-} 
-      
+        color: #ff69b4;
+        font-family: Cinzel, serif;
+        font-size: 1.6rem;
+        letter-spacing: 3px;
+        margin: 40px 40px 10px 40px;
+        font-style: italic;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.8s ease forwards;
+        animation-delay: 0.8s;
+      }
 
       /* PDF download link */
       .pdf-download-link {
@@ -147,15 +146,196 @@ import Navbar from "../components/common/Navbar.astro"
         font-size: 1rem;
       }
 
-     .guidelines-block {
-  max-width: 600px;
-  margin: 30px auto 60px auto;   
-  display: flex;
-  flex-direction: column;
-  align-items: center;           
-  gap: 16px;
-  text-align: center;            
-}
+      .guidelines-block {
+        max-width: 600px;
+        margin: 30px auto 60px auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        text-align: center;
+      }
+
+      /* ── RULEBOOK SECTION ── */
+      .rulebook-divider {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .rulebook-divider hr {
+        border: none;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,105,180,0.3) 30%, rgba(255,105,180,0.3) 70%, transparent);
+      }
+
+      .rulebook {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2.5rem 2rem 5rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .section-header p.eyebrow {
+        font-family: Cinzel, serif;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: #ff69b4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        margin-bottom: 0.8rem;
+      }
+      .section-header p.eyebrow::before,
+      .section-header p.eyebrow::after {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 1px;
+        background: #ff69b4;
+        opacity: 0.5;
+      }
+      .section-header p.sub {
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 0.88rem;
+        color: rgba(255,255,255,0.5);
+        max-width: 540px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      .rules-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .rule-card {
+        background: #1f0631;
+        border: 1px solid rgba(255, 105, 180, 0.2);
+        border-radius: 10px;
+        padding: 1.8rem;
+        position: relative;
+        overflow: hidden;
+        transition: border-color 0.3s, transform 0.3s;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeUp 0.8s ease forwards;
+      }
+      .rule-card:hover {
+        border-color: rgba(255, 105, 180, 0.55);
+        transform: translateY(-3px);
+      }
+      .rule-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #ff69b4, transparent);
+      }
+      .rule-card.full-width { grid-column: 1 / -1; }
+
+      /* stagger rule cards */
+      .rule-card:nth-child(1)  { animation-delay: 0.1s; }
+      .rule-card:nth-child(2)  { animation-delay: 0.2s; }
+      .rule-card:nth-child(3)  { animation-delay: 0.3s; }
+      .rule-card:nth-child(4)  { animation-delay: 0.4s; }
+      .rule-card:nth-child(5)  { animation-delay: 0.5s; }
+      .rule-card:nth-child(6)  { animation-delay: 0.6s; }
+      .rule-card:nth-child(7)  { animation-delay: 0.7s; }
+      .rule-card:nth-child(8)  { animation-delay: 0.8s; }
+      .rule-card:nth-child(9)  { animation-delay: 0.9s; }
+      .rule-card:nth-child(10) { animation-delay: 1.0s; }
+
+      .rule-number {
+        font-family: Cinzel, serif;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        color: #ff69b4;
+        opacity: 0.75;
+        text-transform: uppercase;
+        margin-bottom: 0.45rem;
+      }
+      .rule-card h3 {
+        font-family: Cinzel, serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: white;
+        margin: 0 0 1rem 0;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid rgba(255,105,180,0.15);
+      }
+      .rule-card p {
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 0.86rem;
+        line-height: 1.78;
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 0.8rem;
+      }
+      .rule-card p:last-child { margin-bottom: 0; }
+
+      .rule-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+      .rule-list li {
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 0.86rem;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.6);
+        padding-left: 1.3rem;
+        position: relative;
+      }
+      .rule-list li::before {
+        content: '›';
+        position: absolute;
+        left: 0;
+        color: #ff69b4;
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .rule-list li strong { color: white; font-weight: 600; }
+
+      .note-banner {
+        background: rgba(255,105,180,0.07);
+        border: 1px solid rgba(255,105,180,0.3);
+        border-radius: 6px;
+        padding: 1rem 1.4rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+        margin-bottom: 1rem;
+      }
+      .note-banner .note-icon { font-size: 0.95rem; color: #ff69b4; flex-shrink: 0; margin-top: 2px; }
+      .note-banner p {
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 0.84rem;
+        line-height: 1.7;
+        color: rgba(255,255,255,0.6);
+        margin: 0;
+      }
+      .note-banner p strong { color: #ff69b4; font-weight: 600; }
+
+      .disclaimer {
+        font-family: 'Noto Sans', sans-serif;
+        font-size: 0.78rem;
+        color: rgba(255,255,255,0.35);
+        text-align: center;
+        line-height: 1.7;
+        margin-top: 1.5rem;
+      }
     </style>
   </head>
   <body>
@@ -166,23 +346,150 @@ import Navbar from "../components/common/Navbar.astro"
       </div>
     </header>
 
-  
     <div class="guidelines-block">
-
-    General Information
-Event Description: A round-robin computational tournament designed to evaluate strategies across a variety of strategic environments using
-cumulative payoffs.
-Medium: Online
-Eligibility: Open to all students (School, Undergraduate, Postgraduate,
-and PhD, associated with some university)
-
       <a href="/Rule_Book_ITERON__Copy_.pdf" download="Rule_Book_ITERON__Copy_.pdf" class="pdf-download-link">
-       Rule_Book_ITERON( Click to download)
+        Rule_Book_ITERON( Click to download)
       </a>
       <a href="https://tally.so/r/b5OKN6" target="_blank" rel="noopener noreferrer" class="pdf-download-link">
-    Submission Form
-  </a>
+        Submission Form
+      </a>
     </div>
+
+    <!-- RULEBOOK DIVIDER -->
+    <div class="rulebook-divider"><hr></div>
+
+    <!-- RULEBOOK SECTION -->
+    <section class="rulebook">
+      <div class="section-header">
+        <p class="eyebrow">Official Documentation</p>
+        <p class="sub">Organised by The Turing Club, IISER Mohali · February 28, 2026. Participants are advised to read all sections carefully and follow the instructions.</p>
+      </div>
+
+      <!-- Overview -->
+      <div class="rules-grid">
+        <div class="rule-card full-width">
+          <div class="rule-number">Overview</div>
+          <h3>General Information</h3>
+          <p>A round-robin computational tournament designed to evaluate strategies across a variety of strategic environments using cumulative payoffs. Inspired by Robert Axelrod's Iterated Prisoner's Dilemma Tournament, this event tests the robustness of strategies across varying environments rather than a single static payoff matrix.</p>
+          <ul class="rule-list">
+            <li><strong>Format:</strong> Round-robin computational tournament, conducted online.</li>
+            <li><strong>Eligibility:</strong> Open to all students — School, Undergraduate, Postgraduate, and PhD — associated with any university.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 1 -->
+      <div class="rules-grid">
+        <div class="rule-card full-width">
+          <div class="rule-number">Section 1</div>
+          <h3>Introduction</h3>
+          <p>Welcome to the Iteron. This tournament is inspired by Axelrod's Iterated Prisoner's Dilemma tournament. Participants are required to submit code-based strategies to compete against one another. Unlike conventional tournaments, this event tests the robustness of strategies across varying environments.</p>
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-number">Section 2.1</div>
+          <h3>Strategy Originality &amp; Structure</h3>
+          <ul class="rule-list">
+            <li>All submitted strategies must be <strong>original and unique</strong>. Plagiarism of existing open-source strategies without significant modification or attribution is strictly prohibited.</li>
+            <li>References will be provided by the organizers. Participants must ensure their strategies are <strong>distinct from these reference implementations</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-number">Section 2.2</div>
+          <h3>Formatting &amp; Templates</h3>
+          <ul class="rule-list">
+            <li>Strategies must be submitted using the <strong>official template</strong> provided by the organizers.</li>
+            <li>Submissions in any other format or structure will be <strong>rejected</strong>. Participants may be asked to resubmit in the correct format or face immediate disqualification.</li>
+          </ul>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-number">Section 2.3</div>
+          <h3>Testing</h3>
+          <ul class="rule-list">
+            <li>To prevent runtime errors during the actual tournament, the organizers will release a <strong>Sample Strategy</strong>.</li>
+            <li>You are required to <strong>test your code against this sample strategy</strong> before submission.</li>
+            <li>Detailed instructions on how to perform this pre-submission test will be issued shortly.</li>
+          </ul>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-number">Section 2.4</div>
+          <h3>Technical Constraints</h3>
+          <ul class="rule-list">
+            <li><strong>Machine Learning:</strong> The use of ML within strategies is expected to be limited. Strategies relying heavily on computationally expensive models may be subject to review regarding time-complexity limits.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-number">Section 3.1</div>
+          <h3>Tournament Structure</h3>
+          <ul class="rule-list">
+            <li>The tournament will be conducted in a <strong>Round Robin format</strong>.</li>
+            <li>Every submitted strategy will play against every other opponent's strategy.</li>
+            <li>Every submitted strategy will also play against <strong>a copy of itself</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-number">Sections 3.2 &amp; 3.3</div>
+          <h3>Match Duration &amp; Iteration</h3>
+          <ul class="rule-list">
+            <li>To preserve the game-theoretic essence of the "Shadow of the Future," the <strong>exact number of rounds per match will not be revealed</strong> to participants.</li>
+            <li>Strategies should be designed to handle an <strong>indefinite time horizon</strong>.</li>
+            <li>The entire tournament will be <strong>iterated more than once</strong> to ensure statistical significance, remove noise, and guarantee fair observations of strategy performance.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="rules-grid">
+        <div class="rule-card full-width">
+          <div class="rule-number">Section 4</div>
+          <h3>The Multi-Environment System</h3>
+          <div class="note-banner">
+            <span class="note-icon">★</span>
+            <p><strong>Defining Feature:</strong> This is what sets ITERON apart from all conventional Axelrod tournaments.</p>
+          </div>
+          <ul class="rule-list">
+            <li>Unlike the conventional Axelrod's tournament which uses a <strong>static payoff matrix</strong>, this tournament will be conducted across <strong>multiple environments</strong>.</li>
+            <li>The organizers will systematically <strong>vary the payoff matrices</strong> — the rewards for Cooperation and Defection — between tournament runs.</li>
+            <li>Strategies must be <strong>robust enough to adapt</strong> to changes in incentives, rather than being over-fitted to a single payoff structure.</li>
+            <li>The description of payoffs will be mentioned on the website.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-number">Section 5.1</div>
+          <h3>Winner Determination</h3>
+          <ul class="rule-list">
+            <li>The final winner will be determined based on the <strong>highest average score</strong>.</li>
+            <li>This score is calculated by aggregating the points obtained across <strong>all different payoff matrices and environments</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="rule-card">
+          <div class="rule-number">Section 5.2</div>
+          <h3>Aggregate Performance Rule</h3>
+          <ul class="rule-list">
+            <li><strong>Consistency is key.</strong> Even if a strategy places 1st in k out of n specific matrix environments, it will receive no special consideration if its overall average drops due to poor performance in other environments.</li>
+            <li>Final ranking is based <strong>solely on overall aggregated performance</strong>. No separate claims or titles will be awarded for individual sub-tournament wins.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="disclaimer">The Turing Club reserves the right to modify these rules to ensure the smooth operation of the Science Fest event. Updates will be communicated via official channels.</p>
+    </section>
 
   </body>
 </html>
