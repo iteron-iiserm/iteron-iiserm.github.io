@@ -351,6 +351,125 @@ import Navbar from "../components/common/Navbar.astro";
 
     h1 { font-size: 4rem; }
     p { font-size: 1.2rem; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+ 
+    body {
+      font-family: sans-serif;
+      background: #fff;
+      color: #1a1a1a;
+      padding: 2rem;
+    }
+ 
+    .help-section {
+      padding: 1.5rem 0;
+      max-width: 720px;
+    }
+ 
+    .help-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+ 
+    .help-badge {
+      background: #e6f1fb;
+      color: #185fa5;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.04em;
+    }
+ 
+    .help-title {
+      font-size: 20px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin: 0 0 6px;
+    }
+ 
+    .help-subtitle {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.6;
+      margin: 0 0 1.25rem;
+    }
+ 
+    .divider {
+      border: none;
+      border-top: 0.5px solid #e0e0e0;
+      margin: 0 0 1.25rem;
+    }
+ 
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+ 
+    .video-card {
+      background: #fff;
+      border: 0.5px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.15s;
+      cursor: pointer;
+    }
+ 
+    .video-card:hover {
+      border-color: #bbb;
+    }
+ 
+    .video-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: #fcebeb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+ 
+    .play-triangle {
+      width: 0;
+      height: 0;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: 12px solid #e24b4a;
+      margin-left: 3px;
+    }
+ 
+    .video-label {
+      font-size: 11px;
+      color: #185fa5;
+      font-weight: 500;
+      margin: 0 0 4px;
+      letter-spacing: 0.03em;
+    }
+ 
+    .video-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin: 0 0 4px;
+      line-height: 1.4;
+    }
+ 
+    .video-desc {
+      font-size: 12px;
+      color: #666;
+      margin: 0;
+      line-height: 1.5;
+    }
   </style>
 </head>
 
@@ -464,6 +583,46 @@ import Navbar from "../components/common/Navbar.astro";
     </div>
     <p class="contact-text">In case of any queries, reach us at</p>
     <a href="mailto:iteron.iiserm@gmail.com" class="contact-email">iteron.iiserm@gmail.com</a>
+  </div>
+
+  <div class="help-section">
+    <div class="help-header">
+      <span class="help-badge">Help</span>
+    </div>
+    <p class="help-title">New to game theory?</p>
+    <p class="help-subtitle">If you're just getting started with the concepts of game theory, these videos will walk you through the fundamentals — head over and give them a watch.</p>
+    <hr class="divider">
+    <div class="video-grid">
+ 
+      <a class="video-card" href="https://www.youtube.com/watch?v=PCcVODWm-oY" target="_blank">
+        <div class="video-icon"><div class="play-triangle"></div></div>
+        <p class="video-label">Beginner · 12 min</p>
+        <p class="video-title">Introduction to Game Theory</p>
+        <p class="video-desc">What is game theory and why does it matter? A gentle starting point.</p>
+      </a>
+ 
+      <a class="video-card" href="https://www.youtube.com/watch?v=MHS-htjGgSY" target="_blank">
+        <div class="video-icon"><div class="play-triangle"></div></div>
+        <p class="video-label">Beginner · 9 min</p>
+        <p class="video-title">The Prisoner's Dilemma</p>
+        <p class="video-desc">The most famous game theory scenario — explained simply.</p>
+      </a>
+ 
+      <a class="video-card" href="https://www.youtube.com/watch?v=qQ3kFydI_xQ" target="_blank">
+        <div class="video-icon"><div class="play-triangle"></div></div>
+        <p class="video-label">Intermediate · 15 min</p>
+        <p class="video-title">Nash Equilibrium</p>
+        <p class="video-desc">Understand Nash's key insight and how equilibria are found.</p>
+      </a>
+ 
+      <a class="video-card" href="https://www.youtube.com/watch?v=VZl7bEQSQhk" target="_blank">
+        <div class="video-icon"><div class="play-triangle"></div></div>
+        <p class="video-label">Intermediate · 18 min</p>
+        <p class="video-title">Zero-Sum Games</p>
+        <p class="video-desc">Competitive scenarios where one player's gain is another's loss.</p>
+      </a>
+ 
+    </div>
   </div>
 
   <footer>&mdash; Iteron 2026 &mdash;</footer>
