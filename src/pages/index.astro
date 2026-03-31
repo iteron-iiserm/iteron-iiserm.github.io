@@ -53,7 +53,6 @@ import Navbar from "../components/common/Navbar.astro";
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── FIX: added missing fadeUp keyframe ── */
     @keyframes fadeUp {
       to { opacity: 1; transform: translateY(0); }
     }
@@ -141,7 +140,6 @@ import Navbar from "../components/common/Navbar.astro";
 
     .point h3 { margin: 0; font-size: 1.2rem; }
     .point p { margin: 5px 0 0; color: #94a3b8; font-size: 0.95rem; }
-    
 
     .strategy-section {
       display: flex;
@@ -180,25 +178,25 @@ import Navbar from "../components/common/Navbar.astro";
     }
 
     .strategy-buttons {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-.strategy-buttons a {
-  color: white;
-  text-decoration: none;
-  border: 1px solid white;
-  padding: 10px 24px;
-  border-radius: 6px;
-  transition: background 0.3s ease, color 0.3s ease;
-}
+    .strategy-buttons a {
+      color: white;
+      text-decoration: none;
+      border: 1px solid white;
+      padding: 10px 24px;
+      border-radius: 6px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
 
-.strategy-buttons a:hover {
-  background: white;
-  color: black;
-}
+    .strategy-buttons a:hover {
+      background: white;
+      color: black;
+    }
 
     .btn-primary {
       background: #a003b5;
@@ -285,7 +283,6 @@ import Navbar from "../components/common/Navbar.astro";
       line-height: 1.6;
     }
 
-    /* ── Contact Section ── */
     .contact-section {
       max-width: 600px;
       margin: 60px auto 80px auto;
@@ -337,7 +334,6 @@ import Navbar from "../components/common/Navbar.astro";
       padding-bottom: 3px;
       transition: color 0.3s ease, border-color 0.3s ease, text-shadow 0.3s ease;
     }
-    
 
     footer {
       text-align: center;
@@ -352,123 +348,119 @@ import Navbar from "../components/common/Navbar.astro";
     h1 { font-size: 4rem; }
     p { font-size: 1.2rem; }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
- 
-    body {
-      font-family: sans-serif;
-      background: #fff;
-      color: #1a1a1a;
-      padding: 2rem;
-    }
- 
+    /* ── Help Section ── */
     .help-section {
-      padding: 1.5rem 0;
-      max-width: 720px;
+      width: 100%;
+      background: #05070d;
+      padding: 60px 8%;
     }
- 
+
     .help-header {
       display: flex;
       align-items: center;
       gap: 10px;
       margin-bottom: 8px;
     }
- 
+
     .help-badge {
-      background: #e6f1fb;
-      color: #185fa5;
+      background: #1a0a2e;
+      color: #a855f7;
       font-size: 11px;
       font-weight: 500;
       padding: 3px 10px;
       border-radius: 20px;
       letter-spacing: 0.04em;
+      border: 0.5px solid #a855f7;
     }
- 
+
     .help-title {
       font-size: 20px;
       font-weight: 500;
-      color: #1a1a1a;
+      color: #ffffff;
       margin: 0 0 6px;
+      font-family: 'Cinzel', serif;
     }
- 
+
     .help-subtitle {
       font-size: 15px;
-      color: #666;
+      color: #8d96b2;
       line-height: 1.6;
       margin: 0 0 1.25rem;
+      font-family: 'Playfair Display', serif;
     }
- 
-    .divider {
+
+    .help-divider {
       border: none;
-      border-top: 0.5px solid #e0e0e0;
+      border-top: 0.5px solid #1b223b;
       margin: 0 0 1.25rem;
     }
- 
+
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 12px;
     }
- 
+
     .video-card {
-      background: #fff;
-      border: 0.5px solid #e0e0e0;
+      background: #000;
+      border: 0.5px solid #1b223b;
       border-radius: 12px;
       padding: 1rem 1.1rem;
       text-decoration: none;
       display: block;
-      transition: border-color 0.15s;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
       cursor: pointer;
     }
- 
+
     .video-card:hover {
-      border-color: #bbb;
+      border-color: #a855f7;
+      box-shadow: 0 0 10px #a855f7, 0 0 25px #9333ea;
     }
- 
+
     .video-icon {
       width: 36px;
       height: 36px;
       border-radius: 8px;
-      background: #fcebeb;
+      background: #1a0a2e;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 10px;
     }
- 
+
     .play-triangle {
       width: 0;
       height: 0;
       border-top: 7px solid transparent;
       border-bottom: 7px solid transparent;
-      border-left: 12px solid #e24b4a;
+      border-left: 12px solid #a855f7;
       margin-left: 3px;
     }
- 
+
     .video-label {
       font-size: 11px;
-      color: #185fa5;
+      color: #a855f7;
       font-weight: 500;
       margin: 0 0 4px;
       letter-spacing: 0.03em;
+      font-family: 'Inter', sans-serif;
     }
- 
+
     .video-title {
       font-size: 14px;
       font-weight: 500;
-      color: #1a1a1a;
+      color: #ffffff;
       margin: 0 0 4px;
       line-height: 1.4;
+      font-family: 'Cinzel', serif;
     }
- 
+
     .video-desc {
       font-size: 12px;
-      color: #666;
+      color: #8d96b2;
       margin: 0;
       line-height: 1.5;
+      font-family: 'Playfair Display', serif;
     }
   </style>
 </head>
@@ -500,9 +492,9 @@ import Navbar from "../components/common/Navbar.astro";
   <section class="legacy">
     <h1>The Legacy of Axelrod</h1>
     <p class="intro">
-     Axelrod invited game theorists, mathematicians, and sociologists to submit computer programs (strategies) to play against each other thousands of times.
-     Participants submitted computer programs  for playing the Iterated Prisoner's Dilemma, where each program repeatedly decided whether to cooperate or defect against others.
-     Every strategy played many rounds against all others, earning points based on outcomes. Goal of the tournament was to see which strategy performed best over time.
+      Axelrod invited game theorists, mathematicians, and sociologists to submit computer programs (strategies) to play against each other thousands of times.
+      Participants submitted computer programs for playing the Iterated Prisoner's Dilemma, where each program repeatedly decided whether to cooperate or defect against others.
+      Every strategy played many rounds against all others, earning points based on outcomes. Goal of the tournament was to see which strategy performed best over time.
     </p>
     <div class="points">
       <div class="point">
@@ -529,7 +521,6 @@ import Navbar from "../components/common/Navbar.astro";
     </div>
   </section>
 
-  <!-- FIX: phase-section moved outside strategy-section -->
   <section class="strategy-section">
     <div class="strategy-left">
       <h2 class="strategy-title">
@@ -591,37 +582,37 @@ import Navbar from "../components/common/Navbar.astro";
     </div>
     <p class="help-title">New to game theory?</p>
     <p class="help-subtitle">If you're just getting started with the concepts of game theory, these videos will walk you through the fundamentals — head over and give them a watch.</p>
-    <hr class="divider">
+    <hr class="help-divider">
     <div class="video-grid">
- 
+
       <a class="video-card" href="https://www.youtube.com/watch?v=PCcVODWm-oY" target="_blank">
         <div class="video-icon"><div class="play-triangle"></div></div>
         <p class="video-label">Beginner · 12 min</p>
         <p class="video-title">Introduction to Game Theory</p>
         <p class="video-desc">What is game theory and why does it matter? A gentle starting point.</p>
       </a>
- 
+
       <a class="video-card" href="https://www.youtube.com/watch?v=MHS-htjGgSY" target="_blank">
         <div class="video-icon"><div class="play-triangle"></div></div>
         <p class="video-label">Beginner · 9 min</p>
         <p class="video-title">The Prisoner's Dilemma</p>
         <p class="video-desc">The most famous game theory scenario — explained simply.</p>
       </a>
- 
+
       <a class="video-card" href="https://www.youtube.com/watch?v=qQ3kFydI_xQ" target="_blank">
         <div class="video-icon"><div class="play-triangle"></div></div>
         <p class="video-label">Intermediate · 15 min</p>
         <p class="video-title">Nash Equilibrium</p>
         <p class="video-desc">Understand Nash's key insight and how equilibria are found.</p>
       </a>
- 
+
       <a class="video-card" href="https://www.youtube.com/watch?v=VZl7bEQSQhk" target="_blank">
         <div class="video-icon"><div class="play-triangle"></div></div>
         <p class="video-label">Intermediate · 18 min</p>
         <p class="video-title">Zero-Sum Games</p>
         <p class="video-desc">Competitive scenarios where one player's gain is another's loss.</p>
       </a>
- 
+
     </div>
   </div>
 
