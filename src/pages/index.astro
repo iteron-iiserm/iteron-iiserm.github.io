@@ -462,6 +462,33 @@ import Navbar from "../components/common/Navbar.astro";
       line-height: 1.5;
       font-family: 'Playfair Display', serif;
     }
+
+    .legacy-boxes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.legacy-box {
+  background: #000;
+  border: 0.5px solid #1b223b;
+  border-radius: 10px;
+  padding: 20px 28px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.legacy-box:hover {
+  border-color: #a855f7;
+  box-shadow: 0 0 10px #a855f7, 0 0 25px #9333ea;
+}
+
+.legacy-box p {
+  color: #a9b4c2;
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: center;
+  margin: 0;
+}
   </style>
 </head>
 
@@ -489,22 +516,26 @@ import Navbar from "../components/common/Navbar.astro";
     </div>
   </div>
 
-  <section class="legacy">
-    <h1>The Legacy of Axelrod</h1>
-    <p class="intro">
-      In the 1980s,Robert Axelrod started a tournament to better understand how cooperation can arise in situations where individuals are primarily motivated by self-interest.
-      Axelrod invited game theorists, mathematicians, and sociologists to submit computer programs (strategies) to play against each other thousands of times.<br>
-      Participants submitted computer programs for playing the Iterated Prisoner's Dilemma, where each program repeatedly decided whether to cooperate or defect against others.
-      Every strategy played many rounds against all others, earning points based on outcomes.<br>
-      The Prisoner’s Dilemma had long been used to show that rational players tend to defect, even though mutual cooperation would lead to a better overall outcome.<br>
-      Axelrod wanted to test whether this conclusion would still hold when interactions were repeated over time.<br>
-      Could cooperative behavior could emerge naturally?Which types of strategies would succeed, and under what conditions trust develops?
-
-
-
-    </p>
-  
-  </section>
+ <section class="legacy">
+  <h1>The Legacy of Axelrod</h1>
+  <div class="legacy-boxes">
+    <div class="legacy-box">
+      <p>In the 1980s, Robert Axelrod started a tournament to better understand how cooperation can arise in situations where individuals are primarily motivated by self-interest. Axelrod invited game theorists, mathematicians, and sociologists to submit computer programs (strategies) to play against each other thousands of times.</p>
+    </div>
+    <div class="legacy-box">
+      <p>Participants submitted computer programs for playing the Iterated Prisoner's Dilemma, where each program repeatedly decided whether to cooperate or defect against others. Every strategy played many rounds against all others, earning points based on outcomes.</p>
+    </div>
+    <div class="legacy-box">
+      <p>The Prisoner's Dilemma had long been used to show that rational players tend to defect, even though mutual cooperation would lead to a better overall outcome.</p>
+    </div>
+    <div class="legacy-box">
+      <p>Axelrod wanted to test whether this conclusion would still hold when interactions were repeated over time.</p>
+    </div>
+    <div class="legacy-box">
+      <p>Could cooperative behavior emerge naturally? Which types of strategies would succeed, and under what conditions does trust develop?</p>
+    </div>
+  </div>
+</section>
 
   <section class="strategy-section">
     <div class="strategy-left">
