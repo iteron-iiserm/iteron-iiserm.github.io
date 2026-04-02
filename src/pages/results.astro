@@ -161,7 +161,17 @@ import Footer from "../components/common/Footer.astro";
   }
 
   .inline-link:hover {
+    color: #000;
+    background: var(--accent-purple);
     border-bottom-color: var(--accent-purple);
+  }
+
+  .inline-link:focus-visible {
+    color: #000;
+    background: var(--accent-purple);
+    border-bottom-color: var(--accent-purple);
+    outline: 2px solid var(--accent-purple);
+    outline-offset: 2px;
   }
 
   @media (max-width: 768px) {
