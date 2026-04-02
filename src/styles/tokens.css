@@ -1,0 +1,11 @@
+:root {
+  --bg-color: #101014;
+  --grid-color: rgba(255, 255, 255, 0.04);
+  --accent-purple: #ba8fd8;
+  --accent-dark: #8146a8;
+  --text-white: #f5f5f5;
+  --border-color: #ffffff;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+}

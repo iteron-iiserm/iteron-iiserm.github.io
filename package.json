@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
     "@fontsource/share-tech-mono": "^5.2.7",
     "@fontsource/space-grotesk": "^5.2.10",
     "aos": "^2.3.4",

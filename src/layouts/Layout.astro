@@ -2,6 +2,40 @@
 import "@fontsource/share-tech-mono/latin-400.css";
 import "@fontsource/space-grotesk/latin-400.css";
 import "@fontsource/space-grotesk/latin-700.css";
+import "../styles/tokens.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	canonicalPath?: string;
+	image?: string;
+	noindex?: boolean;
+}
+
+const {
+	title = "Iteron | Turing Club IISER Mohali",
+	description = "Iteron is a game theory and strategy tournament by Turing Club, IISER Mohali. Find updates, submissions, and tournament results.",
+	canonicalPath,
+	image = "/turinglogo-wo-bg.png",
+	noindex = false,
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL(Astro.url.origin);
+const canonicalUrl = new URL(canonicalPath ?? Astro.url.pathname, siteUrl);
+const imageUrl = new URL(image, siteUrl);
+const robotsContent = noindex ? "noindex, nofollow" : "index, follow";
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: "Iteron",
+	url: siteUrl.toString(),
+	description,
+	publisher: {
+		"@type": "Organization",
+		name: "Turing Club, IISER Mohali",
+	},
+};
 ---
 
 <!doctype html>
@@ -11,7 +45,26 @@ import "@fontsource/space-grotesk/latin-700.css";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href="/turinglogo-wo-bg.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Iteron</title>
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="keywords" content="Iteron, IISER Mohali, Turing Club, game theory, strategy tournament" />
+		<meta name="robots" content={robotsContent} />
+
+		<link rel="canonical" href={canonicalUrl.toString()} />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Iteron" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl.toString()} />
+		<meta property="og:image" content={imageUrl.toString()} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageUrl.toString()} />
+
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 	</head>
 	<body>
 		<slot />
@@ -19,18 +72,6 @@ import "@fontsource/space-grotesk/latin-700.css";
 </html>
 
 <style is:global>
-	:root {
-		--bg-color: #101014;
-		--grid-color: rgba(255, 255, 255, 0.04);
-		--accent-purple: #ba8fd8;
-		--accent-dark: #8146a8;
-		--text-white: #f5f5f5;
-		--border-color: #ffffff;
-		
-		--font-display: 'Space Grotesk', sans-serif;
-		--font-mono: 'Share Tech Mono', monospace;
-	}
-
 	* {
 		box-sizing: border-box;
 		margin: 0;
