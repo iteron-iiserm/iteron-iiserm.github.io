@@ -148,7 +148,28 @@ const structuredData = {
 	/* Glitch styling removed: keep headings as normal text */
 	.glitch {
 		position: static;
-		display: inline;
+		display: inline-block;
+		max-width: 100%;
+		overflow-wrap: anywhere;
+		word-break: break-word;
+	}
+
+	.header-box h1,
+	.header-box .subtitle {
+		overflow-wrap: anywhere;
+		word-break: break-word;
+	}
+
+	.header-box h1 {
+		display: block;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		font-size: clamp(1.4rem, 8.5vw, 3.5rem);
+		letter-spacing: clamp(0.5px, 0.5vw, 4px);
+		line-height: 1.15;
+		text-wrap: balance;
 	}
 
 	/* Utility: Brutalist blocks */
