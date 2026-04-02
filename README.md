@@ -83,10 +83,11 @@ Read these files before making non-trivial changes:
 1. Architecture decisions and guardrails: [documentation/ARCHITECTURE.md](documentation/ARCHITECTURE.md)
 2. Component ownership and implementation notes: [documentation/COMPONENTS.md](documentation/COMPONENTS.md)
 3. Contributor workflow and QA checklist: [documentation/DEVELOPMENT.md](documentation/DEVELOPMENT.md)
+4. Search and indexing implementation details: [documentation/SEO.md](documentation/SEO.md)
 
 ## Typical Contribution Flow
 
-1. Read the three docs above.
+1. Read the docs above relevant to your change scope.
 2. Identify whether your change is route-level, section-level, or global.
 3. Implement minimal targeted changes.
 4. Validate desktop and mobile behavior.

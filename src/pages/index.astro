@@ -23,6 +23,64 @@ import Videos from '../components/sections/Videos.astro';
     <Strategy />
     <Phases />
     <Videos />
+
+    <section class="seo-links brutalist-block" aria-labelledby="explore-iteron">
+      <h2 id="explore-iteron">Explore Iteron at IISER Mohali</h2>
+      <p>
+        Iteron is a game theory tournament by Turing Club, IISER Mohali. Use
+        the links below to check announcements, submit your strategy, and track
+        tournament outcomes.
+      </p>
+      <nav class="seo-links-grid" aria-label="Iteron key pages">
+        <a href="/updates">Iteron Tournament Updates</a>
+        <a href="/submissions">Submit Iteron Strategy</a>
+        <a href="/results">Iteron Results and Rankings</a>
+        <a href="/about">About Turing Club IISER Mohali</a>
+      </nav>
+    </section>
   </main>
   <Footer />
 </Layout>
+
+<style>
+  .seo-links {
+    max-width: 1100px;
+    margin: 2rem auto 5rem;
+    text-align: left;
+  }
+
+  .seo-links h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1.75rem;
+    color: var(--text-white);
+  }
+
+  .seo-links p {
+    margin-bottom: 1.2rem;
+    color: #c8c8c8;
+  }
+
+  .seo-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .seo-links-grid a {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border-color);
+    background: #000;
+    color: var(--text-white);
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .seo-links {
+      margin: 1.5rem 1.25rem 3.75rem;
+    }
+
+    .seo-links-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

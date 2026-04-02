@@ -25,16 +25,45 @@ const canonicalUrl = new URL(canonicalPath ?? Astro.url.pathname, siteUrl);
 const imageUrl = new URL(image, siteUrl);
 const robotsContent = noindex ? "noindex, nofollow" : "index, follow";
 
-const structuredData = {
-	"@context": "https://schema.org",
+const websiteData = {
 	"@type": "WebSite",
+	"@id": `${siteUrl.toString()}#website`,
 	name: "Iteron",
 	url: siteUrl.toString(),
+	inLanguage: "en",
 	description,
 	publisher: {
-		"@type": "Organization",
-		name: "Turing Club, IISER Mohali",
+		"@id": `${siteUrl.toString()}#organization`,
 	},
+};
+
+const organizationData = {
+	"@type": "Organization",
+	"@id": `${siteUrl.toString()}#organization`,
+	name: "Turing Club, IISER Mohali",
+	url: siteUrl.toString(),
+	logo: imageUrl.toString(),
+	sameAs: [
+		"https://github.com/IISERM/",
+		"https://www.iisermohali.ac.in/",
+	],
+};
+
+const webPageData = {
+	"@type": "WebPage",
+	"@id": `${canonicalUrl.toString()}#webpage`,
+	url: canonicalUrl.toString(),
+	name: title,
+	description,
+	inLanguage: "en",
+	isPartOf: {
+		"@id": `${siteUrl.toString()}#website`,
+	},
+};
+
+const structuredData = {
+	"@context": "https://schema.org",
+	"@graph": [organizationData, websiteData, webPageData],
 };
 ---
 
@@ -59,7 +88,8 @@ const structuredData = {
 		<meta property="og:url" content={canonicalUrl.toString()} />
 		<meta property="og:image" content={imageUrl.toString()} />
 
-		<meta name="google-site-verification" content="sPbbPvNGEM9AQpLVH5Z2tzGCzPQaj9tbDYOho-Vf2j8" />		
+		<meta name="google-site-verification" content="sPbbPvNGEM9AQpLVH5Z2tzGCzPQaj9tbDYOho-Vf2j8" />
+		<meta name="google-site-verification" content="9JhF715fk1xbANs4JRjia2PZdebam3tCYYVBUifeNnA" />
 		
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
