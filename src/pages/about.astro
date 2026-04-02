@@ -4,14 +4,16 @@ import Navbar from '../components/common/Navbar.astro';
 import Footer from '../components/common/Footer.astro';
 import { Image } from "astro:assets";
 import turingImg from "../assets/Turing.png";
+import iiserLogo from "../assets/iiser-mohali-logo.png";
+import turingBadgeLogo from "../assets/turinglogo-wo-bg.png";
 
 const team = [
-  { name: 'Zayed Darmi', role: 'CORE TEAM', img: '/images/member1.jpg' },
-  { name: 'Sampreeti Kar', role: 'CORE TEAM', img: '/images/member2.jpg' },
-  { name: 'Pinchika S.', role: 'CORE TEAM', img: '/images/member3.jpg' },
-  { name: 'Harsh V. Shreshth', role: 'CORE TEAM', img: '/images/member4.jpg' },
-  { name: 'Tamaghna Dey', role: 'CORE TEAM', img: '/images/member5.jpg' },
-  { name: 'Kshitij Salunke', role: 'CORE TEAM', img: '/images/member6.jpg' }
+  { name: 'Zayed Darmi', role: 'CORE TEAM', img: '/images/member1.jpg', email: 'ms24123@iisermohali.ac.in' },
+  { name: 'Sampreeti Kar', role: 'CORE TEAM', img: '/images/member2.jpg', email: 'ms24116@iisermohali.ac.in' },
+  { name: 'Pinchika S.', role: 'CORE TEAM', img: '/images/member3.jpg', email: 'ms24036@iisermohali.ac.in' },
+  { name: 'Harsh V. Shreshth', role: 'CORE TEAM', img: '/images/member4.jpg', email: 'ms24085@iisermohali.ac.in' },
+  { name: 'Tamaghna Dey', role: 'CORE TEAM', img: '/images/member5.jpg', email: 'ms24205@iisermohali.ac.in' },
+  { name: 'Kshitij Salunke', role: 'CORE TEAM', img: '/images/member6.jpg', email: 'ms24024@iisermohali.ac.in' }
 ];
 ---
 
@@ -39,7 +41,12 @@ const team = [
 
     <div class="team-grid">
       {team.map((member) => (
-        <div class="team-card brutalist-block">
+        <a
+          class="team-card brutalist-block"
+          href={`mailto:${member.email}`}
+          aria-label={`Email ${member.name}`}
+          title={`Email: ${member.email}`}
+        >
           <div class="corner-cross">+</div>
           <div class="avatar-box">
             <img src={member.img} alt={member.name} loading="lazy" decoding="async" />
@@ -48,9 +55,54 @@ const team = [
             <h3 class="name">{member.name}</h3>
             <p class="role">[ {member.role} ]</p>
           </div>
-        </div>
+        </a>
       ))}
     </div>
+
+    <section class="about-cards" aria-label="About Turing Club and IISER Mohali">
+      <article class="about-card brutalist-block">
+        <span class="badge-wrap" aria-hidden="true">
+          <Image src={turingBadgeLogo} alt="" class="badge-image" loading="lazy" decoding="async" />
+        </span>
+        <h2 class="about-title">Turing Club</h2>
+        <p class="about-text">
+          Turing Club is the Computation Club of IISER Mohali. It is a student-led club and community
+          where various (abstract) technological applications throughout the sciences are practiced. Turing Club's 
+          initiatives are focused to improve the computational literacy of the student community at IISER Mohali, 
+          and develop applications to serve the community.
+        </p>
+        <a
+          class="about-link"
+          href="https://github.com/IISERM/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit GitHub ->
+        </a>
+      </article>
+
+      <article class="about-card brutalist-block">
+        <span class="badge-wrap" aria-hidden="true">
+          <Image src={iiserLogo} alt="" class="badge-image" loading="lazy" decoding="async" />
+        </span>
+        <h2 class="about-title">IISER Mohali</h2>
+        <p class="about-text">
+          Indian Institute of Science Education and Research Mohali envisions a new generation 
+          of scientists dedicated to the pursuit of knowledge in  frontier areas of basic sciences. 
+          In an intellectually vibrant academic environment, IISER Mohali nurtures the basic tenets 
+          of science education and research at undergraduate and postgraduate levels. In so doing, 
+          the institute aims to emerge as a global centre of learning, academic excellence, and innovative research.
+        </p>
+        <a
+          class="about-link"
+          href="https://www.iisermohali.ac.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit IISER Mohali ->
+        </a>
+      </article>
+    </section>
   </main>
   <Footer />
 </Layout>
@@ -99,6 +151,85 @@ const team = [
     gap: 3rem;
   }
 
+  .about-cards {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 6rem;
+    padding-top: 2.25rem;
+    border-top: 2px dashed rgba(176, 58, 255, 0.45);
+  }
+
+  .about-card {
+    position: relative;
+    background: #000;
+    padding: 1.5rem 1.5rem 1.4rem;
+    border-color: var(--accent-purple);
+    overflow: visible;
+  }
+
+  .badge-wrap {
+    position: absolute;
+    top: -26px;
+    right: -18px;
+    width: 94px;
+    height: 94px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(8deg);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .badge-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .about-title {
+    color: var(--text-white);
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    max-width: calc(100% - 88px);
+  }
+
+  .about-text {
+    margin: 0;
+    color: #d7d7d7;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    max-width: 95%;
+  }
+
+  .about-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--accent-purple);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.92rem;
+    letter-spacing: 0.8px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .about-link:hover {
+    color: var(--text-white);
+    border-bottom-color: var(--text-white);
+  }
+
+  .about-link:focus-visible {
+    outline: 2px solid var(--accent-purple);
+    outline-offset: 3px;
+  }
+
   .team-card {
     padding: 2rem;
     background: #000;
@@ -107,6 +238,8 @@ const team = [
     flex-direction: column;
     align-items: center;
     transition: all 0.2s;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .team-card:hover {
@@ -118,6 +251,11 @@ const team = [
   .team-card:hover .name,
   .team-card:hover .role {
     color: #000;
+  }
+
+  .team-card:focus-visible {
+    outline: 2px solid var(--accent-purple);
+    outline-offset: 4px;
   }
 
   .team-card:hover .corner-cross {
@@ -185,6 +323,27 @@ const team = [
       padding: 115px 1.25rem 4rem;
     }
 
+    .about-cards {
+      gap: 1.75rem;
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+    }
+
+    .about-card {
+      padding: 1.2rem 1.1rem 1.15rem;
+    }
+
+    .about-title {
+      font-size: 1.05rem;
+      max-width: calc(100% - 72px);
+    }
+
+    .about-text {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      max-width: 100%;
+    }
+
     .team-grid {
       gap: 1.75rem;
     }
@@ -214,6 +373,30 @@ const team = [
       letter-spacing: 1px;
     }
 
+    .badge-wrap {
+      width: 72px;
+      height: 72px;
+      top: -18px;
+      right: -10px;
+    }
+
+    .about-cards {
+      margin-top: 3.25rem;
+      gap: 1.4rem;
+      padding-top: 1.2rem;
+    }
+
+    .about-title {
+      font-size: 0.98rem;
+      margin-bottom: 0.6rem;
+      max-width: calc(100% - 64px);
+    }
+
+    .about-text {
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
     .team-card {
       padding: 1.55rem 1.25rem;
     }
@@ -229,6 +412,7 @@ const team = [
       line-height: 1.45;
       margin-bottom: 0.65rem;
     }
+
   }
 
   /* Decorative Side Image */
