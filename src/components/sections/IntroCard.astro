@@ -86,6 +86,20 @@ import chairsImg from "../../assets/wb-chair-pe-baithe.png";
   @media (max-width: 768px) {
     .intro-section {
       padding: 5rem 1.25rem;
+      margin-top: -10vh;
+      z-index: 20;
+    }
+
+    .intro-card {
+      transform: translateY(86px);
+      opacity: 0.92;
+      transition: transform 1.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.9s ease;
+    }
+
+    :global(html.hero-mobile-collapse-done) .intro-card {
+      transform: translateY(34px);
+      opacity: 1;
     }
 
     .intro-card p {
@@ -99,6 +113,18 @@ import chairsImg from "../../assets/wb-chair-pe-baithe.png";
   }
 
   @media (max-width: 480px) {
+    .intro-section {
+      margin-top: -12vh;
+    }
+
+    .intro-card {
+      transform: translateY(72px);
+    }
+
+    :global(html.hero-mobile-collapse-done) .intro-card {
+      transform: translateY(28px);
+    }
+
     .intro-card p {
       font-size: 1.05rem;
     }
@@ -119,6 +145,14 @@ import chairsImg from "../../assets/wb-chair-pe-baithe.png";
   @media (max-width: 768px) {
     .decor-image-container {
       display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .intro-card {
+      transition: none !important;
+      transform: translateY(0) !important;
+      opacity: 1 !important;
     }
   }
 </style>
