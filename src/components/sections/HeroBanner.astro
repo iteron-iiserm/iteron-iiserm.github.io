@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 import handLeft from "../../assets/hand-vectorized-left.png";
 import handRight from "../../assets/hand-vectorized-right.png";
 ---
@@ -9,20 +9,24 @@ import handRight from "../../assets/hand-vectorized-right.png";
     <div class="purple-band"></div>
 
     <div class="hand hand-left">
-      <Image
+      <Picture
         src={handLeft}
         alt="Left hand"
-        class="hand-img"
+        formats={["avif", "webp"]}
+        widths={[640, 960, 1280]}
+        sizes="(max-width: 768px) 45vw, 48vw"
         loading="eager"
         decoding="async"
         fetchpriority="high"
       />
     </div>
     <div class="hand hand-right">
-      <Image
+      <Picture
         src={handRight}
         alt="Right hand"
-        class="hand-img"
+        formats={["avif", "webp"]}
+        widths={[640, 960, 1280]}
+        sizes="(max-width: 768px) 45vw, 48vw"
         loading="eager"
         decoding="async"
         fetchpriority="high"
@@ -38,11 +42,34 @@ import handRight from "../../assets/hand-vectorized-right.png";
   </div>
 </section>
 
+<noscript>
+  <style>
+    .hero-banner .band-container {
+      opacity: 1 !important;
+    }
+
+    .hero-banner .hand {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    .hero-banner .hand-left {
+      animation: slideFromLeft 2s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards,
+                 floatLeft 6s ease-in-out 2.1s infinite;
+    }
+
+    .hero-banner .hand-right {
+      animation: slideFromRight 2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards,
+                 floatRight 6s ease-in-out 2.25s infinite;
+    }
+  </style>
+</noscript>
+
 <script>
   const hero = document.querySelector('.hero-banner') as HTMLElement;
   const handLeft = document.querySelector('.hand-left') as HTMLElement;
   const handRight = document.querySelector('.hand-right') as HTMLElement;
-  const handImages = Array.from(document.querySelectorAll('.hand-img')) as HTMLImageElement[];
+  const handImages = Array.from(document.querySelectorAll('.hand img')) as HTMLImageElement[];
 
   if (hero && handLeft && handRight && handImages.length > 0) {
     const firstVisitKey = 'iteron:first-hero-loaded';
@@ -164,7 +191,7 @@ import handRight from "../../assets/hand-vectorized-right.png";
     visibility: visible;
   }
 
-  .hand-img {
+  .hand :global(img) {
     width: 48vw;
     height: auto;
     object-fit: contain;
@@ -296,7 +323,7 @@ import handRight from "../../assets/hand-vectorized-right.png";
       height: 180px;
     }
 
-    .hand-img {
+    .hand :global(img) {
       width: 45vw;
     }
 
