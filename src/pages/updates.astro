@@ -118,8 +118,42 @@ import Footer from '../components/common/Footer.astro';
   }
 
   @media (max-width: 768px) {
+    .page-container {
+      padding: 110px 1.25rem 3.75rem;
+    }
+
     h1 {
       font-size: 2.5rem;
+    }
+
+    .update-card {
+      padding: 1.8rem 1.4rem;
+    }
+
+    .update-card h3 {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .update-card p {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .btn-primary {
+      width: 100%;
+      text-align: center;
     }
   }
 </style>

@@ -127,11 +127,51 @@ import Navbar from '../components/common/Navbar.astro';
   }
 
   @media (max-width: 768px) {
+    .error-container {
+      padding: 110px 1.25rem 2.75rem;
+      align-items: flex-start;
+    }
+
+    .error-content {
+      padding: 2.8rem 1.25rem 2rem;
+    }
+
     .error-code {
       font-size: 5rem;
     }
+
     .error-title {
       font-size: 1.8rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .error-code {
+      font-size: 4rem;
+      -webkit-text-stroke: 2px var(--accent-purple);
+    }
+
+    .error-title {
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+    }
+
+    .error-message {
+      font-size: 1rem;
+      margin-bottom: 1.75rem;
+      line-height: 1.8;
+    }
+
+    .button-group {
+      width: 100%;
+      gap: 0.75rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      text-align: center;
+      padding: 0.85rem 1rem;
     }
   }
 </style>

@@ -137,21 +137,43 @@
   }
 
   @media (max-width: 768px) {
+    .phase-section {
+      padding: 5rem 1.25rem;
+    }
+
     .timeline-line {
       left: 20px;
     }
+
     .phase {
       flex-direction: column;
       align-items: flex-start;
-      gap: 1rem;
+      gap: 1.2rem;
       margin-left: 2rem;
       align-self: flex-start !important;
     }
+
     .phase-number {
       border-right: none;
       border-bottom: 2px solid var(--border-color);
       padding-right: 0;
       padding-bottom: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .phase-header {
+      width: 100%;
+      text-align: center;
+    }
+
+    .phase-content h3 {
+      font-size: 1.15rem;
+    }
+
+    .phase-content p {
+      font-size: 1rem;
+      line-height: 1.75;
     }
   }
 </style>

@@ -2,8 +2,21 @@
 ---
 
 <nav class="vapor-nav">
-  <div class="nav-brand">ITERON</div>
-  <ul>
+  <a href="/" class="nav-brand">ITERON</a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+    aria-label="Open navigation menu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <ul class="desktop-menu">
     <li><a href="/">HOME</a></li>
     <li><a href="/updates">UPDATES</a></li>
     <li><a href="/submissions">SUBMISSION</a></li>
@@ -11,6 +24,14 @@
     <li><a href="/about">ABOUT</a></li>
   </ul>
 </nav>
+
+<div id="mobile-menu" class="mobile-menu" hidden>
+  <a href="/">HOME</a>
+  <a href="/updates">UPDATES</a>
+  <a href="/submissions">SUBMISSION</a>
+  <a href="/results">RESULTS</a>
+  <a href="/about">ABOUT</a>
+</div>
 
 <style>
   .vapor-nav {
@@ -34,15 +55,22 @@
     font-size: 1.5rem;
     color: var(--accent-purple);
     letter-spacing: 2px;
+    text-decoration: none;
+    background: transparent;
   }
 
-  .vapor-nav ul {
+  .nav-brand:hover {
+    color: var(--text-white);
+    background: transparent;
+  }
+
+  .desktop-menu {
     list-style: none;
     display: flex;
     gap: 1rem;
   }
 
-  .vapor-nav ul a {
+  .desktop-menu a {
     display: block;
     padding: 0.5rem 1rem;
     color: var(--text-white);
@@ -54,12 +82,148 @@
     transition: all 0.2s;
   }
 
-  .vapor-nav ul a:hover,
-  .vapor-nav ul a.active {
+  .desktop-menu a:hover,
+  .desktop-menu a.active {
     background-color: var(--text-white);
     color: var(--bg-color);
     border: 1px solid var(--border-color);
     box-shadow: 2px 2px 0 var(--accent-purple);
     transform: translate(-2px, -2px);
   }
+
+  .menu-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border-color);
+    background: #000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    width: 20px;
+    height: 2px;
+    background: var(--text-white);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    background: #000;
+    border-bottom: 2px solid var(--border-color);
+    z-index: 99;
+  }
+
+  .mobile-menu[data-open="true"] {
+    display: flex;
+  }
+
+  .mobile-menu a {
+    padding: 1rem 1.25rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--text-white);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    background: transparent;
+  }
+
+  .mobile-menu a:hover {
+    color: #000;
+    background: var(--accent-purple);
+  }
+
+  @media (max-width: 1024px) {
+    .vapor-nav {
+      padding: 0 1.35rem;
+      height: 68px;
+    }
+
+    .nav-brand {
+      font-size: 1.35rem;
+      letter-spacing: 1px;
+    }
+
+    .desktop-menu {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+    }
+
+    .mobile-menu {
+      top: 68px;
+    }
+
+    .mobile-menu a {
+      padding: 1rem 1.35rem;
+      letter-spacing: 1.5px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .vapor-nav {
+      padding: 0 1rem;
+    }
+
+    .menu-toggle {
+      width: 46px;
+      height: 46px;
+    }
+
+    .mobile-menu a {
+      padding: 1.1rem 1rem;
+    }
+  }
 </style>
+
+<script>
+  const navToggle = document.querySelector('.menu-toggle');
+  const mobileMenu = document.querySelector('#mobile-menu');
+
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', () => {
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!expanded));
+      navToggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+
+      if (expanded) {
+        mobileMenu.setAttribute('hidden', '');
+        mobileMenu.removeAttribute('data-open');
+      } else {
+        mobileMenu.removeAttribute('hidden');
+        mobileMenu.setAttribute('data-open', 'true');
+      }
+    });
+
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Open navigation menu');
+        mobileMenu.setAttribute('hidden', '');
+        mobileMenu.removeAttribute('data-open');
+      });
+    });
+  }
+</script>

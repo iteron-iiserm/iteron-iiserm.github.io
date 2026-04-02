@@ -230,10 +230,26 @@ import iiserLogo from "../../assets/iiser-mohali-logo.png";
   }
 
   /* Responsive */
+  @media (max-width: 1024px) {
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .footer-branding {
+      grid-column: 1 / -1;
+      align-items: center;
+    }
+
+    .brand-text {
+      text-align: center;
+    }
+  }
+
   @media (max-width: 768px) {
     .footer-inner {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 3rem;
     }
 
     .brand-logos {
@@ -251,6 +267,33 @@ import iiserLogo from "../../assets/iiser-mohali-logo.png";
     .footer-nav ul,
     .footer-links ul {
       align-items: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .site-footer {
+      padding: 3.5rem 1.15rem 2rem;
+    }
+
+    .footer-inner {
+      gap: 2.25rem;
+    }
+
+    .brand-logos {
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      height: 42px;
+    }
+
+    .iiser-logo {
+      height: 45px;
+    }
+
+    .copyright {
+      letter-spacing: 1px;
+      line-height: 1.6;
     }
   }
 </style>

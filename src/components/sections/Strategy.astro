@@ -175,17 +175,77 @@ import evoGameTheoryImg from "../../assets/evo-game-theory.png";
   }
 
   @media (max-width: 1024px) {
+    .strategy-section {
+      padding: 5rem 1rem;
+    }
+
+    .strategy-wrapper {
+      flex-direction: column;
+    }
+
+    .map-sidecard {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      min-height: 220px;
+      border-right: none;
+      border-bottom: 4px solid var(--accent-purple);
+    }
+
+    .world-map-img {
+      width: 100%;
+      height: 220px;
+    }
+
+    .strategy-content {
+      min-width: 0;
+      width: 100%;
+      padding: 2rem 1.25rem;
+      gap: 1.5rem;
+    }
+
     .evo-text-img {
       height: 40vh;
     }
+
     .strategy-title {
       font-size: 3rem;
     }
   }
 
   @media (max-width: 768px) {
+    .strategy-section {
+      padding: 5.5rem 1.25rem;
+    }
+
     .vertical-text {
       display: none;
+    }
+
+    .strategy-title {
+      font-size: 2.2rem;
+    }
+
+    .btn-primary {
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      padding: 0.9rem 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .strategy-content {
+      padding: 1.9rem 1.1rem;
+    }
+
+    .strategy-title {
+      font-size: 1.8rem;
+    }
+
+    .text-block p {
+      font-size: 1.05rem;
+      line-height: 1.8;
     }
   }
 </style>

@@ -295,7 +295,7 @@ import chessBoardImg from "../assets/chess-board.png";
 
   .actions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
     margin-bottom: 6rem;
   }
@@ -480,17 +480,100 @@ import chessBoardImg from "../assets/chess-board.png";
   }
 
   @media (max-width: 900px) {
+    .page-container {
+      padding: 115px 1.75rem 3.5rem;
+    }
+
     .rules-grid {
       grid-template-columns: 1fr;
+    }
+
+    .rulebook-decor {
+      width: 260px;
+      right: -10%;
     }
   }
 
   @media (max-width: 768px) {
+    .header-box {
+      margin-bottom: 3rem;
+    }
+
+    .actions-grid {
+      gap: 1.6rem;
+      margin-bottom: 4rem;
+    }
+
     h1 {
       font-size: 2.5rem;
     }
+
     .action-card {
-      padding: 1.5rem;
+      padding: 1.8rem 1.4rem;
+    }
+
+    .rule-card {
+      padding: 1.8rem 1.4rem;
+    }
+
+    .rule-card h2 {
+      font-size: 1.4rem;
+    }
+
+    .rule-card p,
+    .rule-list li {
+      font-size: 0.95rem;
+    }
+
+    .section-label {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-container {
+      padding: 110px 1.1rem 3rem;
+    }
+
+    .header-box {
+      padding: 1.5rem 1rem;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .actions-grid {
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .action-card h3 {
+      font-size: 1rem;
+    }
+
+    .arrow {
+      font-size: 1.1rem;
+    }
+
+    .rulebook-decor {
+      display: none;
+    }
+
+    .rule-tag {
+      left: 12px;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    .rule-list {
+      gap: 1.25rem;
     }
   }
 </style>

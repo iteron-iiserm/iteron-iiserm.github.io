@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-
 ---
 
 <section class="legacy-section">
@@ -136,12 +134,41 @@ import { Image } from 'astro:assets';
   }
 
   @media (max-width: 768px) {
+    .legacy-section {
+      padding: 5.5rem 1.25rem;
+    }
+
     .offset-1, .offset-2, .offset-3 {
       align-self: center;
       margin-top: 0;
     }
+
+    .legacy-grid {
+      gap: 2.5rem;
+    }
+
     h2 {
       font-size: 2rem;
+    }
+
+    .legacy-card p {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .legacy-grid {
+      gap: 2rem;
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      letter-spacing: 1px;
+    }
+
+    .accent-card p.final-question {
+      font-size: 1.1rem;
     }
   }
 </style>

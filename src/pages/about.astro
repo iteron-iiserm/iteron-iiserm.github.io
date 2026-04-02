@@ -54,6 +54,7 @@ const team = [
 
 <style>
   .page-container {
+    position: relative;
     padding: 120px 5% 5rem;
     max-width: 1200px;
     margin: 0 auto;
@@ -61,6 +62,8 @@ const team = [
   }
 
   .header-box {
+    position: relative;
+    z-index: 2;
     margin-bottom: 4rem;
     padding: 2rem;
     background: #000;
@@ -86,8 +89,10 @@ const team = [
   }
 
   .team-grid {
+    position: relative;
+    z-index: 2;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 3rem;
   }
 
@@ -173,30 +178,78 @@ const team = [
   }
 
   @media (max-width: 768px) {
+    .page-container {
+      padding: 115px 1.25rem 4rem;
+    }
+
+    .team-grid {
+      gap: 1.75rem;
+    }
+
     h1 {
       font-size: 2.5rem;
     }
+
     .side-decor {
       display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header-box {
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .team-card {
+      padding: 1.55rem 1.25rem;
+    }
+
+    .avatar-box {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .name {
+      font-size: 1.1rem;
+      line-height: 1.45;
+      margin-bottom: 0.65rem;
     }
   }
 
   /* Decorative Side Image */
   .side-decor {
     position: absolute;
-    right: 10%;
-    top: 55%;
+    right: -8rem;
+    top: 50%;
     transform: translateY(-50%);
-    z-index: 1;
-    opacity: 0.5;
+    z-index: 0;
+    opacity: 0.35;
     pointer-events: none;
   }
 
   .turing-image {
-    height: 30vh;
+    height: 28vh;
     width: auto;
     object-fit: contain;
     filter: drop-shadow(4px 4px 0 var(--accent-purple));
+  }
+
+  @media (max-width: 1200px) {
+    .side-decor {
+      display: none;
+    }
   }
 </style>
 

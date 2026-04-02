@@ -97,7 +97,7 @@
 
   .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 2rem;
     margin-bottom: 6rem;
   }
@@ -222,5 +222,47 @@
 
   .turing-logo-img:hover {
     transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    .help-section {
+      padding: 5.5rem 1.25rem;
+    }
+
+    .help-header {
+      margin-bottom: 3rem;
+    }
+
+    .help-title {
+      font-size: 1.8rem;
+    }
+
+    .help-subtitle {
+      font-size: 1rem;
+    }
+
+    .video-card {
+      padding: 1.9rem 1.2rem;
+    }
+
+    .contact-email {
+      font-size: 1.1rem;
+      word-break: break-word;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .video-grid {
+      gap: 1.6rem;
+      margin-bottom: 3rem;
+    }
+
+    .video-title {
+      font-size: 1.05rem;
+    }
+
+    .video-desc {
+      font-size: 0.9rem;
+    }
   }
 </style>
