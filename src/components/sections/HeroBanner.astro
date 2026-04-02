@@ -13,8 +13,9 @@ import handRight from "../../assets/hand-vectorized-right.png";
         src={handLeft}
         alt="Left hand"
         class="hand-img"
-        loading="lazy"
+        loading="eager"
         decoding="async"
+        fetchpriority="high"
       />
     </div>
     <div class="hand hand-right">
@@ -22,8 +23,9 @@ import handRight from "../../assets/hand-vectorized-right.png";
         src={handRight}
         alt="Right hand"
         class="hand-img"
-        loading="lazy"
+        loading="eager"
         decoding="async"
+        fetchpriority="high"
       />
     </div>
 
@@ -40,9 +42,47 @@ import handRight from "../../assets/hand-vectorized-right.png";
   const hero = document.querySelector('.hero-banner') as HTMLElement;
   const handLeft = document.querySelector('.hand-left') as HTMLElement;
   const handRight = document.querySelector('.hand-right') as HTMLElement;
+  const handImages = Array.from(document.querySelectorAll('.hand-img')) as HTMLImageElement[];
 
-  if (hero && handLeft && handRight) {
+  if (hero && handLeft && handRight && handImages.length > 0) {
+    const firstVisitKey = 'iteron:first-hero-loaded';
+    const isFirstVisit = !sessionStorage.getItem(firstVisitKey);
     let ready = 0;
+
+    function waitForHandImages() {
+      return Promise.all(handImages.map((img) => new Promise<void>((resolve) => {
+        if (img.complete && img.naturalWidth > 0) {
+          resolve();
+          return;
+        }
+
+        const done = () => resolve();
+        img.addEventListener('load', done, { once: true });
+        img.addEventListener('error', done, { once: true });
+      })));
+    }
+
+    function startHeroAnimation() {
+      hero.classList.add('is-ready');
+      sessionStorage.setItem(firstVisitKey, 'true');
+    }
+
+    async function startWhenReady() {
+      await waitForHandImages();
+      requestAnimationFrame(startHeroAnimation);
+    }
+
+    if (isFirstVisit) {
+      if (document.readyState === 'complete') {
+        startWhenReady();
+      } else {
+        window.addEventListener('load', () => {
+          startWhenReady();
+        }, { once: true });
+      }
+    } else {
+      startWhenReady();
+    }
 
     function onEntryDone(el: HTMLElement) {
       el.addEventListener('animationend', () => {
@@ -91,6 +131,12 @@ import handRight from "../../assets/hand-vectorized-right.png";
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+  }
+
+  .hero-banner.is-ready .band-container {
+    opacity: 1;
   }
 
   .purple-band {
@@ -109,6 +155,13 @@ import handRight from "../../assets/hand-vectorized-right.png";
     position: absolute;
     z-index: 2;
     pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .hero-banner.is-ready .hand {
+    opacity: 1;
+    visibility: visible;
   }
 
   .hand-img {
@@ -122,16 +175,22 @@ import handRight from "../../assets/hand-vectorized-right.png";
     left: -6%;
     top: 50%;
     transform: translateY(-50%) translateX(-100%);
-    animation: slideFromLeft 2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards,
-               floatLeft 6s ease-in-out 2.5s infinite;
+  }
+
+  .hero-banner.is-ready .hand-left {
+    animation: slideFromLeft 2s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards,
+               floatLeft 6s ease-in-out 2.1s infinite;
   }
 
   .hand-right {
     right: -6%;
     top: 50%;
     transform: translateY(-50%) translateX(100%);
-    animation: slideFromRight 2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards,
-               floatRight 6s ease-in-out 2.8s infinite;
+  }
+
+  .hero-banner.is-ready .hand-right {
+    animation: slideFromRight 2s cubic-bezier(0.22, 1, 0.36, 1) 0.15s forwards,
+               floatRight 6s ease-in-out 2.25s infinite;
   }
 
   /* Slide-in from left */

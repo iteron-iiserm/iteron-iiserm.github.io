@@ -33,6 +33,12 @@ The current design follows Astro's static-first rendering model:
 
 This keeps first render deterministic and reduces client-side execution overhead.
 
+First-load orchestration policy:
+
+- Critical above-the-fold visual sections may use a tiny inline script to gate animation start.
+- Hero animation must start only after required assets are loaded (or errored) and the page load event has fired on first visit.
+- Use a CSS ready-state class (for example, `.is-ready`) to reveal and animate content in a controlled first frame.
+
 ## 4. Styling and Design Tokens
 
 Global visual language is defined in `src/layouts/Layout.astro`.
@@ -84,6 +90,8 @@ Current policy:
 - Non-critical and decorative images should use `loading="lazy"` and `decoding="async"`.
 - Keep meaningful `alt` text for accessibility and SEO.
 - Prefer `Image` for build-time optimization when assets are local and static.
+- Above-the-fold assets tied to entrance animation can use `loading="eager"` and `fetchpriority="high"`.
+- If a first-frame placeholder flash appears, gate visibility until assets complete loading.
 
 When to use eager loading:
 
@@ -103,6 +111,8 @@ Baseline standards:
 - Prioritize text and structure render before decorative media.
 - Avoid large blocking scripts and unnecessary hydration.
 - Defer non-critical images via lazy loading.
+- Self-host shared fonts from local dependencies to avoid third-party font waterfall on first load.
+- Restrict font subsets/weights to what the UI actually uses.
 - Rebuild and verify after introducing heavy media or animation changes.
 
 ## 9. Decision Log Guidance

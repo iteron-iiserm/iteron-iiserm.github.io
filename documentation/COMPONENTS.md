@@ -52,6 +52,10 @@ Implementation notes:
 
 - Uses decorative hand assets and entrance animation.
 - Any added motion must avoid excessive layout shifts.
+- Entrance animation is gated by a ready state class and should not auto-run before assets load.
+- First visit behavior is session-scoped: animation starts after page load plus hand image readiness.
+- Hero hand images are above the fold and intentionally use eager loading with high fetch priority.
+- Keep hand wrappers hidden before ready state to avoid alt-text or placeholder flash on hard reload.
 
 ### IntroCard
 
@@ -177,6 +181,7 @@ Current components are mostly static, but when introducing props:
 - Use `decoding="async"` for non-critical imagery.
 - Avoid unnecessary scripts inside sections.
 - Keep CSS selectors scoped and simple.
+- For animation-first sections, verify the first visible frame under hard reload and slow network simulation.
 
 ## 8. Adding a New Component
 

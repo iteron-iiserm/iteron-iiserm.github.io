@@ -65,11 +65,18 @@ Image guidance:
 - Use `decoding="async"` for deferred image decoding.
 - For LCP-sensitive hero assets, only use eager loading after measurement confirms need.
 
+Animation-first guidance:
+
+- If a section depends on entrance animation, gate it behind an explicit ready class.
+- Start animation only after required media is loaded to prevent first-frame placeholders.
+- Validate behavior with hard reload and throttled network before merge.
+
 General guidance:
 
 - Avoid shipping unnecessary client-side scripts.
 - Keep animation effects lightweight and purposeful.
 - Re-check Lighthouse or browser performance traces after heavy visual changes.
+- Keep fonts self-hosted in dependencies when possible; avoid runtime third-party font requests.
 
 ## 6. Security and Reliability Standards
 
@@ -100,6 +107,8 @@ Suggested manual checks:
 1. Home page first render remains readable before decorative assets fully load.
 2. No major layout shift introduced by media or animation changes.
 3. Contrast remains acceptable after any visual update.
+4. Hard reload does not reveal pre-animation hero state or image alt placeholders.
+5. No visible font-family flash before final typography appears.
 
 ## 9. Documentation Maintenance Rules
 
