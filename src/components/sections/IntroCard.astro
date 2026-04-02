@@ -24,6 +24,35 @@ import chairsImg from "../../assets/wb-chair-pe-baithe.png";
   </div>
 </section>
 
+<script>
+  const introCard = document.querySelector('.intro-card') as HTMLElement | null;
+  const MOBILE_MEDIA = '(max-width: 768px)';
+
+  function isHapticSupported() {
+    return typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function';
+  }
+
+  function isLikelyTouchDevice() {
+    return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  }
+
+  if (introCard) {
+    let didVibrateForReveal = false;
+
+    introCard.addEventListener('transitionend', (event) => {
+      const transitionEvent = event as TransitionEvent;
+      if (transitionEvent.propertyName !== 'transform') return;
+      if (!window.matchMedia(MOBILE_MEDIA).matches) return;
+      if (!document.documentElement.classList.contains('hero-mobile-collapse-done')) return;
+      if (!isLikelyTouchDevice() || !isHapticSupported()) return;
+      if (didVibrateForReveal) return;
+
+      didVibrateForReveal = true;
+      navigator.vibrate(8);
+    });
+  }
+</script>
+
 <style>
   .intro-section {
     width: 100%;
