@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/common/Navbar.astro";
+import Footer from "../components/common/Footer.astro";
+---
+
+<Layout title="Iteron | Results">
+  <Navbar />
+
+  <main class="page-container">
+    <div class="header-box brutalist-block">
+      <h1 class="glitch" data-text="TOURNAMENT_RESULTS">TOURNAMENT_RESULTS</h1>
+      <p class="subtitle">> SIMULATION OUTCOMES & STRATEGY RANKINGS</p>
+    </div>
+
+    <div class="pending-state brutalist-block">
+      <div class="quote-box">
+        <p>
+          "The foundation of cooperation is not really trust, but the durability
+          of the relationship."
+        </p>
+        <span class="quote-author">- Robert Axelrod</span>
+      </div>
+
+      <h2>RESULTS PENDING</h2>
+      <p>
+        Tournament results will be compiled and published following the
+        submission deadline on <strong>May 11th, 2026</strong>.
+      </p>
+      <p>
+        Further information and updates regarding the exact timeline for result
+        declarations will be uploaded to the <a
+          href="/updates"
+          class="inline-link">UPDATES</a
+        > page.
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-container {
+    padding: 120px 5% 5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  .header-box {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background: #000;
+    text-align: center;
+    border-color: var(--accent-purple);
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    color: var(--text-white);
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    color: var(--accent-purple);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .pending-state {
+    padding: 4rem 2rem;
+    background: #000;
+    text-align: center;
+    position: relative;
+    border-color: var(--text-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .chair-decor {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 300px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+  }
+
+  .chair-img {
+    width: 100%;
+    height: auto;
+    filter: invert(1);
+  }
+
+  .pending-state h2,
+  .pending-state p,
+  .quote-box {
+    position: relative;
+    z-index: 2;
+  }
+
+  .pending-state h2 {
+    font-size: 2.5rem;
+    color: var(--text-white);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-display);
+    letter-spacing: 4px;
+  }
+
+  .pending-state p {
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    max-width: 600px;
+  }
+
+  .quote-box {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border-left: 4px solid var(--accent-purple);
+    background: rgba(186, 143, 216, 0.05);
+    max-width: 800px;
+    text-align: left;
+  }
+
+  .quote-box p {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--text-white);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-family: var(--font-display);
+  }
+
+  .quote-author {
+    color: var(--accent-purple);
+    font-family: var(--font-mono);
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .inline-link {
+    color: var(--accent-purple);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .inline-link:hover {
+    border-bottom-color: var(--accent-purple);
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,147 @@
+---
+import { Image } from 'astro:assets';
+
+---
+
+<section class="legacy-section">
+
+
+  <div class="title-container">
+    <h2>THE LEGACY OF AXELROD</h2>
+  </div>
+  
+  <div class="legacy-grid">
+    <div class="legacy-card brutalist-block">
+      <div class="corner-cut"></div>
+      <p>Robert Axelrod started a tournament to better understand how cooperation can arise in situations where individuals are primarily motivated by self-interest. Axelrod invited game theorists, mathematicians, and sociologists to submit computer programs (strategies) to play against each other thousands of times.</p>
+    </div>
+
+    <div class="legacy-card brutalist-block offset-1">
+      <div class="crosshairs">+ + +</div>
+      <p>Participants submitted computer programs for playing the Iterated Prisoner's Dilemma, where each program repeatedly decided whether to cooperate or defect against others. Every strategy played many rounds against all others, earning points based on outcomes.</p>
+    </div>
+
+    <div class="legacy-card brutalist-block offset-2">
+      <div class="header-bar">DATA.LOG / 1980</div>
+      <p>The Prisoner's Dilemma had long been used to show that rational players tend to defect, even though mutual cooperation would lead to a better overall outcome. Axelrod wanted to test whether this conclusion would still hold when interactions were repeated over time.</p>
+    </div>
+    
+    <div class="legacy-card accent-card brutalist-block offset-3">
+      <p class="final-question">Could cooperative behavior emerge naturally? Which types of strategies would succeed, and under what conditions does trust develop?</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .legacy-section {
+    padding: 8rem 5%;
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+
+
+  .title-container {
+    margin-bottom: 4rem;
+    display: inline-block;
+    border-bottom: 2px solid var(--accent-purple);
+    padding-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: var(--text-white);
+    position: relative;
+    z-index: 2;
+  }
+
+  .legacy-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .legacy-card {
+    max-width: 700px;
+    position: relative;
+  }
+
+  /* Structural Staggering simulating the poster's scattered layout */
+  .offset-1 {
+    align-self: flex-end;
+    margin-top: -2rem;
+  }
+
+  .offset-2 {
+    align-self: flex-start;
+  }
+
+  .offset-3 {
+    align-self: center;
+    max-width: 900px;
+    width: 100%;
+    margin-top: 3rem;
+  }
+
+  .corner-cut {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    background: var(--accent-purple);
+  }
+
+  .crosshairs {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: var(--accent-purple);
+    font-size: 0.8rem;
+    letter-spacing: 5px;
+  }
+
+  .header-bar {
+    position: absolute;
+    top: -15px;
+    left: -1px;
+    background: var(--text-white);
+    color: #000;
+    padding: 2px 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+
+  .legacy-card p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-white);
+  }
+
+  .accent-card {
+    background: var(--accent-purple);
+    color: #000;
+    box-shadow: 6px 6px 0 var(--text-white);
+  }
+
+  .accent-card p.final-question {
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .offset-1, .offset-2, .offset-3 {
+      align-self: center;
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+  }
+</style>

@@ -1,0 +1,157 @@
+---
+---
+
+<section class="phase-section">
+  <div class="phase-header brutalist-block">
+    <p>TOURNAMENT PHASES</p>
+  </div>
+
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+    
+    <div class="phase-wrapper">
+      <div class="phase brutalist-block">
+        <div class="phase-number">01</div>
+        <div class="phase-content">
+          <h3>SUBMISSION</h3>
+          <p>Initial deposit of strategies into the tournament framework.</p>
+        </div>
+      </div>
+
+      <div class="phase brutalist-block">
+        <div class="phase-number">02</div>
+        <div class="phase-content">
+          <h3>MODIFICATION</h3>
+          <p>Strategies adapt rulesets based on environment conditions.</p>
+        </div>
+      </div>
+
+      <div class="phase brutalist-block">
+        <div class="phase-number">03</div>
+        <div class="phase-content">
+          <h3>ROUND-ROBIN</h3>
+          <p>Every strategy meets every other strategy in an iterated sequence.</p>
+        </div>
+      </div>
+
+      <div class="phase brutalist-block">
+        <div class="phase-number">04</div>
+        <div class="phase-content">
+          <h3>SELECTION</h3>
+          <p>Scoring, processing, and filtering of bottom performers.</p>
+        </div>
+      </div>
+
+      <div class="phase brutalist-block">
+        <div class="phase-number">05</div>
+        <div class="phase-content">
+          <h3>RESULTS</h3>
+          <p>Final output logs generated and global rankings posted.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .phase-section {
+    padding: 6rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+  }
+
+  .phase-header {
+    display: inline-block;
+    padding: 1rem 2rem;
+    margin-bottom: 4rem;
+    background: var(--text-white);
+    color: #000;
+  }
+
+  .phase-header p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 0;
+  }
+
+  .timeline-container {
+    display: flex;
+    position: relative;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+    z-index: 0;
+  }
+
+  .phase-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .phase {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 800px;
+    align-self: flex-start;
+    padding: 1.5rem;
+    background: #000;
+  }
+
+  .phase:nth-child(even) {
+    align-self: flex-end;
+  }
+
+  .phase-number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--accent-purple);
+    font-weight: bold;
+    min-width: 80px;
+    text-align: center;
+    border-right: 2px solid var(--border-color);
+    padding-right: 1.5rem;
+  }
+
+  .phase-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-white);
+  }
+
+  .phase-content p {
+    color: #a0a0a0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .timeline-line {
+      left: 20px;
+    }
+    .phase {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-left: 2rem;
+      align-self: flex-start !important;
+    }
+    .phase-number {
+      border-right: none;
+      border-bottom: 2px solid var(--border-color);
+      padding-right: 0;
+      padding-bottom: 0.5rem;
+    }
+  }
+</style>

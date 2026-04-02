@@ -1,264 +1,137 @@
 ---
-import Navbar from "../components/common/Navbar.astro"
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/common/Navbar.astro';
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - Page Not Found</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
-
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background-image: url("/images/bg5.jpeg");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: 'Playfair Display', serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .error-container {
-      text-align: center;
-      color: white;
-      max-width: 800px;
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .error-code {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 8rem;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 10px;
-      background: linear-gradient(
-        135deg,
-        #a003b5,
-        #663d58,
-        #a003b5
-      );
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradientShift 3s ease infinite;
-      text-shadow: 0 0 30px rgba(160, 3, 181, 0.5);
-    }
-
-    @keyframes gradientShift {
-      0%, 100% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-    }
-
-    .error-title {
-      font-family: 'Cinzel', serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-      color: #f0f7f8;
-      text-transform: uppercase;
-    }
-
-    .error-message {
-      font-size: 1.3rem;
-      color: #a9b4c2;
-      margin-bottom: 30px;
-      line-height: 1.8;
-      font-style: italic;
-    }
-
-    .error-box {
-      background: rgba(0, 1, 2, 0.7);
-      border: 1px solid rgba(160, 3, 181, 0.3);
-      border-radius: 12px;
-      padding: 40px;
-      margin: 40px 0;
-      box-shadow: 
-        0 0 20px rgba(160, 3, 181, 0.2),
-        inset 0 0 20px rgba(160, 3, 181, 0.1);
-      backdrop-filter: blur(10px);
-    }
-
-    .error-description {
-      font-size: 1rem;
-      color: #8d96b2;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
-
-    .button-group {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 40px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 32px;
-      text-decoration: none;
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-radius: 6px;
-      transition: all 0.3s ease;
-      font-size: 0.95rem;
-    }
-
-    .btn-primary {
-      background: #a003b5;
-      color: black;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 0 30px rgba(160, 3, 181, 0.8), 0 0 60px rgba(160, 3, 181, 0.6);
-      transform: translateY(-4px) scale(1.05);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: #a9b4c2;
-      border: 1px solid #663d58;
-    }
-
-    .btn-secondary:hover {
-      background: rgba(102, 61, 88, 0.2);
-      border-color: #a003b5;
-      color: #ecf0f1;
-      box-shadow: 0 0 20px rgba(160, 3, 181, 0.4);
-      transform: translateY(-4px);
-    }
-
-    .decoration {
-      margin-top: 60px;
-      opacity: 0.5;
-    }
-
-    .decoration-line {
-      display: inline-block;
-      width: 40px;
-      height: 1px;
-      background: #663d58;
-      margin: 0 15px;
-      vertical-align: middle;
-    }
-
-    .decoration-text {
-      display: inline-block;
-      font-size: 0.9rem;
-      color: #8d96b2;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .error-code {
-        font-size: 5rem;
-      }
-
-      .error-title {
-        font-size: 2rem;
-      }
-
-      .error-message {
-        font-size: 1.1rem;
-      }
-
-      .error-box {
-        padding: 30px 20px;
-      }
-
-      .button-group {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .btn {
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        padding-top: 80px;
-      }
-
-      .error-code {
-        font-size: 3.5rem;
-      }
-
-      .error-title {
-        font-size: 1.5rem;
-      }
-
-      .error-message {
-        font-size: 1rem;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <Navbar/>
-
-  <div class="error-container">
-    <div class="error-code">404</div>
-
-    <div class="error-box">
-      <h1 class="error-title">Page Not Found</h1>
-
+<Layout title="Iteron | 404 - Terminated">
+  <Navbar />
+  
+  <main class="error-container">
+    <div class="error-content brutalist-block">
+      <div class="error-code glitch" data-text="404">404</div>
+      <div class="header-bar">ERROR: NOT_FOUND</div>
+      
+      <h1 class="error-title">PAGE NOT FOUND</h1>
+      
       <p class="error-message">
-        "The strategy you're looking for has been defeated in battle."
-      </p>
-
-      <p class="error-description">
-        It seems you've ventured into uncharted territory. The page you're seeking either doesn't exist or has been removed from the tournament. Like in game theory, sometimes the path we take doesn't lead where we expected.
+        > The requested resource could not be located on the server.
+        Please verify the URL or return to the main directory.
       </p>
 
       <div class="button-group">
-        <a href="/" class="btn btn-primary">Return to Home</a>
-        <a href="/submissions" class="btn btn-secondary">Explore Tournament</a>
+        <a href="/" class="btn-primary">[ RETURN TO HOME ]</a>
+        <a href="/submissions" class="btn-secondary">[ SUBMISSIONS ]</a>
       </div>
     </div>
+  </main>
+</Layout>
 
-    <div class="decoration">
-      <span class="decoration-line"></span>
-      <span class="decoration-text">Iteron 2026</span>
-      <span class="decoration-line"></span>
-    </div>
-  </div>
-</body>
-</html>
+<style>
+  .error-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 5%;
+  }
+
+  .error-content {
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    padding: 4rem 2rem;
+    background: #000;
+    position: relative;
+    border-color: var(--accent-purple);
+  }
+
+  .error-code {
+    font-family: var(--font-display);
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 4px var(--accent-purple);
+    margin-bottom: 2rem;
+    text-shadow: 4px 4px 0 var(--text-white);
+  }
+
+  .header-bar {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--text-white);
+    color: #000;
+    padding: 4px 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+
+  .error-title {
+    font-size: 2.5rem;
+    color: var(--text-white);
+    margin-bottom: 1.5rem;
+    letter-spacing: 4px;
+  }
+
+  .error-message {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--text-white);
+    color: #000;
+    border: 2px solid var(--text-white);
+    box-shadow: 4px 4px 0 var(--accent-purple);
+  }
+
+  .btn-primary:hover {
+    background: #000;
+    color: var(--text-white);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--accent-purple);
+  }
+
+  .btn-secondary {
+    background: #000;
+    color: var(--accent-purple);
+    border: 2px solid var(--accent-purple);
+  }
+
+  .btn-secondary:hover {
+    background: var(--accent-purple);
+    color: #000;
+  }
+
+  @media (max-width: 768px) {
+    .error-code {
+      font-size: 5rem;
+    }
+    .error-title {
+      font-size: 1.8rem;
+    }
+  }
+</style>

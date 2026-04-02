@@ -1,0 +1,108 @@
+---
+import { Image } from "astro:assets";
+import chairsImg from "../../assets/wb-chair-pe-baithe.png";
+---
+
+<section class="intro-section">
+  <div class="decor-image-container">
+    <Image
+      src={chairsImg}
+      alt="Dilemma chairs"
+      class="chairs-image"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+  <div class="intro-card brutalist-block">
+    <div class="decor-line"></div>
+    <p>
+      In 1980, a political scientist asked:<br />
+      <span class="highlight"
+        >"In a world of egoists, does it ever pay to be nice?"</span
+      >
+    </p>
+  </div>
+</section>
+
+<style>
+  .intro-section {
+    width: 100%;
+    padding: 10vh 2rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: visible;
+  }
+
+  .decor-image-container {
+    position: absolute;
+    bottom: -150px;
+    right: 5%;
+    width: 600px;
+    opacity: 0.4;
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    filter: drop-shadow(4px 4px 0 var(--accent-purple));
+  }
+
+  .chairs-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .intro-card {
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    border-color: var(--accent-purple);
+  }
+
+  .decor-line {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    width: 50px;
+    height: 10px;
+    background: var(--text-white);
+  }
+
+  .intro-card p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: var(--text-white);
+  }
+
+  .highlight {
+    color: var(--accent-purple);
+    font-weight: bold;
+    font-size: 1.8rem;
+    display: block;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .intro-card p {
+      font-size: 1.2rem;
+    }
+    .highlight {
+      font-size: 1.4rem;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .decor-image-container {
+      width: 400px;
+      right: -5%;
+      bottom: -100px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .decor-image-container {
+      display: none;
+    }
+  }
+</style>

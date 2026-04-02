@@ -1,0 +1,247 @@
+---
+import { Image } from "astro:assets";
+import handLeft from "../../assets/hand-vectorized-left.png";
+import handRight from "../../assets/hand-vectorized-right.png";
+---
+
+<section class="hero-banner">
+  <div class="band-container">
+    <div class="purple-band"></div>
+
+    <div class="hand hand-left">
+      <Image
+        src={handLeft}
+        alt="Left hand"
+        class="hand-img"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+    <div class="hand hand-right">
+      <Image
+        src={handRight}
+        alt="Right hand"
+        class="hand-img"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+
+    <div class="hero-content">
+      <h1 class="glitch" data-text="ITERON">ITERON</h1>
+      <div class="subtitle-box">
+        <p>THE GAME OF TRUST AND STRATEGY</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const hero = document.querySelector('.hero-banner') as HTMLElement;
+  const handLeft = document.querySelector('.hand-left') as HTMLElement;
+  const handRight = document.querySelector('.hand-right') as HTMLElement;
+
+  if (hero && handLeft && handRight) {
+    let ready = 0;
+
+    function onEntryDone(el: HTMLElement) {
+      el.addEventListener('animationend', () => {
+        ready++;
+        // Both hands finished their entrance
+        if (ready >= 2) {
+          handLeft.style.animation = 'none';
+          handRight.style.animation = 'none';
+          handLeft.style.transform = 'translateY(-50%) translateX(0)';
+          handRight.style.transform = 'translateY(-50%) translateX(0)';
+        }
+      }, { once: true });
+    }
+
+    onEntryDone(handLeft);
+    onEntryDone(handRight);
+
+    window.addEventListener('scroll', () => {
+      if (ready < 2) return; // wait until entrance is done
+      const rect = hero.getBoundingClientRect();
+      const heroH = hero.offsetHeight;
+      const progress = Math.max(0, Math.min(1, -rect.top / heroH));
+      const shift = progress * 100;
+
+      handLeft.style.transform = `translateY(-50%) translateX(-${shift}%)`;
+      handRight.style.transform = `translateY(-50%) translateX(${shift}%)`;
+    }, { passive: true });
+  }
+</script>
+
+<style>
+  .hero-banner {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 60px;
+  }
+
+  .band-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .purple-band {
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    background-color: var(--accent-purple);
+    z-index: 1;
+    border-top: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 0 0 20px rgba(186, 143, 216, 0.2);
+  }
+
+  /* Hands — Creation of Adam style, originating from screen edges */
+  .hand {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hand-img {
+    width: 48vw;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.5));
+  }
+
+  .hand-left {
+    left: -6%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-100%);
+    animation: slideFromLeft 2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards,
+               floatLeft 6s ease-in-out 2.5s infinite;
+  }
+
+  .hand-right {
+    right: -6%;
+    top: 50%;
+    transform: translateY(-50%) translateX(100%);
+    animation: slideFromRight 2s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards,
+               floatRight 6s ease-in-out 2.8s infinite;
+  }
+
+  /* Slide-in from left */
+  @keyframes slideFromLeft {
+    0% {
+      transform: translateY(-50%) translateX(-100%);
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-50%) translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Slide-in from right */
+  @keyframes slideFromRight {
+    0% {
+      transform: translateY(-50%) translateX(100%);
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-50%) translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Gentle idle float — left hand */
+  @keyframes floatLeft {
+    0%, 100% {
+      transform: translateY(-50%) translateX(0);
+    }
+    50% {
+      transform: translateY(-52%) translateX(2px);
+    }
+  }
+
+  /* Gentle idle float — right hand */
+  @keyframes floatRight {
+    0%, 100% {
+      transform: translateY(-50%) translateX(0);
+    }
+    50% {
+      transform: translateY(-48%) translateX(-2px);
+    }
+  }
+
+  /* Text — above everything */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 8rem;
+    color: var(--bg-color);
+    text-shadow:
+      -2px -2px 0 var(--border-color),
+      2px -2px 0 var(--border-color),
+      -2px 2px 0 var(--border-color),
+      2px 2px 0 var(--border-color);
+    letter-spacing: 0.5rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.5));
+  }
+
+  .subtitle-box {
+    background: #000;
+    border: 2px solid var(--border-color);
+    padding: 10px 20px;
+    box-shadow: 4px 4px 0 var(--bg-color);
+  }
+
+  .subtitle-box p {
+    font-weight: bold;
+    color: var(--accent-purple);
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 4rem;
+    }
+
+    .hand-img {
+      width: 45vw;
+    }
+
+    .hand-left {
+      left: -10%;
+    }
+
+    .hand-right {
+      right: -10%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+</style>

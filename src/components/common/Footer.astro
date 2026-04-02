@@ -1,0 +1,256 @@
+---
+import { Image } from "astro:assets";
+import turingLogo from "../../assets/turinglogo-wo-bg.png";
+import iiserLogo from "../../assets/iiser-mohali-logo.png";
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col footer-branding">
+      <div class="brand-logos">
+        <a
+          href="https://github.com/IISERM/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="logo-link"
+        >
+          <Image
+            src={turingLogo}
+            alt="Turing Club Logo"
+            class="footer-logo turing-logo"
+          />
+        </a>
+        <span class="logo-divider"></span>
+        <a
+          href="https://www.iisermohali.ac.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="logo-link"
+        >
+          <Image
+            src={iiserLogo}
+            alt="IISER Mohali Logo"
+            class="footer-logo iiser-logo"
+          />
+        </a>
+      </div>
+      <p class="brand-text">
+        <strong>TURING CLUB</strong><br />
+        <span class="brand-sub">IISER Mohali</span>
+      </p>
+    </div>
+
+    <div class="footer-col footer-nav">
+      <div class="col-label">> SITEMAP</div>
+      <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/updates">UPDATES</a></li>
+        <li><a href="/submissions">SUBMISSION</a></li>
+        <li><a href="/results">RESULTS</a></li>
+        <li><a href="/about">ABOUT</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col footer-links">
+      <div class="links-group">
+        <div class="col-label">> LINKS</div>
+        <ul>
+          <li>
+            <a
+              href="https://github.com/IISERM/"
+              target="_blank"
+              rel="noopener noreferrer">GITHUB ↗</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.iisermohali.ac.in/"
+              target="_blank"
+              rel="noopener noreferrer">IISER MOHALI ↗</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact-group" style="margin-top: 2.5rem;">
+        <div class="col-label">> CONTACT</div>
+        <ul>
+          <li>
+            <a href="mailto:iteron.iiserm@gmail.com">iteron.iiserm@gmail.com</a>
+          </li>
+          <li>
+            <a href="mailto:turingclub@iisermohali.ac.in"
+              >turingclub@iisermohali.ac.in</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-line"></div>
+    <p class="copyright">
+      © {new Date().getFullYear()} TURING CLUB, IISER MOHALI. ALL RIGHTS RESERVED.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    background: #000;
+    border-top: 2px solid var(--border-color);
+    padding: 4rem 5% 2rem;
+    margin-top: 6rem;
+    font-family: var(--font-mono);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .col-label {
+    color: var(--accent-purple);
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Branding column */
+  .brand-logos {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    background: none !important;
+  }
+
+  .logo-link:hover {
+    background: none !important;
+  }
+
+  .footer-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    transition:
+      filter 0.3s,
+      transform 0.3s;
+  }
+
+  .footer-logo:hover {
+    transform: scale(1.05);
+  }
+
+  .iiser-logo {
+    height: 55px;
+  }
+
+  .logo-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .brand-text {
+    color: var(--text-white);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    letter-spacing: 2px;
+  }
+
+  .brand-sub {
+    color: #888;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  /* Nav columns */
+  .footer-nav ul,
+  .footer-links ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .footer-nav a,
+  .footer-links a {
+    color: #999;
+    font-size: 0.85rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+    padding: 2px 4px;
+    transition:
+      color 0.2s,
+      background 0.2s;
+    display: inline-block;
+    background: none;
+  }
+
+  .footer-nav a:hover,
+  .footer-links a:hover {
+    color: var(--bg-color);
+    background: var(--accent-purple);
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+  }
+
+  .footer-line {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: 1.5rem;
+  }
+
+  .copyright {
+    color: #555;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .brand-logos {
+      justify-content: center;
+    }
+
+    .brand-text {
+      text-align: center;
+    }
+
+    .col-label {
+      text-align: center;
+    }
+
+    .footer-nav ul,
+    .footer-links ul {
+      align-items: center;
+    }
+  }
+</style>

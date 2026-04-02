@@ -1,67 +1,65 @@
 ---
 ---
 
-<nav>
+<nav class="vapor-nav">
+  <div class="nav-brand">ITERON</div>
   <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/updates">Updates</a></li>
-    <li><a href="/404">Results</a></li>
-    <li><a href="/submissions">Submission</a></li>
-    <li><a href="/about">About</a></li>
+    <li><a href="/">HOME</a></li>
+    <li><a href="/updates">UPDATES</a></li>
+    <li><a href="/submissions">SUBMISSION</a></li>
+    <li><a href="/results">RESULTS</a></li>
+    <li><a href="/about">ABOUT</a></li>
   </ul>
 </nav>
 
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  /* body {
-    margin: 0;
-    min-height: 100vh;
-    background-image: url("/images/bg5.jpeg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    font-family: 'Playfair Display', serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  } */
-
-  nav {
+  .vapor-nav {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #000102;
+    background-color: var(--bg-color);
+    border-bottom: 2px solid var(--border-color);
     padding: 0 2rem;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: 60px;
     z-index: 100;
   }
 
-  nav ul {
+  .nav-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--accent-purple);
+    letter-spacing: 2px;
+  }
+
+  .vapor-nav ul {
     list-style: none;
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
   }
 
-  nav ul li {
-    list-style: none;
-  }
-
-  nav ul a {
+  .vapor-nav ul a {
     display: block;
-    padding: 0.5rem 1.2rem;
-    color: #ecf0f1;
+    padding: 0.5rem 1rem;
+    color: var(--text-white);
+    background-color: transparent;
     text-decoration: none;
-    font-size: 0.95rem;
-    border-radius: 4px;
-    transition: background 0.2s;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid transparent;
+    transition: all 0.2s;
   }
 
-  nav ul a:hover { background-color: #663d58; }
-  nav ul a.active { background-color: #4b053c; }
-
+  .vapor-nav ul a:hover,
+  .vapor-nav ul a.active {
+    background-color: var(--text-white);
+    color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 2px 2px 0 var(--accent-purple);
+    transform: translate(-2px, -2px);
+  }
 </style>

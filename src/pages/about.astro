@@ -1,240 +1,216 @@
 ---
-import Navbar from "../components/common/Navbar.astro";
-// Astro component script section (empty for now)
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/common/Navbar.astro';
+import Footer from '../components/common/Footer.astro';
+import { Image } from "astro:assets";
+import turingImg from "../assets/Turing.png";
+
+const team = [
+  { name: 'Zayed Darmi', role: 'CORE TEAM', img: '/images/member1.jpg' },
+  { name: 'Sampreeti Kar', role: 'CORE TEAM', img: '/images/member2.jpg' },
+  { name: 'Pinchika S.', role: 'CORE TEAM', img: '/images/member3.jpg' },
+  { name: 'Harsh V. Shreshth', role: 'CORE TEAM', img: '/images/member4.jpg' },
+  { name: 'Tamaghna Dey', role: 'CORE TEAM', img: '/images/member5.jpg' },
+  { name: 'Kshitij Salunke', role: 'CORE TEAM', img: '/images/member6.jpg' }
+];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meet the Iteron Team</title>
-  <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-image: url("/images/bg4.jpeg");
-      color: #f6eded;
-      font-family: Georgia, 'Times New Roman', serif;
-      min-height: 100vh;
-      padding: 80px 40px;
-    }
-
-    /* ── HEADER ── */
-    header {
-      margin-top: 60px;
-      text-align: center;
-      margin-bottom: 70px;
-    }
-
-    header .label {
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #c56363;
-      margin-bottom: 14px;
-    }
-
-    header h1 {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 2.8rem;
-      font-weight: normal;
-      color: #eee9e9;
-      line-height: 1.2;
-      opacity: 0;
-      transform: translateX(-60px);
-      animation: slideInLeft 1s ease-out forwards;
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-    }
-
-    @keyframes slideInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-60px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    header h1 em {
-      font-style: italic;
-      color: #888;
-    }
-
-    header .divider {
-      width: 40px;
-      height: 1px;
-      background: #ccc;
-      margin: 22px auto 0;
-    }
-
-    /* ── TEAM GRID ── */
-    .team {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 50px 40px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    /* ── CARD ── */
-    .card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      opacity: 0;
-      animation: fadeIn 0.8s ease forwards;
-    }
-
-    .card:nth-child(1) { animation-delay: 0.1s; }
-    .card:nth-child(2) { animation-delay: 0.2s; }
-    .card:nth-child(3) { animation-delay: 0.3s; }
-    .card:nth-child(4) { animation-delay: 0.4s; }
-    .card:nth-child(5) { animation-delay: 0.5s; }
-    .card:nth-child(6) { animation-delay: 0.6s; }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .avatar {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: #e4e0db;
-      overflow: hidden;
-      margin-bottom: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: #bbb;
-      flex-shrink: 0;
-    }
-
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .card-name {
-      font-family: Lucida Console;
-      font-size: 1.1rem;
-      font-weight: normal;
-      color: #f5f4f4;
-      margin-bottom: 5px;
-    }
-
-    .card-role {
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #70f6f6;
-      margin-bottom: 12px;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      margin-top: 80px;
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #ccc;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 680px) {
-      .team {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px 20px;
-      }
-      header h1 { font-size: 2rem; }
-    }
-
-    @media (max-width: 440px) {
-      .team { grid-template-columns: 1fr; }
-      body { padding: 60px 24px; }
-    }
-  </style>
-</head>
-
-<body>
-  <Navbar/>
-  <header>
-    <h1>Meet the <em>Iteron</em> Team</h1>
-    <div class="divider"></div>
-  </header>
-
-  <div class="team">
-    <div class="card">
-      <div class="avatar">
-        <img src="/images/member1.jpg"  onerror="this.parentElement.innerHTML='&#128100;'" />
-      </div>
-      <p class="card-name">Zayed Darmi</p>
-      <p class="card-role"></p>
+<Layout title="Iteron | Team">
+  <Navbar />
+  
+  <main class="page-container">
+    <div class="side-decor">
+      <Image
+        src={turingImg}
+        alt="TuringClub"
+        class="turing-image"
+        loading="lazy"
+        decoding="async"
+      />
     </div>
 
-    <div class="card">
-      <div class="avatar">
-        <img src="/images/member2.jpg" alt="Kshitij Salunke" onerror="this.parentElement.innerHTML='&#128100;'" />
-      </div>
-      <p class="card-name"></p>Sampreeti Kar
-      <p class="card-role"></p>
+    <div class="header-box brutalist-block">
+      <h1 class="glitch" data-text="TEAM_MEMBERS">TEAM_MEMBERS</h1>
+      <p class="subtitle">> THE ORGANIZING COMMITTEE</p>
     </div>
 
-    <div class="card">
-      <div class="avatar">
-        <img src="/images/member3.jpg" alt="Tamaghna Dey" onerror="this.parentElement.innerHTML='&#128100;'" />
-      </div>
-      <p class="card-name">Tamaghna Dey</p>
-      <p class="card-role"></p>
+    <div class="team-grid">
+      {team.map((member) => (
+        <div class="team-card brutalist-block">
+          <div class="corner-cross">+</div>
+          <div class="avatar-box">
+            <img src={member.img} alt={member.name} loading="lazy" decoding="async" />
+          </div>
+          <div class="member-info">
+            <h3 class="name">{member.name}</h3>
+            <p class="role">[ {member.role} ]</p>
+          </div>
+        </div>
+      ))}
     </div>
+  </main>
+  <Footer />
+</Layout>
 
-    <div class="card">
-      <div class="avatar">
-        <img src="/images/member4.jpg" alt="Sampreeti Kar" onerror="this.parentElement.innerHTML='&#128100;'" />
-      </div>
-      <p class="card-name">Kshitij Salunke</p>
-      <p class="card-role"></p>
-    </div>
+<style>
+  .page-container {
+    padding: 120px 5% 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
 
-    <div class="card">
-      <div class="avatar">
-        <img src="/images/member5.jpg" alt="Zayed Darmi" onerror="this.parentElement.innerHTML='&#128100;'" />
-      </div>
-      <p class="card-name">Harsh Vardhan</p>
-      <p class="card-role"></p>
-    </div>
+  .header-box {
+    margin-bottom: 4rem;
+    padding: 2rem;
+    background: #000;
+    text-align: center;
+    border-color: var(--accent-purple);
+  }
 
-    <div class="card">
-      <div class="avatar">
-        <img src="/images/member6.jpg" alt="Pinchika" onerror="this.parentElement.innerHTML='&#128100;'" />
-      </div>
-      <p class="card-name">Pinchika</p>
-      <p class="card-role"></p>
-    </div>
-  </div>
+  h1 {
+    font-size: 3.5rem;
+    color: var(--text-white);
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
 
-  <footer>&mdash; Iteron 2026 &mdash;</footer>
-</body>
-</html>
+  .subtitle {
+    color: var(--accent-purple);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+  }
+
+  .team-card {
+    padding: 2rem;
+    background: #000;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s;
+  }
+
+  .team-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 6px 6px 0 var(--text-white);
+    background: var(--accent-purple);
+  }
+
+  .team-card:hover .name,
+  .team-card:hover .role {
+    color: #000;
+  }
+
+  .team-card:hover .corner-cross {
+    color: #000;
+  }
+
+  .corner-cross {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: var(--accent-purple);
+    font-family: var(--font-mono);
+    font-weight: bold;
+  }
+
+  .avatar-box {
+    width: 120px;
+    height: 120px;
+    background: #111;
+    border: 2px solid var(--text-white);
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .avatar-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.2);
+  }
+
+  .team-card:hover .avatar-box img {
+    filter: grayscale(0%);
+  }
+
+  .fallback {
+    font-size: 3rem;
+    color: var(--border-color);
+  }
+
+  .member-info {
+    text-align: center;
+  }
+
+  .name {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  .role {
+    color: var(--accent-purple);
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    .side-decor {
+      display: none;
+    }
+  }
+
+  /* Decorative Side Image */
+  .side-decor {
+    position: absolute;
+    right: 10%;
+    top: 55%;
+    transform: translateY(-50%);
+    z-index: 1;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .turing-image {
+    height: 30vh;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(4px 4px 0 var(--accent-purple));
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.avatar-box img').forEach((img) => {
+    img.addEventListener('error', () => {
+      const parent = img.parentElement;
+      if (!parent) return;
+
+      parent.replaceChildren();
+      const fallback = document.createElement('div');
+      fallback.className = 'fallback';
+      fallback.textContent = '👤';
+      parent.appendChild(fallback);
+    }, { once: true });
+  });
+</script>

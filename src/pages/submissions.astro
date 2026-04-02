@@ -1,498 +1,496 @@
 ---
-import Navbar from "../components/common/Navbar.astro"
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/common/Navbar.astro";
+import Footer from "../components/common/Footer.astro";
+import { Image } from "astro:assets";
+import chessBoardImg from "../assets/chess-board.png";
 ---
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submissions</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
-    <style>
-      body {
-        margin: 0;
-        height: 100vh;
-        background-color: black;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        font-family: 'Playfair Display', serif;
-      }
-      .page-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 80px;
-      }
-      .stack-section {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-        max-width: 600px;
-        margin: 100px auto;
-        color: white;
-        font-family: Cinzel;
-        font-style: italic;
-      }
-      .box {
-        padding: 40px;
-        background: #1f0631;
-        color: white;
-        border-radius: 12px;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeUp 0.8s ease forwards;
-      }
-      /* Stagger effect */
-      .box:nth-child(1) { animation-delay: 0.2s; }
-      .box:nth-child(2) { animation-delay: 0.5s; }
-      .box:nth-child(3) { animation-delay: 0.8s; }
-      .box:nth-child(4) { animation-delay: 1.1s; }
-      @keyframes fadeUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .hero-header {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        margin-top: 60px;
-      }
-      .header-box {
-        width: 70%;
-        max-width: 800px;
-        padding: 80px 40px;
-        background-image: url("/images/Sban.png");
-        background-size: cover;
-        background-position: center;
-        border-radius: 10px;
-        box-shadow: 0 10px 10px rgba(241, 44, 234, 0.6);
-        text-align: center;
-        position: relative;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeInUp 1.2s ease forwards;
-      }
-      .header-box::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          rgba(0, 0, 0, 0.3),
-          rgba(0, 0, 0, 0.2)
-        );
-        border-radius: 10px;
-      }
-      .header-box h1 {
-        position: relative;
-        z-index: 2;
-        font-style: italic;
-        font-size: 3.2rem;
-        letter-spacing: 4px;
-        color: white;
-      }
-      @keyframes fadeInUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
 
-      /* Submission Guidelines heading */
-      .guidelines-heading {
-        color: #ff69b4;
-        font-family: Cinzel, serif;
-        font-size: 1.6rem;
-        letter-spacing: 3px;
-        margin: 40px 40px 10px 40px;
-        font-style: italic;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp 0.8s ease forwards;
-        animation-delay: 0.8s;
-      }
+<Layout title="Iteron | Submit Strategy">
+  <Navbar />
 
-      /* PDF download link */
-      .pdf-download-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        color: #ff69b4;
-        font-family: Cinzel, serif;
-        font-size: 0.95rem;
-        letter-spacing: 2px;
-        text-decoration: none;
-        border: 1px solid #ff69b4;
-        padding: 10px 20px;
-        border-radius: 6px;
-        transition: background 0.3s ease, color 0.3s ease;
-        opacity: 0;
-        animation: fadeUp 0.8s ease forwards;
-        animation-delay: 1s;
-      }
-      .pdf-download-link:hover {
-        background: #ff69b4;
-        color: black;
-      }
-      .pdf-download-link::before {
-        content: "↓";
-        font-size: 1rem;
-      }
-
-      .guidelines-block {
-        max-width: 600px;
-        margin: 30px auto 60px auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-        text-align: center;
-      }
-
-      /* ── RULEBOOK SECTION ── */
-      .rulebook-divider {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-      .rulebook-divider hr {
-        border: none;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255,105,180,0.3) 30%, rgba(255,105,180,0.3) 70%, transparent);
-      }
-
-      .rulebook {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 2.5rem 2rem 5rem;
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 3rem;
-      }
-      .section-header p.eyebrow {
-        font-family: Cinzel, serif;
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.26em;
-        text-transform: uppercase;
-        color: #ff69b4;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.8rem;
-        margin-bottom: 0.8rem;
-      }
-      .section-header p.eyebrow::before,
-      .section-header p.eyebrow::after {
-        content: '';
-        display: block;
-        width: 40px;
-        height: 1px;
-        background: #ff69b4;
-        opacity: 0.5;
-      }
-      .section-header p.sub {
-        font-family: 'Noto Sans', sans-serif;
-        font-size: 0.88rem;
-        color: rgba(255,255,255,0.5);
-        max-width: 540px;
-        margin: 0 auto;
-        line-height: 1.7;
-      }
-
-      .rules-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.2rem;
-        margin-bottom: 1.2rem;
-      }
-
-      .rule-card {
-        background: #1f0631;
-        border: 1px solid rgba(255, 105, 180, 0.2);
-        border-radius: 10px;
-        padding: 1.8rem;
-        position: relative;
-        overflow: hidden;
-        transition: border-color 0.3s, transform 0.3s;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeUp 0.8s ease forwards;
-      }
-      .rule-card:hover {
-        border-color: rgba(255, 105, 180, 0.55);
-        transform: translateY(-3px);
-      }
-      .rule-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #ff69b4, transparent);
-      }
-      .rule-card.full-width { grid-column: 1 / -1; }
-
-      /* stagger rule cards */
-      .rule-card:nth-child(1)  { animation-delay: 0.1s; }
-      .rule-card:nth-child(2)  { animation-delay: 0.2s; }
-      .rule-card:nth-child(3)  { animation-delay: 0.3s; }
-      .rule-card:nth-child(4)  { animation-delay: 0.4s; }
-      .rule-card:nth-child(5)  { animation-delay: 0.5s; }
-      .rule-card:nth-child(6)  { animation-delay: 0.6s; }
-      .rule-card:nth-child(7)  { animation-delay: 0.7s; }
-      .rule-card:nth-child(8)  { animation-delay: 0.8s; }
-      .rule-card:nth-child(9)  { animation-delay: 0.9s; }
-      .rule-card:nth-child(10) { animation-delay: 1.0s; }
-
-      .rule-number {
-        font-family: Cinzel, serif;
-        font-size: 0.62rem;
-        font-weight: 700;
-        letter-spacing: 0.22em;
-        color: #ff69b4;
-        opacity: 0.75;
-        text-transform: uppercase;
-        margin-bottom: 0.45rem;
-      }
-      .rule-card h3 {
-        font-family: Cinzel, serif;
-        font-size: 0.95rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        color: white;
-        margin: 0 0 1rem 0;
-        padding-bottom: 0.8rem;
-        border-bottom: 1px solid rgba(255,105,180,0.15);
-      }
-      .rule-card p {
-        font-family: 'Noto Sans', sans-serif;
-        font-size: 0.86rem;
-        line-height: 1.78;
-        color: rgba(255,255,255,0.6);
-        margin-bottom: 0.8rem;
-      }
-      .rule-card p:last-child { margin-bottom: 0; }
-
-      .rule-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.7rem;
-      }
-      .rule-list li {
-        font-family: 'Noto Sans', sans-serif;
-        font-size: 0.86rem;
-        line-height: 1.7;
-        color: rgba(255,255,255,0.6);
-        padding-left: 1.3rem;
-        position: relative;
-      }
-      .rule-list li::before {
-        content: '›';
-        position: absolute;
-        left: 0;
-        color: #ff69b4;
-        font-size: 1rem;
-        line-height: 1.5;
-      }
-      .rule-list li strong { color: white; font-weight: 600; }
-
-      .note-banner {
-        background: rgba(255,105,180,0.07);
-        border: 1px solid rgba(255,105,180,0.3);
-        border-radius: 6px;
-        padding: 1rem 1.4rem;
-        display: flex;
-        align-items: flex-start;
-        gap: 0.8rem;
-        margin-bottom: 1rem;
-      }
-      .note-banner .note-icon { font-size: 0.95rem; color: #ff69b4; flex-shrink: 0; margin-top: 2px; }
-      .note-banner p {
-        font-family: 'Noto Sans', sans-serif;
-        font-size: 0.84rem;
-        line-height: 1.7;
-        color: rgba(255,255,255,0.6);
-        margin: 0;
-      }
-      .note-banner p strong { color: #ff69b4; font-weight: 600; }
-
-      .disclaimer {
-        font-family: 'Noto Sans', sans-serif;
-        font-size: 0.78rem;
-        color: rgba(255,255,255,0.35);
-        text-align: center;
-        line-height: 1.7;
-        margin-top: 1.5rem;
-      }
-    </style>
-  </head>
-  <body>
-    <Navbar/>
-    <header class="hero-header">
-      <div class="header-box">
-        <h1>STRATEGY SUBMISSIONS</h1>
-      </div>
+  <main class="page-container">
+    <header class="header-box brutalist-block">
+      <h1 class="glitch" data-text="SUBMISSIONS">SUBMISSIONS</h1>
+      <p class="subtitle">> SUBMISSION PORTAL & DOCUMENTATION</p>
     </header>
 
-  
-
-    <!-- RULEBOOK DIVIDER -->
-    <div class="rulebook-divider"><hr></div>
-
-    <!-- RULEBOOK SECTION -->
-    <section class="rulebook">
-      <div class="section-header">
-        <p class="eyebrow">Official Documentation</p>
-        <p class="sub"> Participants are advised to read all sections carefully and follow the instructions.</p>
-      </div>
-
-      <!-- Overview -->
-      <div class="rules-grid">
-        <div class="rule-card full-width">
-          <div class="rule-number">Overview</div>
-          <h3>General Information</h3>
-          <p>A round-robin computational tournament designed to evaluate strategies across a variety of strategic environments using cumulative payoffs. Inspired by Robert Axelrod's Iterated Prisoner's Dilemma Tournament, this event tests the robustness of strategies across varying environments rather than a single static payoff matrix.</p>
-          <ul class="rule-list">
-            <li><strong>Format:</strong> Round-robin computational tournament, conducted online.</li>
-            <li><strong>Eligibility:</strong> Open to all students — School, Undergraduate, Postgraduate, and PhD — associated with any university.</li>
-            <li><strong>Deadline:</strong> Submission deadline is May 11th 2026 11:59 PM IST.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Section 1 -->
-      <div class="rules-grid">
-        <div class="rule-card full-width">
-          <div class="rule-number">Section 1</div>
-          <h3>Introduction</h3>
-          <p>Welcome to the Iteron.Participants are required to submit code-based strategies to compete against one another. Unlike the conventional tournament, this event tests the robustness of strategies across varying environments.</p>
-        </div>
-      </div>
-
-      <!-- Section 2 -->
-      <div class="rules-grid">
-        <div class="rule-card">
-          <div class="rule-number">Section 2.1</div>
-          <h3>Strategy Originality &amp; Structure</h3>
-          <ul class="rule-list">
-            <li>All submitted strategies must be <strong>original and unique</strong>. Plagiarism of existing open-source strategies without significant modification or attribution is strictly prohibited.</li>
-            <li>References will be provided by the organizers. Participants must ensure their strategies are <strong>distinct from these reference implementations</strong>.</li>
-          </ul>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-number">Section 2.2</div>
-          <h3>Formatting &amp; Templates</h3>
-          <ul class="rule-list">
-            <li>Strategies must be submitted using the  <a href="https://colab.research.google.com/drive/1WoadT0bsvaYXMZ5XHBvmEQie7rZf9v8f?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>official template</strong></a> provided by the organizers.</li>
-            <li>Submissions in any other format or structure will be <strong>rejected</strong>. Participants may be asked to resubmit in the correct format or face immediate disqualification.</li>
-          </ul>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-number">Section 2.3</div>
-          <h3>Testing</h3>
-          <ul class="rule-list">
-            <li>To prevent runtime errors during the actual tournament, the organizers have released a <strong>Sample Strategy</strong>.</li>
-            <li>You are required to <strong>test your code against this sample strategy</strong> before submission.</li>
-            <li>Any additional information regarding the same will be communicated via mail</li>
-          </ul>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-number">Section 2.4</div>
-          <h3>Technical Constraints</h3>
-          <ul class="rule-list">
-            <li><strong>Machine Learning:</strong> The use of ML within strategies is expected to be limited. Strategies relying heavily on computationally expensive models may be subject to review regarding time-complexity limits.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Section 3 -->
-      <div class="rules-grid">
-        <div class="rule-card">
-          <div class="rule-number">Section 3.1</div>
-          <h3>Tournament Structure</h3>
-          <ul class="rule-list">
-            <li>The tournament will be conducted in a <strong>Round Robin format</strong>.</li>
-            <li>Every submitted strategy will play against every other opponent's strategy.</li>
-            <li>Every submitted strategy will also play against <strong>a copy of itself</strong>.</li>
-          </ul>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-number">Sections 3.2 &amp; 3.3</div>
-          <h3>Match Duration &amp; Iteration</h3>
-          <ul class="rule-list">
-            <li>To preserve the game-theoretic essence of the "Shadow of the Future," the <strong>exact number of rounds per match will not be revealed</strong> to participants.</li>
-            <li>Strategies should be designed to handle an <strong>indefinite time horizon</strong>.</li>
-            <li>The entire tournament will be <strong>iterated more than once</strong> to ensure statistical significance, remove noise, and guarantee fair observations of strategy performance.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Section 4 -->
-     <div class="rules-grid">
-  <div class="rule-card full-width">
-    <div class="rule-number">Section 4</div>
-    <h3>The Multi-Environment System</h3>
-    <ul class="rule-list">
-      <li>Unlike the conventional Axelrod's tournament which uses a <strong>static payoff matrix</strong>, this tournament will be conducted across <strong>multiple environments</strong>.</li>
-      <li>The organizers will systematically <strong>vary the payoff matrices</strong> — the rewards for Cooperation and Defection — between tournament runs.</li>
-      <li>Strategies must be <strong>robust enough to adapt</strong> to changes in incentives, rather than being over-fitted to a single payoff structure.</li>
-      <li>The description of payoffs is mentioned below.</li>
-    </ul>
-  </div>
-</div>
-
-      <!-- Section 5 -->
-      <div class="rules-grid">
-        <div class="rule-card">
-          <div class="rule-number">Section 5.1</div>
-          <h3>Winner Determination</h3>
-          <ul class="rule-list">
-            <li>The final winner will be determined based on the <strong>highest average score</strong>.</li>
-            <li>This score is calculated by aggregating the points obtained across <strong>all different payoff matrices and environments</strong>.</li>
-          </ul>
-        </div>
-
-        <div class="rule-card">
-          <div class="rule-number">Section 5.2</div>
-          <h3>Aggregate Performance Rule</h3>
-          <ul class="rule-list">
-            <li><strong>Consistency is key.</strong> Even if a strategy places 1st in k out of n specific matrix environments, it will receive no special consideration if its overall average drops due to poor performance in other environments.</li>
-            <li>Final ranking is based <strong>solely on overall aggregated performance</strong>. No separate claims or titles will be awarded for individual sub-tournament wins.</li>
-          </ul>
-        </div>
-      </div>
-
-       <div class="guidelines-block">
-      
-      <a href="https://tally.so/r/b5OKN6" target="_blank" rel="noopener noreferrer" class="pdf-download-link">
-        Submission Form
+    <div class="actions-grid">
+      <a
+        href="https://tally.so/r/b5OKN6"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="action-card brutalist-block highlight-card"
+      >
+        <span class="corner-tag">[ 01 ]</span>
+        <h3>SUBMISSION FORM</h3>
+        <span class="arrow">-></span>
       </a>
-     <a href="https://colab.research.google.com/drive/1WoadT0bsvaYXMZ5XHBvmEQie7rZf9v8f?usp=sharing" target="_blank" rel="noopener noreferrer" class="pdf-download-link">
-        Official Stratergy Template
+
+      <a
+        href="https://colab.research.google.com/drive/1WoadT0bsvaYXMZ5XHBvmEQie7rZf9v8f?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="action-card brutalist-block"
+      >
+        <span class="corner-tag">[ 02 ]</span>
+        <h3>STRATEGY TEMPLATE</h3>
+        <span class="arrow">-></span>
       </a>
-       <a href="https://drive.google.com/file/d/1mQXTGclphmP13n6ptptQY_7eLOISeNX_/view?usp=sharing" rel="noopener noreferrer" class="pdf-download-link">
-        Payoff Matrices
+
+      <a
+        href="https://drive.google.com/file/d/1mQXTGclphmP13n6ptptQY_7eLOISeNX_/view?usp=sharing"
+        rel="noopener noreferrer"
+        class="action-card brutalist-block"
+      >
+        <span class="corner-tag">[ 03 ]</span>
+        <h3>PAYOFF MATRICES</h3>
+        <span class="arrow">-></span>
       </a>
     </div>
 
-      <p class="disclaimer">The ITERON team reserves the right to modify these rules to ensure the smooth operation of the tournament. Updates will be communicated via official channels.</p>
-    </section>
+    <div class="rulebook-divider"></div>
 
-  </body>
-</html>
+    <section class="rulebook">
+      <div class="rulebook-decor">
+        <Image
+          src={chessBoardImg}
+          alt="Chess Board Decor"
+          class="chess-board-img"
+        />
+      </div>
+      <div class="section-label">OFFICIAL RULEBOOK</div>
+
+      <div class="rules-grid">
+        <div class="rule-card brutalist-block offset-full">
+          <div class="rule-tag">OVERVIEW</div>
+          <h2>General Information</h2>
+          <p>
+            A round-robin computational tournament designed to evaluate
+            strategies across a variety of strategic environments using
+            cumulative payoffs. Inspired by Robert Axelrod's Iterated Prisoner's
+            Dilemma Tournament, this event tests the robustness of strategies
+            across varying environments rather than a single static payoff
+            matrix.
+          </p>
+          <ul class="rule-list">
+            <li>
+              <strong>Format:</strong> Round-robin computational tournament, conducted
+              online.
+            </li>
+            <li>
+              <strong>Eligibility:</strong> Open to all students — School, Undergraduate,
+              Postgraduate, and PhD — associated with any university.
+            </li>
+            <li>
+              <strong>Deadline:</strong> Submission deadline is May 11th 2026 11:59
+              PM IST.
+            </li>
+          </ul>
+        </div>
+
+        <div class="rule-card brutalist-block">
+          <div class="rule-tag">SECTION_01</div>
+          <h2>Introduction</h2>
+          <p>
+            Welcome to the Iteron. Participants are required to submit
+            code-based strategies to compete against one another. Unlike the
+            conventional tournament, this event tests the robustness of
+            strategies across varying environments.
+          </p>
+        </div>
+
+        <div class="rule-card brutalist-block">
+          <div class="rule-tag">SECTION_02</div>
+          <h2>Strategy Originality & Structure</h2>
+          <ul class="rule-list">
+            <li>
+              All submitted strategies must be original and unique. Plagiarism
+              of existing open-source strategies without significant
+              modification or attribution is strictly prohibited.
+            </li>
+            <li>
+              References will be provided by the organizers. Participants must
+              ensure their strategies are distinct from these reference
+              implementations.
+            </li>
+          </ul>
+        </div>
+
+        <div class="rule-card brutalist-block">
+          <div class="rule-tag">SECTION_03</div>
+          <h2>Formatting & Templates</h2>
+          <ul class="rule-list">
+            <li>
+              Strategies must be submitted using the <strong
+                >official template</strong
+              > provided by the organizers.
+            </li>
+            <li>
+              Submissions in any other format or structure will be rejected.
+              Participants may be asked to resubmit in the correct format or
+              face immediate disqualification.
+            </li>
+          </ul>
+        </div>
+
+        <div class="rule-card brutalist-block">
+          <div class="rule-tag">SECTION_04</div>
+          <h2>Testing</h2>
+          <ul class="rule-list">
+            <li>
+              To prevent runtime errors during the actual tournament, the
+              organizers have released a Sample Strategy.
+            </li>
+            <li>
+              You are required to test your code against this sample strategy
+              before submission.
+            </li>
+            <li>
+              Any additional information regarding the same will be communicated
+              via mail.
+            </li>
+          </ul>
+        </div>
+
+        <div class="rule-card brutalist-block">
+          <div class="rule-tag">SECTION_05</div>
+          <h2>Technical Constraints</h2>
+          <ul class="rule-list">
+            <li>
+              <strong>Machine Learning:</strong> The use of ML within strategies is
+              expected to be limited. Strategies relying heavily on computationally
+              expensive models may be subject to review regarding time-complexity
+              limits.
+            </li>
+          </ul>
+        </div>
+
+        <div class="rule-card brutalist-block">
+          <div class="rule-tag">SECTION_06</div>
+          <h2>Tournament Structure</h2>
+          <ul class="rule-list">
+            <li>The tournament will be conducted in a Round Robin format.</li>
+            <li>
+              Every submitted strategy will play against every other opponent's
+              strategy.
+            </li>
+            <li>
+              Every submitted strategy will also play against a copy of itself.
+            </li>
+          </ul>
+        </div>
+
+        <div class="rule-card brutalist-block offset-full">
+          <div class="rule-tag">SECTION_07</div>
+          <h2>Match Duration & Iteration</h2>
+          <ul class="rule-list">
+            <li>
+              To preserve the game-theoretic essence of the "Shadow of the
+              Future," the exact number of rounds per match will not be revealed
+              to participants.
+            </li>
+            <li>
+              Strategies should be designed to handle an indefinite time
+              horizon.
+            </li>
+            <li>
+              The entire tournament will be iterated more than once to ensure
+              statistical significance, remove noise, and guarantee fair
+              observations of strategy performance.
+            </li>
+          </ul>
+        </div>
+
+        <div class="rule-card brutalist-block offset-full">
+          <div class="rule-tag">SECTION_08</div>
+          <h2>The Multi-Environment System</h2>
+          <ul class="rule-list">
+            <li>
+              Unlike the conventional Axelrod's tournament which uses a static
+              payoff matrix, this tournament will be conducted across multiple
+              environments.
+            </li>
+            <li>
+              The organizers will systematically vary the payoff matrices — the
+              rewards for Cooperation and Defection — between tournament runs.
+            </li>
+            <li>
+              Strategies must be robust enough to adapt to changes in
+              incentives, rather than being over-fitted to a single payoff
+              structure.
+            </li>
+            <li>The description of payoffs is mentioned below.</li>
+          </ul>
+        </div>
+
+        <div class="rule-card brutalist-block offset-full">
+          <div class="rule-tag">SECTION_09</div>
+          <h2>Winner Determination & Aggregate Performance</h2>
+          <ul class="rule-list">
+            <li>
+              The final winner will be determined based on the highest average
+              score.
+            </li>
+            <li>
+              This score is calculated by aggregating the points obtained across
+              all different payoff matrices and environments.
+            </li>
+            <li>
+              Consistency is key. Even if a strategy places 1st in k out of n
+              specific matrix environments, it will receive no special
+              consideration if its overall average drops due to poor performance
+              in other environments.
+            </li>
+            <li>
+              Final ranking is based solely on overall aggregated performance.
+              No separate claims or titles will be awarded for individual
+              sub-tournament wins.
+            </li>
+            <li>
+              The ITERON team reserves the right to modify these rules to ensure
+              the smooth operation of the tournament. Updates will be
+              communicated via official channels.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-container {
+    padding: 120px 5% 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  .header-box {
+    margin-bottom: 4rem;
+    padding: 3rem 2rem;
+    background: #000;
+    text-align: center;
+    border-color: var(--accent-purple);
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    color: var(--text-white);
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    color: var(--accent-purple);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .actions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 6rem;
+  }
+
+  .action-card {
+    padding: 2.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.2s;
+  }
+
+  .action-card h3 {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    color: var(--text-white);
+    margin: 0;
+  }
+
+  .arrow {
+    font-family: var(--font-mono);
+    color: var(--accent-purple);
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .corner-tag {
+    position: absolute;
+    top: -12px;
+    left: -1px;
+    background: var(--text-white);
+    color: #000;
+    font-weight: bold;
+    padding: 2px 8px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .action-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 6px 6px 0 var(--text-white);
+    background: var(--accent-purple);
+  }
+
+  .action-card:hover h3,
+  .action-card:hover .arrow {
+    color: #000;
+  }
+
+  .highlight-card {
+    background: var(--text-white);
+    border-color: var(--text-white);
+  }
+
+  .highlight-card h3,
+  .highlight-card .arrow {
+    color: #000;
+  }
+
+  .highlight-card .corner-tag {
+    background: var(--accent-purple);
+    color: #000;
+  }
+
+  .highlight-card:hover {
+    background: var(--accent-purple);
+    box-shadow: 6px 6px 0 var(--text-white);
+  }
+
+  .rulebook-divider {
+    height: 2px;
+    width: 100%;
+    background: var(--accent-purple);
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    color: var(--text-white);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .rulebook {
+    position: relative;
+  }
+
+  .rulebook-decor {
+    position: absolute;
+    top: -2%;
+    right: -15%;
+    width: 400px;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: color-dodge;
+    rotate: -90deg;
+  }
+
+  .chess-board-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .rule-card {
+    padding: 2.5rem;
+    background: #000;
+    position: relative;
+    z-index: 2;
+  }
+
+  .offset-full {
+    grid-column: 1 / -1;
+  }
+
+  .rule-tag {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--text-white);
+    color: #000;
+    padding: 4px 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+
+  .rule-card h2 {
+    font-size: 2rem;
+    color: var(--text-white);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+  }
+
+  .rule-card p {
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .rule-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .rule-list li {
+    font-family: var(--font-mono);
+    color: #a0a0a0;
+    line-height: 1.5;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .rule-list li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
+    font-weight: bold;
+  }
+
+  .rule-list li strong {
+    color: var(--text-white);
+  }
+
+  @media (max-width: 900px) {
+    .rules-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+    .action-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
