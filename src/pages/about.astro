@@ -46,7 +46,7 @@ const team = [
     </div>
 
     <div class="team-grid">
-      {team.map((member) => (
+      {team.map((member, index) => (
         <a
           class="team-card brutalist-block"
           href={`mailto:${member.email}`}
@@ -60,8 +60,9 @@ const team = [
                 src={member.img}
                 alt={member.name}
                 class="member-photo"
-                loading="lazy"
+                loading={index < 4 ? 'eager' : 'lazy'}
                 decoding="async"
+                fetchpriority={index < 2 ? 'high' : 'auto'}
               />
             ) : (
               <span class="fallback" aria-hidden="true">{member.fallback}</span>
@@ -307,6 +308,16 @@ const team = [
     height: 100%;
     object-fit: cover;
     filter: grayscale(100%) contrast(1.2);
+    opacity: 0.001;
+    transform: scale(1.03);
+    transition: opacity 0.35s ease, transform 0.35s ease, filter 0.2s ease;
+    will-change: opacity, transform;
+  }
+
+  .member-photo.is-ready,
+  .member-photo[data-ready='true'] {
+    opacity: 1;
+    transform: scale(1);
   }
 
   .team-card:hover .member-photo {
@@ -452,6 +463,14 @@ const team = [
     filter: drop-shadow(4px 4px 0 var(--accent-purple));
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .member-photo {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
   @media (max-width: 1200px) {
     .side-decor {
       display: none;
@@ -460,6 +479,21 @@ const team = [
 </style>
 
 <script>
+  const memberPhotos = document.querySelectorAll('.avatar-box img.member-photo');
+
+  memberPhotos.forEach((img) => {
+    if (img.complete) {
+      img.classList.add('is-ready');
+      img.setAttribute('data-ready', 'true');
+      return;
+    }
+
+    img.addEventListener('load', () => {
+      img.classList.add('is-ready');
+      img.setAttribute('data-ready', 'true');
+    }, { once: true });
+  });
+
   document.querySelectorAll('.avatar-box img').forEach((img) => {
     img.addEventListener('error', () => {
       const parent = img.parentElement;
