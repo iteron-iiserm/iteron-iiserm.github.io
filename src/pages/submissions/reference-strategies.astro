@@ -52,12 +52,16 @@ const referenceGroups = [
       <p class="subtitle">> ORIGINALITY CHECK GUIDANCE</p>
     </header>
 
+    <div class="top-actions">
+      <a href="/submissions" class="back-link brutalist-block">&larr; BACK TO SUBMISSIONS</a>
+    </div>
+
     <section class="notice brutalist-block" aria-labelledby="notice-title">
       <div class="notice-tag">READ FIRST</div>
       <h2 id="notice-title">What is disallowed?</h2>
       <p>
-        Submissions must not be pre-made or behaviourally similar to known
-        reference strategies.
+        Disallowed submissions include pre-made strategies and behavioural
+        clones of known references.
       </p>
       <ul>
         <li>
@@ -93,13 +97,12 @@ const referenceGroups = [
       ))}
     </section>
 
-    <section class="cta-row">
-      <a href="/submissions" class="cta brutalist-block">Back to Submissions</a>
+    <section class="bottom-cta">
       <a
         href="https://axelrod.readthedocs.io/en/stable/reference/strategy_index.html"
         target="_blank"
         rel="noopener noreferrer"
-        class="cta brutalist-block"
+        class="cta-wide brutalist-block"
       >
         Open Full Axelrod Index
       </a>
@@ -145,6 +148,39 @@ const referenceGroups = [
     position: relative;
     margin-bottom: 3rem;
     border-color: var(--text-white);
+    z-index: 1;
+  }
+
+  .top-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    white-space: nowrap;
+    color: var(--text-white);
+    background: #000;
+    transition: all 0.2s;
+  }
+
+  .back-link:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 5px 5px 0 var(--text-white);
+    background: var(--accent-purple);
+    color: #000;
   }
 
   .notice-tag {
@@ -212,14 +248,16 @@ const referenceGroups = [
     letter-spacing: 1px;
   }
 
-  .cta-row {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.2rem;
+  .bottom-cta {
+    display: block;
+    width: 100%;
+    margin-top: 0.2rem;
   }
 
-  .cta {
+  .cta-wide {
     display: block;
+    width: 100%;
+    padding: 1rem;
     text-align: center;
     color: var(--text-white);
     font-family: var(--font-mono);
@@ -228,7 +266,7 @@ const referenceGroups = [
     background: #000;
   }
 
-  .cta:hover {
+  .cta-wide:hover {
     color: #000;
     background: var(--accent-purple);
   }
@@ -238,9 +276,6 @@ const referenceGroups = [
       grid-template-columns: 1fr;
     }
 
-    .cta-row {
-      grid-template-columns: 1fr;
-    }
   }
 
   @media (max-width: 768px) {

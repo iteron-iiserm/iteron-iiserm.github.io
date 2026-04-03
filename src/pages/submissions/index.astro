@@ -60,34 +60,6 @@ import chessBoardImg from "../../assets/chess-board.png";
       </a>
     </div>
 
-    <section class="uniqueness-notice brutalist-block" aria-labelledby="uniqueness-title">
-      <div class="rule-tag">IMPORTANT</div>
-      <h2 id="uniqueness-title">Strategy Uniqueness Requirement</h2>
-      <p>
-        You must submit an original strategy. Pre-made strategies, or strategies
-        that are behaviourally similar to known reference strategies, are not
-        allowed.
-      </p>
-      <ul class="rule-list">
-        <li>
-          Similarity will be judged against strategies listed in the
-          <a
-            href="https://axelrod.readthedocs.io/en/stable/reference/strategy_index.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Axelrod Strategy Index</a>, plus <strong>Tit For Tat</strong>.
-        </li>
-        <li>
-          A strategy that behaves like one of these references can be rejected,
-          even if variable names or code structure look different.
-        </li>
-        <li>
-          In a few days, the organizers will publish a tool (or set of tools)
-          to help you check strategy uniqueness before final submission.
-        </li>
-      </ul>
-    </section>
-
     <div class="rulebook-divider"></div>
 
     <section class="rulebook">
@@ -127,7 +99,7 @@ import chessBoardImg from "../../assets/chess-board.png";
           </ul>
         </div>
 
-        <div class="rule-card brutalist-block">
+        <div class="rule-card brutalist-block offset-full">
           <div class="rule-tag">SECTION_01</div>
           <h2>Introduction</h2>
           <p>
@@ -138,7 +110,7 @@ import chessBoardImg from "../../assets/chess-board.png";
           </p>
         </div>
 
-        <div class="rule-card brutalist-block">
+        <div class="rule-card brutalist-block offset-full">
           <div class="rule-tag">SECTION_02</div>
           <h2>Strategy Originality & Structure</h2>
           <ul class="rule-list">
@@ -155,6 +127,11 @@ import chessBoardImg from "../../assets/chess-board.png";
                 rel="noopener noreferrer"
               >Axelrod Strategy Index</a>,
               and it must also be distinct from <strong>Tit For Tat</strong>.
+            </li>
+            <li>
+              Similarity checks are behavioural: changing variable names,
+              comments, or code structure alone does not make a strategy
+              original.
             </li>
             <li>
               See the organizer-maintained reference list at
@@ -342,7 +319,7 @@ import chessBoardImg from "../../assets/chess-board.png";
 
   .actions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
     margin-bottom: 6rem;
   }
@@ -420,23 +397,6 @@ import chessBoardImg from "../../assets/chess-board.png";
     width: 100%;
     background: var(--accent-purple);
     margin-bottom: 4rem;
-  }
-
-  .uniqueness-notice {
-    position: relative;
-    margin-bottom: 4rem;
-    border-color: var(--text-white);
-  }
-
-  .uniqueness-notice h2 {
-    font-size: 1.7rem;
-    color: var(--text-white);
-    margin-bottom: 1rem;
-  }
-
-  .uniqueness-notice p {
-    color: #c5c5c5;
-    margin-bottom: 1rem;
   }
 
   .section-label {
@@ -549,6 +509,10 @@ import chessBoardImg from "../../assets/chess-board.png";
     }
 
     .rules-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .actions-grid {
       grid-template-columns: 1fr;
     }
 
