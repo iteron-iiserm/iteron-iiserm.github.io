@@ -1,0 +1,361 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/common/Navbar.astro";
+import Footer from "../../components/common/Footer.astro";
+import type { PayoffMatrix } from "../../data/payoffMatrices";
+import { payoffMatrices } from "../../data/payoffMatrices";
+
+const exportHref = (payload: unknown) =>
+  `data:application/json;charset=utf-8,${encodeURIComponent(
+    JSON.stringify(payload, null, 2),
+  )}`;
+
+const parsePayoff = (cell: string, playerIndex: 0 | 1): string => {
+  const [p1 = "", p2 = ""] = cell.split(",").map((value) => value.trim());
+  return playerIndex === 0 ? p1 : p2;
+};
+
+const toRequestedMatrixJson = (matrix: PayoffMatrix) => {
+  const cooperateRow = matrix.rows.find((row) => row.action === "Cooperate");
+  const defectRow = matrix.rows.find((row) => row.action === "Defect");
+
+  if (!cooperateRow || !defectRow) {
+    return {
+      id: matrix.id,
+      title: matrix.title,
+      Player1: [],
+      Player2: [],
+    };
+  }
+
+  return {
+    id: matrix.id,
+    title: matrix.title,
+    Player1: [
+      {
+        "P1-point-table": "P1-cooperate",
+        "P2-cooperate": parsePayoff(cooperateRow.values[0], 0),
+        "P2-defect": parsePayoff(cooperateRow.values[1], 0),
+      },
+      {
+        "P1-point-table": "P1-defect",
+        "P2-cooperate": parsePayoff(defectRow.values[0], 0),
+        "P2-defect": parsePayoff(defectRow.values[1], 0),
+      },
+    ],
+    Player2: [
+      {
+        "P2-point-table": "P1-cooperate",
+        "P2-cooperate": parsePayoff(cooperateRow.values[0], 1),
+        "P2-defect": parsePayoff(cooperateRow.values[1], 1),
+      },
+      {
+        "P2-point-table": "P1-defect",
+        "P2-cooperate": parsePayoff(defectRow.values[0], 1),
+        "P2-defect": parsePayoff(defectRow.values[1], 1),
+      },
+    ],
+  };
+};
+
+const matrixViews = payoffMatrices.map((matrix) => ({
+  matrix,
+  exportJson: toRequestedMatrixJson(matrix),
+}));
+
+const allMatricesDownloadName = "iteron-payoff-matrices.json";
+---
+
+<Layout
+  title="Iteron | Payoff Matrices"
+  description="Official Iteron payoff matrices across all tournament environments."
+>
+  <Navbar />
+
+  <main class="page-container">
+    <header class="header-box brutalist-block">
+      <h1 class="glitch" data-text="PAYOFF MATRICES">PAYOFF MATRICES</h1>
+      <p class="subtitle">> OFFICIAL TOURNAMENT ENVIRONMENTS</p>
+    </header>
+
+    <div class="top-actions">
+      <a href="/submissions" class="back-link brutalist-block">&larr; BACK TO SUBMISSIONS</a>
+      <a
+        class="download-all brutalist-block"
+        href={exportHref(matrixViews.map((item) => item.exportJson))}
+        download={allMatricesDownloadName}
+      >
+        EXPORT ALL AS JSON
+      </a>
+    </div>
+
+    <p class="intro-text">
+      Each cell represents the payoff pair in the form
+      <strong>(Player 1, Player 2)</strong>.
+    </p>
+
+    <section class="payoff-grid" aria-label="Payoff matrix environments">
+      {matrixViews.map(({ matrix, exportJson }) => (
+        <article class="payoff-card brutalist-block" aria-labelledby={matrix.id}>
+          <div class="card-head">
+            <h2 id={matrix.id}>{matrix.title}</h2>
+            <a
+              class="export-btn"
+              href={exportHref(exportJson)}
+              download={`${matrix.id}.json`}
+            >
+              EXPORT JSON
+            </a>
+          </div>
+
+          <table class="payoff-table">
+            <colgroup>
+              <col class="col-eq" />
+              <col class="col-eq" />
+              <col class="col-eq" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">Player 1 / Player 2</th>
+                <th scope="col">Cooperate</th>
+                <th scope="col">Defect</th>
+              </tr>
+            </thead>
+            <tbody>
+              {matrix.rows.map((row) => (
+                <tr>
+                  <th scope="row">{row.action}</th>
+                  <td>{row.values[0]}</td>
+                  <td>{row.values[1]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </article>
+      ))}
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-container {
+    padding: 120px 5% 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  .header-box {
+    margin-bottom: 2rem;
+    padding: 3rem 2rem;
+    background: #000;
+    text-align: center;
+    border-color: var(--accent-purple);
+  }
+
+  h1 {
+    font-size: 3.2rem;
+    color: var(--text-white);
+    margin-bottom: 1rem;
+    font-family: var(--font-display);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .subtitle {
+    color: var(--accent-purple);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .top-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .back-link,
+  .download-all {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    transition: all 0.2s;
+  }
+
+  .back-link {
+    color: var(--text-white);
+    background: #000;
+  }
+
+  .download-all {
+    color: #000;
+    background: var(--text-white);
+  }
+
+  .back-link:hover,
+  .download-all:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 5px 5px 0 var(--text-white);
+    background: var(--accent-purple);
+    color: #000;
+  }
+
+  .intro-text {
+    color: #a0a0a0;
+    line-height: 1.6;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .intro-text strong {
+    color: var(--text-white);
+  }
+
+  .payoff-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .payoff-card {
+    padding: 2rem;
+    background: #000;
+  }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .payoff-card h2 {
+    margin: 0;
+    color: var(--text-white);
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+
+  .export-btn {
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.6px;
+    color: #000;
+    background: var(--text-white);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 0.8rem;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .export-btn:hover {
+    background: var(--accent-purple);
+  }
+
+  .payoff-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+  }
+
+  .payoff-table .col-eq {
+    width: 33.333%;
+  }
+
+  .payoff-table th,
+  .payoff-table td {
+    border: 1px solid var(--border-color);
+    padding: 0.95rem 0.8rem;
+    text-align: center;
+    color: #a0a0a0;
+  }
+
+  .payoff-table thead th,
+  .payoff-table tbody th {
+    color: var(--text-white);
+  }
+
+  .payoff-table thead th {
+    background: #111;
+    font-size: 0.92rem;
+    letter-spacing: 0.5px;
+  }
+
+  .payoff-table tbody th {
+    font-size: 0.92rem;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 900px) {
+    .page-container {
+      padding: 115px 1.75rem 3.5rem;
+    }
+
+    .payoff-card {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+    }
+
+    .header-box {
+      padding: 2rem 1.1rem;
+    }
+
+    .card-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .payoff-table {
+      font-size: 0.95rem;
+    }
+
+    .payoff-table th,
+    .payoff-table td {
+      padding: 0.75rem 0.55rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-container {
+      padding: 110px 1.1rem 3rem;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+    }
+
+    .subtitle {
+      font-size: 0.88rem;
+      letter-spacing: 1px;
+    }
+
+    .back-link,
+    .download-all {
+      width: 100%;
+    }
+  }
+</style>
