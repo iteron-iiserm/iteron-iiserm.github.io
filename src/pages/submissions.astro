@@ -1,9 +1,10 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Navbar from "../../components/common/Navbar.astro";
-import Footer from "../../components/common/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/common/Navbar.astro";
+import Footer from "../components/common/Footer.astro";
 import { Image } from "astro:assets";
-import chessBoardImg from "../../assets/chess-board.png";
+import chessBoardImg from "../assets/chess-board.png";
+import { payoffMatrices } from "../data/payoffMatrices";
 ---
 
 <Layout
@@ -42,50 +43,47 @@ import chessBoardImg from "../../assets/chess-board.png";
       </a>
 
       <a
-        href="/submissions/payoff"
+        href="#payoff-matrices"
         class="action-card brutalist-block"
       >
         <span class="corner-tag">[ 03 ]</span>
         <h3>PAYOFF MATRICES</h3>
         <span class="arrow">-></span>
       </a>
-
-      <a
-        href="/submissions/reference-strategies"
-        class="action-card brutalist-block"
-      >
-        <span class="corner-tag">[ 04 ]</span>
-        <h3>REFERENCE STRATEGIES</h3>
-        <span class="arrow">-></span>
-      </a>
     </div>
 
-    <section class="uniqueness-notice brutalist-block" aria-labelledby="uniqueness-title">
-      <div class="rule-tag">IMPORTANT</div>
-      <h2 id="uniqueness-title">Strategy Uniqueness Requirement</h2>
-      <p>
-        You must submit an original strategy. Pre-made strategies, or strategies
-        that are behaviourally similar to known reference strategies, are not
-        allowed.
+    <section id="payoff-matrices" class="payoff-section">
+      <div class="section-label">PAYOFF MATRICES</div>
+      <p class="payoff-intro">
+        Official tournament environments from the Iteron rulebook. Each cell is
+        represented as <strong>(Player 1, Player 2)</strong>.
       </p>
-      <ul class="rule-list">
-        <li>
-          Similarity will be judged against strategies listed in the
-          <a
-            href="https://axelrod.readthedocs.io/en/stable/reference/strategy_index.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Axelrod Strategy Index</a>, plus <strong>Tit For Tat</strong>.
-        </li>
-        <li>
-          A strategy that behaves like one of these references can be rejected,
-          even if variable names or code structure look different.
-        </li>
-        <li>
-          In a few days, the organizers will publish a tool (or set of tools)
-          to help you check strategy uniqueness before final submission.
-        </li>
-      </ul>
+
+      <div class="payoff-grid">
+        {payoffMatrices.map((matrix) => (
+          <article class="payoff-card brutalist-block" aria-labelledby={matrix.id}>
+            <h2 id={matrix.id}>{matrix.title}</h2>
+            <table class="payoff-table">
+              <thead>
+                <tr>
+                  <th scope="col">Player 1 / Player 2</th>
+                  <th scope="col">Cooperate</th>
+                  <th scope="col">Defect</th>
+                </tr>
+              </thead>
+              <tbody>
+                {matrix.rows.map((row) => (
+                  <tr>
+                    <th scope="row">{row.action}</th>
+                    <td>{row.values[0]}</td>
+                    <td>{row.values[1]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </article>
+        ))}
+      </div>
     </section>
 
     <div class="rulebook-divider"></div>
@@ -143,23 +141,14 @@ import chessBoardImg from "../../assets/chess-board.png";
           <h2>Strategy Originality & Structure</h2>
           <ul class="rule-list">
             <li>
-              Every submission must be original. Pre-made strategies and
-              near-clones are prohibited.
+              All submitted strategies must be original and unique. Plagiarism
+              of existing open-source strategies without significant
+              modification or attribution is strictly prohibited.
             </li>
             <li>
-              Your strategy must not be behaviourally similar to strategies from
-              the
-              <a
-                href="https://axelrod.readthedocs.io/en/stable/reference/strategy_index.html"
-                target="_blank"
-                rel="noopener noreferrer"
-              >Axelrod Strategy Index</a>,
-              and it must also be distinct from <strong>Tit For Tat</strong>.
-            </li>
-            <li>
-              See the organizer-maintained reference list at
-              <a href="/submissions/reference-strategies">/submissions/reference-strategies</a>
-              for quick checks before submission.
+              References will be provided by the organizers. Participants must
+              ensure their strategies are distinct from these reference
+              implementations.
             </li>
           </ul>
         </div>
@@ -422,21 +411,70 @@ import chessBoardImg from "../../assets/chess-board.png";
     margin-bottom: 4rem;
   }
 
-  .uniqueness-notice {
-    position: relative;
+  .payoff-section {
     margin-bottom: 4rem;
-    border-color: var(--text-white);
   }
 
-  .uniqueness-notice h2 {
-    font-size: 1.7rem;
+  .payoff-intro {
+    margin: -1.25rem 0 2.25rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+    max-width: 70ch;
+    font-size: 1.05rem;
+  }
+
+  .payoff-intro strong {
     color: var(--text-white);
-    margin-bottom: 1rem;
   }
 
-  .uniqueness-notice p {
-    color: #c5c5c5;
-    margin-bottom: 1rem;
+  .payoff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .payoff-card {
+    padding: 1.5rem;
+    background: #000;
+  }
+
+  .payoff-card h2 {
+    margin: 0 0 1rem;
+    color: var(--text-white);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .payoff-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+  }
+
+  .payoff-table th,
+  .payoff-table td {
+    border: 1px solid var(--border-color);
+    padding: 0.55rem 0.5rem;
+    text-align: center;
+    color: #a0a0a0;
+  }
+
+  .payoff-table thead th {
+    color: var(--text-white);
+    background: #111;
+    font-size: 0.82rem;
+    letter-spacing: 0.4px;
+  }
+
+  .payoff-table tbody th {
+    color: var(--text-white);
+    font-weight: bold;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    letter-spacing: 0.4px;
   }
 
   .section-label {
@@ -552,6 +590,10 @@ import chessBoardImg from "../../assets/chess-board.png";
       grid-template-columns: 1fr;
     }
 
+    .payoff-grid {
+      grid-template-columns: 1fr;
+    }
+
     .rulebook-decor {
       width: 260px;
       right: -10%;
@@ -587,6 +629,24 @@ import chessBoardImg from "../../assets/chess-board.png";
     .rule-card p,
     .rule-list li {
       font-size: 0.95rem;
+    }
+
+    .payoff-intro {
+      font-size: 0.95rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .payoff-card {
+      padding: 1rem;
+    }
+
+    .payoff-table {
+      font-size: 0.82rem;
+    }
+
+    .payoff-table th,
+    .payoff-table td {
+      padding: 0.5rem 0.35rem;
     }
 
     .section-label {
