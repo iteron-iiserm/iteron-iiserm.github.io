@@ -6,14 +6,20 @@ import { Image } from "astro:assets";
 import turingImg from "../assets/Turing.png";
 import iiserLogo from "../assets/iiser-mohali-logo.png";
 import turingBadgeLogo from "../assets/turinglogo-wo-bg.png";
+import zayedPhoto from "../assets/member-photos/zayed-halftone.png";
+import sampreetiPhoto from "../assets/member-photos/sampreeti-halftone.png";
+import pinchikaPhoto from "../assets/member-photos/pinchika-halftone.png";
+import hrshPhoto from "../assets/member-photos/hrsh-halftone.png";
+import tamaghnaPhoto from "../assets/member-photos/tamaghna-halftone.png";
+import kshitijPhoto from "../assets/member-photos/kshitij-halftone.png";
 
 const team = [
-  { name: 'Zayed Darmi', role: 'CORE TEAM', img: '/images/member1.jpg', email: 'ms24123@iisermohali.ac.in' },
-  { name: 'Sampreeti Kar', role: 'CORE TEAM', img: '/images/member2.jpg', email: 'ms24116@iisermohali.ac.in' },
-  { name: 'Pinchika S.', role: 'CORE TEAM', img: '/images/member3.jpg', email: 'ms24036@iisermohali.ac.in' },
-  { name: 'Harsh V. Shreshth', role: 'CORE TEAM', img: '/images/member4.jpg', email: 'ms24085@iisermohali.ac.in' },
-  { name: 'Tamaghna Dey', role: 'CORE TEAM', img: '/images/member5.jpg', email: 'ms24205@iisermohali.ac.in' },
-  { name: 'Kshitij Salunke', role: 'CORE TEAM', img: '/images/member6.jpg', email: 'ms24024@iisermohali.ac.in' }
+  { name: 'Zayed Darmi', role: 'CORE TEAM', img: zayedPhoto, fallback: 'ZD', email: 'ms24123@iisermohali.ac.in' },
+  { name: 'Sampreeti Kar', role: 'CORE TEAM', img: sampreetiPhoto, fallback: 'SK', email: 'ms24116@iisermohali.ac.in' },
+  { name: 'Pinchika S.', role: 'CORE TEAM', img: pinchikaPhoto, fallback: 'PS', email: 'ms24036@iisermohali.ac.in' },
+  { name: 'Harsh V. Shreshth', role: 'CORE TEAM', img: hrshPhoto, fallback: 'HV', email: 'ms24085@iisermohali.ac.in' },
+  { name: 'Tamaghna Dey', role: 'CORE TEAM', img: tamaghnaPhoto, fallback: 'TD', email: 'ms24205@iisermohali.ac.in' },
+  { name: 'Kshitij Salunke', role: 'CORE TEAM', img: kshitijPhoto, fallback: 'KS', email: 'ms24024@iisermohali.ac.in' }
 ];
 ---
 
@@ -49,7 +55,17 @@ const team = [
         >
           <div class="corner-cross">+</div>
           <div class="avatar-box">
-            <img src={member.img} alt={member.name} loading="lazy" decoding="async" />
+            {member.img ? (
+              <Image
+                src={member.img}
+                alt={member.name}
+                class="member-photo"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <span class="fallback" aria-hidden="true">{member.fallback}</span>
+            )}
           </div>
           <div class="member-info">
             <h3 class="name">{member.name}</h3>
@@ -286,14 +302,14 @@ const team = [
     overflow: hidden;
   }
 
-  .avatar-box img {
+  .member-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: grayscale(100%) contrast(1.2);
   }
 
-  .team-card:hover .avatar-box img {
+  .team-card:hover .member-photo {
     filter: grayscale(0%);
   }
 
