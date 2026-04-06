@@ -52,6 +52,24 @@ import iiserLogo from "../../assets/iiser-mohali-logo.png";
     </div>
 
     <div class="footer-col footer-policies">
+      <div class="col-label">> LINKS</div>
+      <ul>
+        <li>
+          <a
+            href="https://github.com/IISERM/"
+            target="_blank"
+            rel="noopener noreferrer">GITHUB ↗</a
+          >
+        </li>
+        <li>
+          <a
+            href="https://www.iisermohali.ac.in/"
+            target="_blank"
+            rel="noopener noreferrer">IISER MOHALI ↗</a
+          >
+        </li>
+      </ul>
+
       <div class="col-label">> POLICIES</div>
       <ul>
         <li><a href="/terms-of-use">TERMS OF USE</a></li>
@@ -93,13 +111,6 @@ import iiserLogo from "../../assets/iiser-mohali-logo.png";
           <li>
             <a href="mailto:turingclub@iisermohali.ac.in"
               >turingclub@iisermohali.ac.in</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://www.iisermohali.ac.in/"
-              target="_blank"
-              rel="noopener noreferrer">IISER MOHALI ↗</a
             >
           </li>
         </ul>
@@ -144,6 +155,10 @@ import iiserLogo from "../../assets/iiser-mohali-logo.png";
     font-size: 0.78rem;
     letter-spacing: 3px;
     margin-bottom: 1rem;
+  }
+
+  .footer-policies .col-label + ul {
+    margin-bottom: 1.15rem;
   }
 
   /* Branding column */
@@ -258,9 +273,15 @@ import iiserLogo from "../../assets/iiser-mohali-logo.png";
 
   /* Responsive */
   @media (max-width: 1100px) {
+    .site-footer {
+      width: 100%;
+      margin: 3.6rem 0 0;
+      padding: 2.4rem 1.25rem 1.25rem;
+    }
+
     .footer-inner {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.8rem 2rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.4rem 1.5rem;
     }
 
     .footer-branding {
@@ -271,13 +292,19 @@ import iiserLogo from "../../assets/iiser-mohali-logo.png";
     .brand-text {
       text-align: center;
     }
-    .footer-community {
-      grid-column: 1 / -1;
+
+    .contact-group {
+      margin-top: 0.9rem;
+    }
+
+    .footer-bottom {
+      margin-top: 1.6rem;
     }
   }
 
   @media (max-width: 768px) {
     .site-footer {
+      width: 100%;
       padding: 2.5rem 1.25rem 1.3rem;
       margin-top: 3.2rem;
     }
@@ -316,6 +343,7 @@ import iiserLogo from "../../assets/iiser-mohali-logo.png";
 
   @media (max-width: 480px) {
     .site-footer {
+      width: 100%;
       padding: 2.25rem 1rem 1.15rem;
     }
 
