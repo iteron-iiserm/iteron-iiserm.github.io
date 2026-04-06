@@ -46,6 +46,10 @@ This file is append-only. Do not edit historical entries except to correct clear
   - /terms-of-use
   - /privacy-policy
   - /takedown-policy
+- Archived PDF evidence files:
+  - documentation/legal-evidence/Iteron_Terms-of-Use_v1.0.pdf
+  - documentation/legal-evidence/Iteron_Privacy-Policy_v1.0.pdf
+  - documentation/legal-evidence/Iteron_Takedown-and-IP-Policy_v1.0.pdf
 
 ### Approval Log
 - Approved by: All Iteron core members
