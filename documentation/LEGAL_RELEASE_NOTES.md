@@ -40,7 +40,7 @@ This file is append-only. Do not edit historical entries except to correct clear
 - Privacy substantive response target: 30 calendar days.
 
 ### Freeze Evidence
-- Git commit hash (freeze commit): TO_BE_FILLED_AFTER_COMMIT
+- Git commit hash (freeze commit): 7d7cea3
 - Git tag: legal-v1.0-2026-04-06
 - Public policy URLs:
   - /terms-of-use
