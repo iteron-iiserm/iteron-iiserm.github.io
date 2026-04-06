@@ -244,7 +244,22 @@ import chessBoardImg from "../../assets/chess-board.png";
               incentives, rather than being over-fitted to a single payoff
               structure.
             </li>
-            <li>The description of payoffs is mentioned below.</li>
+            <li>
+              Each submitted strategy will be evaluated in all organizer-provided
+              payoff environments.
+            </li>
+            <li>
+              During evaluation, strategies will not be told which payoff
+              environment is currently active.
+            </li>
+            <li>
+              Any attempt to branch behavior based on detecting or hard-coding
+              a specific payoff environment is not allowed.
+            </li>
+            <li>
+              Detailed payoff matrices are available at
+              <a href="/submissions/payoff">/submissions/payoff</a>.
+            </li>
           </ul>
         </div>
 
@@ -257,8 +272,13 @@ import chessBoardImg from "../../assets/chess-board.png";
               score.
             </li>
             <li>
-              This score is calculated by aggregating the points obtained across
-              all different payoff matrices and environments.
+              For every payoff environment, each strategy will be run multiple
+              times; the resulting score for that environment is the average of
+              those runs.
+            </li>
+            <li>
+              The final score is then computed by averaging performance across
+              all provided payoff environments.
             </li>
             <li>
               Consistency is key. Even if a strategy places 1st in k out of n
