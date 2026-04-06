@@ -43,6 +43,29 @@ import Footer from "../components/common/Footer.astro";
         > page.
       </p>
     </div>
+
+    <section class="usage-notice brutalist-block" aria-labelledby="results-usage-policy">
+      <h2 id="results-usage-policy">Data and Content Usage Notice</h2>
+      <ul>
+        <li>Participant submissions remain the intellectual property of their creators.</li>
+        <li>
+          Published strategy data is shared under
+          <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>
+          for research and educational reuse with attribution to the creator and Iteron.
+        </li>
+        <li>
+          Infographics, analyses, and reports produced by Turing Club/core organizers are organizer-owned
+          and, unless a page states otherwise, are also shared under
+          <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.
+        </li>
+      </ul>
+      <p>
+        For full legal terms, read
+        <a href="/terms-of-use" class="inline-link">Terms of Use</a>,
+        <a href="/privacy-policy" class="inline-link">Privacy Policy</a>, and
+        <a href="/takedown-policy" class="inline-link">Takedown Policy</a>.
+      </p>
+    </section>
   </main>
   <Footer />
 </Layout>
@@ -130,6 +153,46 @@ import Footer from "../components/common/Footer.astro";
     margin-bottom: 2.5rem;
     font-size: 1.1rem;
     max-width: 600px;
+  }
+
+  .usage-notice {
+    margin-top: 2rem;
+    border-color: var(--text-white);
+  }
+
+  .usage-notice h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  .usage-notice ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .usage-notice li {
+    color: #b9b9b9;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .usage-notice li::before {
+    content: ">";
+    position: absolute;
+    left: 0;
+    color: var(--accent-purple);
+    font-weight: bold;
+  }
+
+  .usage-notice p {
+    color: #b9b9b9;
+    margin-bottom: 0;
+    max-width: 700px;
   }
 
   .quote-box {

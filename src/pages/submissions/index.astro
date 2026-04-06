@@ -60,6 +60,39 @@ import chessBoardImg from "../../assets/chess-board.png";
       </a>
     </div>
 
+    <section class="legal-notice brutalist-block" aria-labelledby="submission-legal-notice">
+      <h2 id="submission-legal-notice">Submission Rights and Consent Notice</h2>
+      <p>
+        By submitting through the official form, you confirm that the strategy is your original work
+        and that you have the right to publish it.
+      </p>
+      <ul class="rule-list">
+        <li>You retain ownership of your submitted strategy and related content.</li>
+        <li>
+          You grant Turing Club/core organizers a non-exclusive license to host, evaluate,
+          archive, and publish your submission for tournament operations and public research access.
+        </li>
+        <li>
+          Published submission data will be shared under
+          <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>
+          for research and educational reuse with attribution to the creator and Iteron.
+        </li>
+        <li>
+          Similar strategies may be independently created; where independent creation is reasonably established,
+          credit may be granted to all independent creators.
+        </li>
+        <li>
+          Plagiarism or copyright claims must include sufficient supporting proof for organizer review.
+        </li>
+      </ul>
+      <p class="legal-links">
+        Read the full
+        <a href="/terms-of-use">Terms of Use</a>,
+        <a href="/privacy-policy">Privacy Policy</a>, and
+        <a href="/takedown-policy">Takedown Policy</a> before submitting.
+      </p>
+    </section>
+
     <div class="rulebook-divider"></div>
 
     <section class="rulebook">
@@ -410,6 +443,32 @@ import chessBoardImg from "../../assets/chess-board.png";
   .highlight-card:hover {
     background: var(--accent-purple);
     box-shadow: 6px 6px 0 var(--text-white);
+  }
+
+  .legal-notice {
+    margin-top: -2rem;
+    margin-bottom: 2.5rem;
+    border-color: var(--text-white);
+  }
+
+  .legal-notice h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .legal-notice p {
+    color: #b9b9b9;
+    margin-bottom: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .legal-links {
+    margin-bottom: 0;
+  }
+
+  .legal-links a {
+    font-weight: bold;
   }
 
   .rulebook-divider {

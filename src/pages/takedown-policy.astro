@@ -1,0 +1,219 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/common/Navbar.astro";
+import Footer from "../components/common/Footer.astro";
+---
+
+<Layout
+  title="Iteron | Takedown and IP Policy"
+  description="Takedown and intellectual property complaint process for Iteron."
+>
+  <Navbar />
+
+  <main class="page-container">
+    <header class="header-box brutalist-block">
+      <h1 class="glitch" data-text="TAKEDOWN POLICY">TAKEDOWN POLICY</h1>
+      <p class="subtitle">> EFFECTIVE DATE: 6 APRIL 2026 | LAST UPDATED: 6 APRIL 2026</p>
+    </header>
+
+    <section class="legal-card brutalist-block">
+      <p>
+        This policy explains how to report copyright, privacy, or other rights concerns
+        related to content on Iteron.
+      </p>
+    </section>
+
+    <section class="legal-card brutalist-block">
+      <h2>1. What You Can Report</h2>
+      <ul>
+        <li>Copyright infringement or unauthorized reuse of your protected content.</li>
+        <li>Privacy violations involving personal information.</li>
+        <li>Defamation, impersonation, or other unlawful/rights-violating content.</li>
+      </ul>
+    </section>
+
+    <section class="legal-card brutalist-block">
+      <h2>2. How to Submit a Complaint</h2>
+      <p>
+        Send an email to <a href="mailto:iteron.iiserm@gmail.com">iteron.iiserm@gmail.com</a>
+        with subject line "Takedown Request" and include:
+      </p>
+      <ul>
+        <li>Your full name and contact information.</li>
+        <li>URL(s) or exact content identifiers you want reviewed.</li>
+        <li>A clear description of the issue and the rights involved.</li>
+        <li>Evidence supporting your claim (ownership proof, authorization context, screenshots, etc.).</li>
+        <li>A good-faith statement that the information you provide is accurate.</li>
+        <li>A statement that you understand false or bad-faith claims may lead to restriction of reporting access.</li>
+      </ul>
+    </section>
+
+    <section class="legal-card brutalist-block">
+      <h2>3. Evidence Requirement for Claims</h2>
+      <ul>
+        <li>
+          Copyright, plagiarism, or ownership claims must include sufficient supporting proof.
+        </li>
+        <li>
+          Useful evidence may include dated drafts, commit history, version logs, timestamps,
+          notebooks, communications, or equivalent verifiable records.
+        </li>
+        <li>
+          Unsupported or purely conclusory allegations may be declined or closed without action.
+        </li>
+      </ul>
+    </section>
+
+    <section class="legal-card brutalist-block">
+      <h2>4. Independent Creation and Similarity</h2>
+      <p>
+        Similarity between submissions can occur through independent creation. Similar outcomes alone do not
+        automatically establish copying or infringement. Where evidence supports independent creation,
+        organizers may recognize credit for all independently creating participants.
+      </p>
+    </section>
+
+    <section class="legal-card brutalist-block">
+      <h2>5. Review Process</h2>
+      <ul>
+        <li>We target acknowledgment within 72 hours of receiving a complaint.</li>
+        <li>We may request additional details to evaluate the complaint.</li>
+        <li>Where appropriate, we may temporarily unpublish content during review.</li>
+        <li>We target an initial decision within 14 calendar days, subject to complexity and evidence quality.</li>
+      </ul>
+    </section>
+
+    <section class="legal-card brutalist-block">
+      <h2>6. Possible Outcomes</h2>
+      <ul>
+        <li>No action, where evidence is insufficient or no violation is found.</li>
+        <li>Request for correction, clarification, or attribution update.</li>
+        <li>Temporary unpublishing during extended review.</li>
+        <li>Permanent removal, restriction, or other enforcement consistent with Terms of Use.</li>
+      </ul>
+    </section>
+
+    <section class="legal-card brutalist-block">
+      <h2>7. Counter-Statement and Appeal</h2>
+      <p>
+        If your content was removed and you believe this was in error, you may send a response with
+        supporting evidence. We may restore content when justified.
+      </p>
+      <p>
+        Counter-statements should be sent within 14 calendar days of notice of action, unless a longer
+        period is required by applicable law or expressly granted by organizers.
+      </p>
+    </section>
+
+    <section class="legal-card brutalist-block">
+      <h2>8. Abuse of Process</h2>
+      <p>
+        Fraudulent, abusive, or repetitive bad-faith reports may be rejected and may result in
+        restriction from further reporting channels.
+      </p>
+    </section>
+
+    <section class="legal-card brutalist-block">
+      <h2>9. Contact</h2>
+      <p>
+        Primary contact for takedown and rights concerns:
+        <a href="mailto:iteron.iiserm@gmail.com">iteron.iiserm@gmail.com</a>
+      </p>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-container {
+    padding: 120px 5% 5rem;
+    max-width: 980px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  .header-box {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    text-align: center;
+    border-color: var(--accent-purple);
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    color: var(--text-white);
+    margin-bottom: 0.8rem;
+    font-family: var(--font-display);
+    letter-spacing: 3px;
+  }
+
+  .subtitle {
+    color: var(--accent-purple);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+  }
+
+  .legal-card {
+    margin-bottom: 1.25rem;
+    border-color: var(--text-white);
+  }
+
+  .legal-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .legal-card p,
+  .legal-card li {
+    color: #cfcfcf;
+    line-height: 1.7;
+    font-size: 0.98rem;
+  }
+
+  .legal-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+  }
+
+  .legal-card li {
+    position: relative;
+    padding-left: 1rem;
+  }
+
+  .legal-card li::before {
+    content: ">";
+    color: var(--accent-purple);
+    position: absolute;
+    left: 0;
+  }
+
+  @media (max-width: 768px) {
+    .page-container {
+      padding: 110px 1.25rem 3.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 2px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.45rem;
+      letter-spacing: 1px;
+    }
+
+    .subtitle {
+      font-size: 0.84rem;
+      letter-spacing: 1px;
+    }
+  }
+</style>
