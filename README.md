@@ -4,6 +4,14 @@ This repository contains the Astro-based website for Iteron: The Game of Trust a
 
 Use this README as the starting point when you begin working on the project.
 
+## At a Glance
+
+- Framework: Astro (static-first)
+- Styling: Scoped CSS in Astro components + global tokens
+- Typeface system: Space Grotesk + Share Tech Mono (self-hosted)
+- Design direction: Brutalist structure with vaporwave atmosphere
+- Project goal: Fast, readable, design-consistent informational website
+
 ## What This Project Is
 
 - Framework: Astro (static-first)
@@ -37,6 +45,25 @@ npm run build
 npm run preview
 ```
 
+## Route Map
+
+### Primary Pages
+
+- / (home)
+- /updates
+- /submissions
+- /results
+- /about
+- /terms-of-use
+- /privacy-policy
+- /takedown-policy
+
+### Submissions Pages
+
+- /submissions
+- /submissions/payoff
+- /submissions/reference-strategies
+
 ## Website Flow
 
 ### Primary Navigation
@@ -62,6 +89,12 @@ The landing page is composed in [src/pages/index.astro](src/pages/index.astro) i
 
 Global shell for all pages lives in [src/layouts/Layout.astro](src/layouts/Layout.astro), with [src/components/common/Navbar.astro](src/components/common/Navbar.astro) and [src/components/common/Footer.astro](src/components/common/Footer.astro).
 
+## Configuration
+
+Runtime settings are intentionally minimal.
+
+- Astro and sitemap configuration are defined in [astro.config.mjs](astro.config.mjs).
+
 ## Important Current Behavior
 
 ### Hero First-Load Animation
@@ -84,6 +117,24 @@ Read these files before making non-trivial changes:
 2. Component ownership and implementation notes: [documentation/COMPONENTS.md](documentation/COMPONENTS.md)
 3. Contributor workflow and QA checklist: [documentation/DEVELOPMENT.md](documentation/DEVELOPMENT.md)
 4. Search and indexing implementation details: [documentation/SEO.md](documentation/SEO.md)
+5. Legal freeze log and policy release evidence: [documentation/LEGAL_RELEASE_NOTES.md](documentation/LEGAL_RELEASE_NOTES.md)
+6. Design language, palette, and visual rules: [documentation/DESIGN_SYSTEM.md](documentation/DESIGN_SYSTEM.md)
+7. Reusable Astro snippets and templates: [documentation/REUSABLE_TEMPLATES.md](documentation/REUSABLE_TEMPLATES.md)
+
+## Legal and Policy Release
+
+Legal-policy pages and release evidence are tracked in this repository.
+
+- Policy routes:
+	- /terms-of-use
+	- /privacy-policy
+	- /takedown-policy
+- Legal release freeze and approval history:
+	- [documentation/LEGAL_RELEASE_NOTES.md](documentation/LEGAL_RELEASE_NOTES.md)
+- PDF evidence archive for released policy versions:
+	- [documentation/legal-evidence](documentation/legal-evidence)
+
+Current legal baseline is documented in the policy pages and frozen legal release notes.
 
 ## Typical Contribution Flow
 
@@ -93,6 +144,7 @@ Read these files before making non-trivial changes:
 4. Validate desktop and mobile behavior.
 5. Run build.
 6. Update documentation if behavior or conventions changed.
+7. If legal or policy behavior changed, append an entry in [documentation/LEGAL_RELEASE_NOTES.md](documentation/LEGAL_RELEASE_NOTES.md).
 
 ## Project Structure
 
@@ -100,6 +152,7 @@ Read these files before making non-trivial changes:
 - [src/layouts](src/layouts): Shared page shell and global styles/tokens
 - [src/components/common](src/components/common): Cross-page components
 - [src/components/sections](src/components/sections): Page sections
+- [src/data](src/data): Static structured data used by pages
 - [src/assets](src/assets): Source assets processed by Astro
 - [public](public): Static pass-through assets
 - [documentation](documentation): Internal developer documentation

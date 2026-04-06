@@ -118,14 +118,25 @@ Update docs whenever you change:
 - architecture decisions
 - performance policies
 - contributor workflow
+- legal/policy content, legal notices, or policy-linked UI copy
 
 Minimum updates expected per relevant PR:
 
 1. One short architecture or component note.
 2. Any changed commands or setup steps.
 3. Any new constraints future contributors must follow.
+4. Legal release note append when policy/legal behavior changes.
 
-## 10. Release Readiness
+## 10. Legal Documentation Checklist
+
+Apply this checklist when editing legal content, legal links, or policy-adjacent UX:
+
+1. Update affected route pages (`/terms-of-use`, `/privacy-policy`, `/takedown-policy`) and any linked UI copy (footer/submission/results notices).
+2. Append a new entry to `documentation/LEGAL_RELEASE_NOTES.md` (append-only; no historical rewrites except clerical fixes).
+3. If publishing a new legal freeze, regenerate and archive matching PDFs in `documentation/legal-evidence`.
+4. Re-verify baseline legal statement consistency across all policy pages and legal notices.
+
+## 11. Release Readiness
 
 Before tagging or publishing:
 
@@ -133,3 +144,4 @@ Before tagging or publishing:
 2. Re-verify route-level metadata/title quality.
 3. Confirm no temporary/debug files are included.
 4. Ensure documentation reflects current behavior.
+5. Confirm legal documentation is updated if policy/legal behavior changed.
