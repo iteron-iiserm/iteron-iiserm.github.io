@@ -50,10 +50,13 @@
   </div>
 
   <div class="contact-footer brutalist-block">
+    <a
+      class="contact-card-link"
+      href="mailto:iteron.iiserm@gmail.com"
+      aria-label="Email iteron.iiserm@gmail.com"
+    ></a>
     <p>For any questions or queries, reach out at:</p>
-    <a href="mailto:iteron.iiserm@gmail.com" class="contact-email"
-      >iteron.iiserm@gmail.com</a
-    >
+    <span class="contact-email">iteron.iiserm@gmail.com</span>
   </div>
 </section>
 
@@ -179,10 +182,37 @@
   }
 
   .contact-footer {
+    position: relative;
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
     border-color: var(--accent-purple);
+    cursor: pointer;
+  }
+
+  .contact-card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: transparent;
+  }
+
+  .contact-card-link:hover,
+  .contact-card-link:focus-visible {
+    color: inherit;
+    background: transparent;
+  }
+
+  .contact-card-link:focus-visible {
+    outline: 2px solid var(--accent-purple);
+    outline-offset: 4px;
+  }
+
+  .contact-footer p,
+  .contact-email {
+    position: relative;
+    z-index: 1;
+    pointer-events: none;
   }
 
   .contact-footer p {
@@ -196,8 +226,8 @@
     font-size: 1.5rem;
   }
 
-  .contact-email:hover,
-  .contact-email:focus-visible {
+  .contact-footer:hover .contact-email,
+  .contact-footer:focus-within .contact-email {
     color: #000;
     background: var(--accent-purple);
   }
