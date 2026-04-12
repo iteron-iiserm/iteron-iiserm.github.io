@@ -479,7 +479,7 @@ const team = [
 </style>
 
 <script>
-  const memberPhotos = document.querySelectorAll('.avatar-box img.member-photo');
+  const memberPhotos = document.querySelectorAll<HTMLImageElement>('.avatar-box img.member-photo');
 
   memberPhotos.forEach((img) => {
     if (img.complete) {
@@ -494,7 +494,7 @@ const team = [
     }, { once: true });
   });
 
-  document.querySelectorAll('.avatar-box img').forEach((img) => {
+  document.querySelectorAll<HTMLImageElement>('.avatar-box img').forEach((img) => {
     img.addEventListener('error', () => {
       const parent = img.parentElement;
       if (!parent) return;
