@@ -28,7 +28,11 @@ import Footer from "../components/common/Footer.astro";
       <h2>RESULTS PENDING</h2>
       <p>
         Tournament results will be compiled and published following the
-        submission deadline on <strong>May 11th, 2026</strong>.
+        submission deadline on <span class="deadline-line">
+          <span class="deadline-old">May 11th, 2026</span>
+          <span class="deadline-arrow" aria-hidden="true">→</span>
+          <strong class="deadline-new">July 31st, 2026</strong>
+        </span>.
       </p>
       <p>
         After the official result declaration, all submitted strategies will be
@@ -153,6 +157,54 @@ import Footer from "../components/common/Footer.astro";
     margin-bottom: 2.5rem;
     font-size: 1.1rem;
     max-width: 600px;
+  }
+
+  .deadline-line {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+
+  .deadline-old {
+    display: inline-block;
+    position: relative;
+    font-weight: 700;
+    /* color: var(--text-white); */
+    padding: 0 0.1rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .deadline-old::after {
+    content: "";
+    position: absolute;
+    width: calc(100% + 0.3rem);
+    left: -0.15rem;
+    top: 50%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--accent-purple) 14%,
+      #d8b7ee 50%,
+      var(--accent-purple) 86%,
+      transparent 100%
+    );
+    transform: translateY(-50%) rotate(-10deg);
+    box-shadow: 0 0 8px rgba(186, 143, 216, 0.5);
+    pointer-events: none;
+  }
+
+  .deadline-arrow {
+    color: var(--accent-purple);
+    font-weight: 700;
+  }
+
+  .deadline-new {
+    color: var(--text-white);
+    font-weight: 700;
   }
 
   .usage-notice {
