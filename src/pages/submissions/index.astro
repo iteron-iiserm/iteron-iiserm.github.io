@@ -7,8 +7,8 @@ import chessBoardImg from "../../assets/chess-board.png";
 ---
 
 <Layout
-  title="Iteron | Submit Strategy"
-  description="Submit your Iteron strategy and access the official template and submission portal."
+  title="Iteron | Submissions Closed"
+  description="Submissions for Iteron are now closed. Results will be declared on August 10th, 2026. Access official templates, payoff matrices, reference strategies, and rules."
 >
   <Navbar />
 
@@ -18,17 +18,25 @@ import chessBoardImg from "../../assets/chess-board.png";
       <p class="subtitle">> SUBMISSION PORTAL & DOCUMENTATION</p>
     </header>
 
+    <div class="submissions-closed-banner brutalist-block">
+      <div class="notice-badge">[ STATUS: CLOSED ]</div>
+      <h2>SUBMISSIONS ARE NOW CLOSED</h2>
+      <p>
+        The submission deadline for Iteron (July 31st, 2026) has passed. Strategy submissions are no longer being accepted.
+      </p>
+      <div class="results-date-box">
+        <span>OFFICIAL RESULTS DECLARATION:</span>
+        <strong>AUGUST 10TH, 2026</strong>
+      </div>
+      <a href="/results" class="btn-results">[ TRACK TOURNAMENT RESULTS ]</a>
+    </div>
+
     <div class="actions-grid">
-      <a
-        href="https://tally.so/r/b5OKN6"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="action-card brutalist-block highlight-card"
-      >
+      <div class="action-card brutalist-block closed-card">
         <span class="corner-tag">[ 01 ]</span>
-        <h3>SUBMISSION FORM</h3>
-        <span class="arrow">-></span>
-      </a>
+        <h3>SUBMISSIONS CLOSED</h3>
+        <span class="closed-tag">CLOSED</span>
+      </div>
 
       <a
         href="https://colab.research.google.com/drive/1WoadT0bsvaYXMZ5XHBvmEQie7rZf9v8f?usp=sharing"
@@ -126,7 +134,10 @@ import chessBoardImg from "../../assets/chess-board.png";
               <strong>Eligibility:</strong> Open to all students and faculty affiliated with any recognized university.
             </li>
             <li>
-              <strong>Deadline:</strong> Submission deadline is extended to July 31st 2026 11:59 PM IST.
+              <strong>Status:</strong> Submissions are closed (Deadline was July 31st, 2026 11:59 PM IST).
+            </li>
+            <li>
+              <strong>Results Declaration:</strong> Results will be declared on August 10th, 2026.
             </li>
           </ul>
         </div>
@@ -681,5 +692,111 @@ import chessBoardImg from "../../assets/chess-board.png";
     .rule-list {
       gap: 1.25rem;
     }
+  }
+
+  .submissions-closed-banner {
+    margin-bottom: 3rem;
+    padding: 2.5rem;
+    background: #000;
+    border-color: var(--accent-purple);
+    text-align: center;
+    position: relative;
+  }
+
+  .notice-badge {
+    display: inline-block;
+    background: #ff4d4d;
+    color: #fff;
+    font-weight: bold;
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    border: 1px solid #ff4d4d;
+  }
+
+  .submissions-closed-banner h2 {
+    font-size: 2.2rem;
+    color: var(--text-white);
+    margin-bottom: 1rem;
+  }
+
+  .submissions-closed-banner p {
+    color: #a0a0a0;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+
+  .results-date-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: rgba(186, 143, 216, 0.1);
+    border: 1px dashed var(--accent-purple);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .results-date-box span {
+    color: #c8c8c8;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+
+  .results-date-box strong {
+    color: var(--accent-purple);
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+  }
+
+  .btn-results {
+    display: inline-block;
+    background: var(--text-white);
+    color: #000;
+    padding: 0.9rem 1.8rem;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid var(--text-white);
+    transition: all 0.2s;
+    box-shadow: 4px 4px 0 var(--accent-purple);
+  }
+
+  .btn-results:hover {
+    background: var(--accent-purple);
+    color: #000;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--text-white);
+  }
+
+  .closed-card {
+    opacity: 0.85;
+    background: #111;
+    border-color: #555;
+    cursor: not-allowed;
+  }
+
+  .closed-card:hover {
+    transform: none;
+    box-shadow: 4px 4px 0 var(--accent-purple);
+    background: #111;
+  }
+
+  .closed-card:hover h3 {
+    color: var(--text-white);
+  }
+
+  .closed-tag {
+    font-family: var(--font-mono);
+    color: #ff4d4d;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
   }
 </style>
