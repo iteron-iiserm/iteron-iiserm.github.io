@@ -5,57 +5,1063 @@ import Footer from "../components/common/Footer.astro";
 ---
 
 <Layout
-  title="Iteron | Results"
-  description="Track Iteron tournament outcomes, rankings, and result announcements."
+  title="Iteron | Tournament Results & Score Matrices"
+  description="Iteron tournament results, overall head-to-head score matrix, individual environment standings, and interactive performance visualizations."
 >
   <Navbar />
 
   <main class="page-container">
-    <div class="header-box brutalist-block">
+    <header class="header-box brutalist-block">
       <h1 class="glitch" data-text="TOURNAMENT_RESULTS">TOURNAMENT_RESULTS</h1>
-      <p class="subtitle">> SIMULATION OUTCOMES & STRATEGY RANKINGS</p>
-    </div>
+      <p class="subtitle">> LEADERBOARD, SCORE MATRICES & ENVIRONMENT ANALYSIS</p>
+    </header>
 
-    <div class="pending-state brutalist-block">
-      <div class="quote-box">
-        <p>
-          "The foundation of cooperation is not really trust, but the durability
-          of the relationship."
+    <!-- Winner Announcement Banner -->
+    <section class="winner-announcement brutalist-block">
+      <div class="winner-badge">TOURNAMENT WINNER DECLARED</div>
+      <h2>CONGRATULATIONS TO PYTHIA OF DELPHI!</h2>
+      <p>
+        Evaluated across five distinct strategic payoff environments,
+        <strong>Pythia of Delphi</strong> achieved the highest total score of
+        <strong>27,873.4 points</strong>, demonstrating exceptional resilience and adaptive strength.
+      </p>
+    </section>
+
+    <!-- Podium Top 3 Cards -->
+    <section class="podium-grid" aria-label="Top 3 Standings">
+      <div class="podium-card brutalist-block rank-1">
+        <div class="rank-tag">1ST PLACE</div>
+        <h3>Pythia of Delphi</h3>
+        <div class="score-num">27,873.4 <span class="score-unit">PTS</span></div>
+        <p class="rank-desc">
+          2nd-order Markov engine with exponential memory decay (`0.95`). Dominant in Inverted PD & All Bad.
         </p>
-        <span class="quote-author">- Robert Axelrod</span>
       </div>
 
-      <h2>RESULTS ANNOUNCEMENT: AUGUST 10TH, 2026</h2>
-      <p>
-        Submissions for Iteron are now closed (Deadline: July 31st, 2026).
-        The simulation rounds across all multi-environment payoff matrices are currently being computed.
-        Official tournament results and global rankings will be declared on <strong>August 10th, 2026</strong>.
-      </p>
-      <p>
-        After the official result declaration, all submitted strategies and simulation outcomes will be
-        made public. Anyone will be free to study, extend, and use them for further research.
-      </p>
-      <p>
-        Stay tuned on the <a
-          href="/updates"
-          class="inline-link">UPDATES</a
-        > page for further announcements.
-      </p>
-    </div>
+      <div class="podium-card brutalist-block rank-2">
+        <div class="rank-tag">2ND PLACE</div>
+        <h3>AntiCoord_UniBonn</h3>
+        <div class="score-num">25,998.4 <span class="score-unit">PTS</span></div>
+        <p class="rank-desc">
+          Anti-coordination specialist. Swept #1 in both Battle of Sexes and Volunteer's Dilemma.
+        </p>
+      </div>
 
-    <section class="usage-notice brutalist-block" aria-labelledby="results-usage-policy">
-      <h2 id="results-usage-policy">Data and Content Usage Notice</h2>
+      <div class="podium-card brutalist-block rank-3">
+        <div class="rank-tag">3RD PLACE</div>
+        <h3>Look at the Upshots!</h3>
+        <div class="score-num">20,288.6 <span class="score-unit">PTS</span></div>
+        <p class="rank-desc">
+          High initial cooperation engine. Ranked #1 median scorer in Classical Prisoner's Dilemma.
+        </p>
+      </div>
+    </section>
+
+    <!-- Overall Leaderboard Table -->
+    <section class="results-section brutalist-block" aria-labelledby="global-leaderboard-heading">
+      <div class="section-tag">[ GLOBAL STANDINGS ]</div>
+      <h2 id="global-leaderboard-heading">Overall Leaderboard</h2>
+      <p class="section-subtext">Combined scores accumulated across all 5 payoff matrix environments.</p>
+
+      <div class="table-responsive-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Strategy Name</th>
+              <th>Total Score</th>
+              <th>Best Environment</th>
+              <th>ENV Wins</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-row-1">
+              <td class="bold-cell">1</td>
+              <td class="name-cell">Pythia of Delphi</td>
+              <td class="score-cell">27,873.4</td>
+              <td>Inverted PD & All Bad</td>
+              <td>2 ENVs</td>
+            </tr>
+            <tr class="highlight-row-2">
+              <td class="bold-cell">2</td>
+              <td class="name-cell">AntiCoord_UniBonn</td>
+              <td class="score-cell">25,998.4</td>
+              <td>Battle of Sexes & Volunteer's Dilemma</td>
+              <td>2 ENVs</td>
+            </tr>
+            <tr class="highlight-row-3">
+              <td class="bold-cell">3</td>
+              <td class="name-cell">Look at the Upshots!</td>
+              <td class="score-cell">20,288.6</td>
+              <td>Classical Prisoner's Dilemma</td>
+              <td>1 ENV</td>
+            </tr>
+            <tr>
+              <td class="bold-cell">4</td>
+              <td class="name-cell">Gradient_Pressure</td>
+              <td class="score-cell">19,139.0</td>
+              <td>Inverted PD (#2)</td>
+              <td>0 ENVs</td>
+            </tr>
+            <tr>
+              <td class="bold-cell">5</td>
+              <td class="name-cell">decaying_trust</td>
+              <td class="score-cell">8,231.4</td>
+              <td>Classical PD (#4)</td>
+              <td>0 ENVs</td>
+            </tr>
+            <tr>
+              <td class="bold-cell">6</td>
+              <td class="name-cell">Zone_Adaptive_Pressure</td>
+              <td class="score-cell">6,995.2</td>
+              <td>Classical PD (#3)</td>
+              <td>0 ENVs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- OVERALL HEAD-TO-HEAD SCORE MATRIX TABLE -->
+      <div class="matrix-heading-box">
+        <h3 class="sub-heading">Overall Head-to-Head Score Matrix (Sum Across All 5 ENVs)</h3>
+        <p class="matrix-info">Cumulative points earned by Row Player vs Column Opponent across all 5 environments:</p>
+      </div>
+
+      <div class="table-responsive-wrapper matrix-compact-wrapper">
+        <table class="matrix-table compact-matrix">
+          <thead>
+            <tr>
+              <th>Player \ Opponent</th>
+              <th>AntiCoord</th>
+              <th>decaying</th>
+              <th>Gradient</th>
+              <th>Upshots</th>
+              <th>Pythia</th>
+              <th>Zone</th>
+              <th>Avg Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="highlight-row-1">
+              <td class="player-header">Pythia of Delphi</td>
+              <td>15.52</td><td>9.79</td><td>15.23</td><td>11.80</td><td>15.00</td><td>3.37</td>
+              <td class="score-cell">11.78</td>
+            </tr>
+            <tr class="highlight-row-2">
+              <td class="player-header">AntiCoord_UniBonn</td>
+              <td class="neg-score">-3.52</td><td>11.77</td><td>10.94</td><td>11.01</td><td>12.69</td><td>5.61</td>
+              <td class="score-cell">8.09</td>
+            </tr>
+            <tr class="highlight-row-3">
+              <td class="player-header">Look at the Upshots!</td>
+              <td>17.85</td><td class="neg-score">-6.68</td><td>16.96</td><td class="neg-score">-0.33</td><td>13.77</td><td class="neg-score">-1.31</td>
+              <td class="score-cell">6.71</td>
+            </tr>
+            <tr>
+              <td class="player-header">Gradient_Pressure</td>
+              <td>11.59</td><td>2.63</td><td class="neg-score">-0.03</td><td>10.40</td><td>10.47</td><td>3.20</td>
+              <td class="score-cell">6.37</td>
+            </tr>
+            <tr>
+              <td class="player-header">decaying_trust</td>
+              <td>9.75</td><td>2.00</td><td>3.99</td><td class="neg-score">-6.66</td><td>3.64</td><td>5.78</td>
+              <td class="score-cell">3.09</td>
+            </tr>
+            <tr>
+              <td class="player-header">Zone_Adaptive_Pressure</td>
+              <td>5.64</td><td>5.18</td><td>3.37</td><td class="neg-score">-2.83</td><td>2.63</td><td>2.03</td>
+              <td class="score-cell">2.67</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="leaderboard-issue-row">
+        <a href="#results-usage-policy" class="issue-report-link">
+          ↳ Found an error or discrepancy? Report an Issue
+        </a>
+      </div>
+    </section>
+
+    <!-- CUSTOM THEME GRAPH 1: Responsive SVG Overall Score Chart -->
+    <section class="results-section brutalist-block" aria-labelledby="overall-chart-heading">
+      <div class="section-tag">[ DATA VISUALIZATION ]</div>
+      <h2 id="overall-chart-heading">Total Score Breakdown Chart</h2>
+      <p class="section-subtext">Total points accumulated across all five strategic payoff environments.</p>
+
+      <div class="svg-chart-container">
+        <svg viewBox="0 0 800 380" class="theme-svg-chart" aria-label="Overall Total Score Bar Chart">
+          <!-- Background Grid Lines -->
+          <line x1="180" y1="40" x2="180" y2="310" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4 4" />
+          <line x1="330" y1="40" x2="330" y2="310" stroke="rgba(255,255,255,0.1)" stroke-dasharray="4 4" />
+          <line x1="480" y1="40" x2="480" y2="310" stroke="rgba(255,255,255,0.1)" stroke-dasharray="4 4" />
+          <line x1="630" y1="40" x2="630" y2="310" stroke="rgba(255,255,255,0.1)" stroke-dasharray="4 4" />
+          <line x1="780" y1="40" x2="780" y2="310" stroke="rgba(255,255,255,0.2)" stroke-dasharray="4 4" />
+
+          <!-- X-Axis Labels -->
+          <text x="180" y="335" fill="#888" font-size="11" font-family="monospace" text-anchor="middle">0</text>
+          <text x="330" y="335" fill="#888" font-size="11" font-family="monospace" text-anchor="middle">7.5k</text>
+          <text x="480" y="335" fill="#888" font-size="11" font-family="monospace" text-anchor="middle">15k</text>
+          <text x="630" y="335" fill="#888" font-size="11" font-family="monospace" text-anchor="middle">22.5k</text>
+          <text x="780" y="335" fill="#888" font-size="11" font-family="monospace" text-anchor="middle">30k</text>
+
+          <!-- Bars and Labels -->
+          <text x="165" y="65" fill="#ffffff" font-size="12" font-family="monospace" font-weight="bold" text-anchor="end">Pythia of Delphi</text>
+          <rect x="180" y="48" width="557" height="26" fill="#ba8fd8" stroke="#ffffff" stroke-width="1" />
+          <text x="744" y="65" fill="#ba8fd8" font-size="12" font-family="monospace" font-weight="bold">27,873.4</text>
+
+          <text x="165" y="110" fill="#ffffff" font-size="12" font-family="monospace" font-weight="bold" text-anchor="end">AntiCoord_UniBonn</text>
+          <rect x="180" y="93" width="520" height="26" fill="#8146a8" stroke="#ffffff" stroke-width="1" />
+          <text x="707" y="110" fill="#ba8fd8" font-size="12" font-family="monospace" font-weight="bold">25,998.4</text>
+
+          <text x="165" y="155" fill="#ffffff" font-size="12" font-family="monospace" text-anchor="end">Look at Upshots!</text>
+          <rect x="180" y="138" width="405" height="26" fill="#ba8fd8" opacity="0.8" stroke="#ffffff" stroke-width="1" />
+          <text x="592" y="155" fill="#ffffff" font-size="12" font-family="monospace">20,288.6</text>
+
+          <text x="165" y="200" fill="#ffffff" font-size="12" font-family="monospace" text-anchor="end">Gradient_Pressure</text>
+          <rect x="180" y="183" width="382" height="26" fill="#8146a8" opacity="0.8" stroke="#ffffff" stroke-width="1" />
+          <text x="569" y="200" fill="#ffffff" font-size="12" font-family="monospace">19,139.0</text>
+
+          <text x="165" y="245" fill="#ffffff" font-size="12" font-family="monospace" text-anchor="end">decaying_trust</text>
+          <rect x="180" y="228" width="164" height="26" fill="#555555" stroke="#ffffff" stroke-width="1" />
+          <text x="351" y="245" fill="#ffffff" font-size="12" font-family="monospace">8,231.4</text>
+
+          <text x="165" y="290" fill="#ffffff" font-size="12" font-family="monospace" text-anchor="end">Zone_Adaptive</text>
+          <rect x="180" y="273" width="140" height="26" fill="#333333" stroke="#ffffff" stroke-width="1" />
+          <text x="327" y="290" fill="#ffffff" font-size="12" font-family="monospace">6,995.2</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- CUSTOM THEME GRAPH 2: Environment Performance Comparison SVG Chart -->
+    <section class="results-section brutalist-block" aria-labelledby="multi-env-chart-heading">
+      <div class="section-tag">[ MULTI-ENVIRONMENT COMPARISON ]</div>
+      <h2 id="multi-env-chart-heading">Median Score Across Payoff Environments</h2>
+      <p class="section-subtext">Comparing strategy median scores across CPD, BOS, VD, Inv_PD, and All_B.</p>
+
+      <div class="svg-chart-container">
+        <svg viewBox="0 0 800 320" class="theme-svg-chart" aria-label="Environment Median Score Comparison Chart">
+          <!-- Baseline Zero Line -->
+          <line x1="60" y1="210" x2="770" y2="210" stroke="#ffffff" stroke-width="1.5" />
+          <text x="50" y="214" fill="#888" font-size="10" font-family="monospace" text-anchor="end">0.0</text>
+          <text x="50" y="110" fill="#888" font-size="10" font-family="monospace" text-anchor="end">+3.0</text>
+          <text x="50" y="280" fill="#888" font-size="10" font-family="monospace" text-anchor="end">-2.0</text>
+          <line x1="60" y1="105" x2="770" y2="105" stroke="rgba(255,255,255,0.1)" stroke-dasharray="2 2" />
+          <line x1="60" y1="275" x2="770" y2="275" stroke="rgba(255,255,255,0.1)" stroke-dasharray="2 2" />
+
+          <!-- Group 1: CPD -->
+          <text x="140" y="300" fill="#ba8fd8" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle">CPD</text>
+          <rect x="75" y="113.75" width="18" height="96.25" fill="#ba8fd8" />
+          <rect x="96" y="156.45" width="18" height="53.55" fill="#8146a8" />
+          <rect x="117" y="113.75" width="18" height="96.25" fill="#ffffff" />
+          <rect x="138" y="155.05" width="18" height="54.95" fill="#666666" />
+          <rect x="159" y="147.7" width="18" height="62.3" fill="#444444" />
+          <rect x="180" y="147.0" width="18" height="63.0" fill="#222222" />
+
+          <!-- Group 2: BOS -->
+          <text x="270" y="300" fill="#ba8fd8" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle">BOS</text>
+          <rect x="205" y="143.35" width="18" height="66.65" fill="#ba8fd8" />
+          <rect x="226" y="139.18" width="18" height="70.82" fill="#8146a8" />
+          <rect x="247" y="143.93" width="18" height="66.07" fill="#ffffff" />
+          <rect x="268" y="156.58" width="18" height="53.42" fill="#666666" />
+          <rect x="289" y="173.37" width="18" height="36.63" fill="#444444" />
+          <rect x="310" y="177.22" width="18" height="32.78" fill="#222222" />
+
+          <!-- Group 3: VD -->
+          <text x="400" y="300" fill="#ba8fd8" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle">VD</text>
+          <rect x="335" y="183.43" width="18" height="26.57" fill="#ba8fd8" />
+          <rect x="356" y="108.72" width="18" height="101.28" fill="#8146a8" />
+          <rect x="377" y="114.85" width="18" height="95.15" fill="#ffffff" />
+          <rect x="398" y="179.13" width="18" height="30.87" fill="#666666" />
+          <rect x="419" y="210" width="18" height="72.45" fill="#444444" />
+          <rect x="440" y="210" width="18" height="61.95" fill="#222222" />
+
+          <!-- Group 4: Inv_PD -->
+          <text x="530" y="300" fill="#ba8fd8" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle">Inv_PD</text>
+          <rect x="465" y="91.25" width="18" height="118.75" fill="#ba8fd8" />
+          <rect x="486" y="128.36" width="18" height="81.64" fill="#8146a8" />
+          <rect x="507" y="170.92" width="18" height="39.08" fill="#ffffff" />
+          <rect x="528" y="126.92" width="18" height="83.08" fill="#666666" />
+          <rect x="549" y="141.68" width="18" height="68.32" fill="#444444" />
+          <rect x="570" y="136.27" width="18" height="73.73" fill="#222222" />
+
+          <!-- Group 5: All_B -->
+          <text x="660" y="300" fill="#ba8fd8" font-size="11" font-family="monospace" font-weight="bold" text-anchor="middle">All_B</text>
+          <rect x="595" y="127.59" width="18" height="82.41" fill="#ba8fd8" />
+          <rect x="616" y="153.34" width="18" height="56.66" fill="#8146a8" />
+          <rect x="637" y="210" width="18" height="13.65" fill="#ffffff" />
+          <rect x="658" y="164.87" width="18" height="45.13" fill="#666666" />
+          <rect x="679" y="200.28" width="18" height="9.72" fill="#444444" />
+          <rect x="700" y="210" width="18" height="4.2" fill="#222222" />
+
+          <!-- Legend -->
+          <rect x="120" y="15" width="12" height="12" fill="#ba8fd8" />
+          <text x="137" y="25" fill="#ffffff" font-size="10" font-family="monospace">Pythia</text>
+          <rect x="210" y="15" width="12" height="12" fill="#8146a8" />
+          <text x="227" y="25" fill="#ffffff" font-size="10" font-family="monospace">AntiCoord</text>
+          <rect x="310" y="15" width="12" height="12" fill="#ffffff" />
+          <text x="327" y="25" fill="#ffffff" font-size="10" font-family="monospace">Upshots!</text>
+          <rect x="400" y="15" width="12" height="12" fill="#666666" />
+          <text x="417" y="25" fill="#ffffff" font-size="10" font-family="monospace">Gradient</text>
+          <rect x="490" y="15" width="12" height="12" fill="#444444" />
+          <text x="507" y="25" fill="#ffffff" font-size="10" font-family="monospace">decaying</text>
+          <rect x="580" y="15" width="12" height="12" fill="#222222" />
+          <text x="597" y="25" fill="#ffffff" font-size="10" font-family="monospace">Zone</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- SECTION 3: ENVIRONMENT-BY-ENVIRONMENT BREAKDOWNS & SCORE MATRICES -->
+    <section class="env-section-container" aria-label="Environment Standings and Score Matrices">
+      <div class="header-box brutalist-block">
+        <h2>ENVIRONMENT STANDINGS & SCORE MATRICES</h2>
+        <p class="subtitle">> INDIVIDUAL PAYOFF TABLES & HEAD-TO-HEAD MATRICES</p>
+      </div>
+
+      <!-- Filter Controls for Environments -->
+      <div class="filter-controls brutalist-block">
+        <span class="filter-label">FILTER ENVIRONMENT:</span>
+        <button class="filter-btn active" data-filter="all">ALL ENVIRONMENTS</button>
+        <button class="filter-btn" data-filter="env-cpd">CPD</button>
+        <button class="filter-btn" data-filter="env-bos">BOS</button>
+        <button class="filter-btn" data-filter="env-vd">VD</button>
+        <button class="filter-btn" data-filter="env-inv">INV_PD</button>
+        <button class="filter-btn" data-filter="env-allb">ALL_B</button>
+      </div>
+
+      <!-- ENVIRONMENT 1: CPD -->
+      <article class="env-block brutalist-block env-card-item" id="env-cpd">
+        <div class="env-badge-tag">[ ENV 01 ]</div>
+        <h3>Classical Prisoner's Dilemma (CPD)</h3>
+        <p class="env-intro-p">
+          Standard R=3, P=1, T=5, S=0 matrix. Evaluates mutual cooperation stability vs defection temptation.
+        </p>
+
+        <h4 class="sub-heading">1. Standings Table — CPD</h4>
+        <div class="table-responsive-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Strategy Name</th>
+                <th>Median Score</th>
+                <th>Coop Rating</th>
+                <th>Wins</th>
+                <th>Initial C Rate</th>
+                <th>CC Rate</th>
+                <th>DD Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row-1">
+                <td>01</td>
+                <td class="name-cell"><strong>Look at the Upshots!</strong></td>
+                <td class="score-cell">2.7496</td>
+                <td>3.14%</td>
+                <td>4</td>
+                <td>100%</td>
+                <td>2.39%</td>
+                <td>54.00%</td>
+              </tr>
+              <tr class="highlight-row-2">
+                <td>02</td>
+                <td class="name-cell"><strong>Pythia of Delphi</strong></td>
+                <td class="score-cell">2.7464</td>
+                <td>2.50%</td>
+                <td>4</td>
+                <td>100%</td>
+                <td>1.27%</td>
+                <td>54.24%</td>
+              </tr>
+              <tr class="highlight-row-3">
+                <td>03</td>
+                <td class="name-cell">Zone_Adaptive_Pressure</td>
+                <td class="score-cell">1.8016</td>
+                <td>48.36%</td>
+                <td>1</td>
+                <td>100%</td>
+                <td>27.22%</td>
+                <td>39.90%</td>
+              </tr>
+              <tr>
+                <td>04</td>
+                <td class="name-cell">decaying_trust</td>
+                <td class="score-cell">1.7792</td>
+                <td>39.06%</td>
+                <td>2</td>
+                <td>100%</td>
+                <td>21.31%</td>
+                <td>48.04%</td>
+              </tr>
+              <tr>
+                <td>05</td>
+                <td class="name-cell">Gradient_Pressure</td>
+                <td class="score-cell">1.5660</td>
+                <td>75.22%</td>
+                <td>2</td>
+                <td>100%</td>
+                <td>24.46%</td>
+                <td>8.97%</td>
+              </tr>
+              <tr>
+                <td>06</td>
+                <td class="name-cell">AntiCoord_UniBonn</td>
+                <td class="score-cell">1.5312</td>
+                <td>67.06%</td>
+                <td>1</td>
+                <td>0%</td>
+                <td>8.78%</td>
+                <td>9.60%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="sub-heading">2. Head-to-Head Score Matrix Table — CPD</h4>
+        <p class="matrix-info">Row Player points earned vs Column Opponent per round:</p>
+        <div class="table-responsive-wrapper matrix-compact-wrapper">
+          <table class="matrix-table compact-matrix">
+            <thead>
+              <tr>
+                <th>Player \ Opponent</th>
+                <th>AntiCoord</th>
+                <th>decaying</th>
+                <th>Gradient</th>
+                <th>Upshots</th>
+                <th>Pythia</th>
+                <th>Zone</th>
+                <th>Avg Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="player-header">AntiCoord_UniBonn</td>
+                <td>2.00</td><td>3.07</td><td>2.17</td><td>0.06</td><td>0.13</td><td>2.21</td>
+                <td class="score-cell">1.61</td>
+              </tr>
+              <tr>
+                <td class="player-header">decaying_trust</td>
+                <td>1.71</td><td>2.58</td><td>2.36</td><td>1.06</td><td>1.05</td><td>2.66</td>
+                <td class="score-cell">1.90</td>
+              </tr>
+              <tr>
+                <td class="player-header">Gradient_Pressure</td>
+                <td>2.64</td><td>2.41</td><td>2.99</td><td>0.15</td><td>0.12</td><td>2.76</td>
+                <td class="score-cell">1.84</td>
+              </tr>
+              <tr>
+                <td class="player-header">Look at the Upshots!</td>
+                <td>4.94</td><td>1.05</td><td>4.84</td><td>2.90</td><td>1.06</td><td>1.89</td>
+                <td class="score-cell">2.78</td>
+              </tr>
+              <tr>
+                <td class="player-header">Pythia of Delphi</td>
+                <td>4.84</td><td>1.13</td><td>4.86</td><td>1.04</td><td>3.00</td><td>1.85</td>
+                <td class="score-cell">2.79</td>
+              </tr>
+              <tr>
+                <td class="player-header">Zone_Adaptive_Pressure</td>
+                <td>2.25</td><td>2.38</td><td>2.58</td><td>0.94</td><td>0.86</td><td>2.38</td>
+                <td class="score-cell">1.90</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- ENVIRONMENT 2: BOS -->
+      <article class="env-block brutalist-block env-card-item" id="env-bos">
+        <div class="env-badge-tag">[ ENV 02 ]</div>
+        <h3>Battle of Sexes (BOS)</h3>
+        <p class="env-intro-p">
+          Coordination game with asymmetric preferences. Tests strategy ability to establish turn-taking or resolution.
+        </p>
+
+        <h4 class="sub-heading">1. Standings Table — BOS</h4>
+        <div class="table-responsive-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Strategy Name</th>
+                <th>Median Score</th>
+                <th>Coop Rating</th>
+                <th>Wins</th>
+                <th>Initial C Rate</th>
+                <th>CC Rate</th>
+                <th>DD Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row-1">
+                <td>01</td>
+                <td class="name-cell"><strong>AntiCoord_UniBonn</strong></td>
+                <td class="score-cell">2.0232</td>
+                <td>48.65%</td>
+                <td>2</td>
+                <td>0%</td>
+                <td>9.74%</td>
+                <td>9.67%</td>
+              </tr>
+              <tr class="highlight-row-2">
+                <td>02</td>
+                <td class="name-cell"><strong>Pythia of Delphi</strong></td>
+                <td class="score-cell">1.9044</td>
+                <td>64.87%</td>
+                <td>2</td>
+                <td>100%</td>
+                <td>6.06%</td>
+                <td>10.79%</td>
+              </tr>
+              <tr class="highlight-row-3">
+                <td>03</td>
+                <td class="name-cell">Look at the Upshots!</td>
+                <td class="score-cell">1.8876</td>
+                <td>2.74%</td>
+                <td>4</td>
+                <td>100%</td>
+                <td>2.06%</td>
+                <td>34.98%</td>
+              </tr>
+              <tr>
+                <td>04</td>
+                <td class="name-cell">Gradient_Pressure</td>
+                <td class="score-cell">1.5252</td>
+                <td>67.01%</td>
+                <td>2</td>
+                <td>100%</td>
+                <td>25.99%</td>
+                <td>8.40%</td>
+              </tr>
+              <tr>
+                <td>05</td>
+                <td class="name-cell">decaying_trust</td>
+                <td class="score-cell">1.0464</td>
+                <td>48.06%</td>
+                <td>2</td>
+                <td>100%</td>
+                <td>21.76%</td>
+                <td>35.02%</td>
+              </tr>
+              <tr>
+                <td>06</td>
+                <td class="name-cell">Zone_Adaptive_Pressure</td>
+                <td class="score-cell">0.9364</td>
+                <td>53.31%</td>
+                <td>3</td>
+                <td>100%</td>
+                <td>32.38%</td>
+                <td>29.84%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="sub-heading">2. Head-to-Head Score Matrix Table — BOS</h4>
+        <p class="matrix-info">Row Player points earned vs Column Opponent per round:</p>
+        <div class="table-responsive-wrapper matrix-compact-wrapper">
+          <table class="matrix-table compact-matrix">
+            <thead>
+              <tr>
+                <th>Player \ Opponent</th>
+                <th>AntiCoord</th>
+                <th>decaying</th>
+                <th>Gradient</th>
+                <th>Upshots</th>
+                <th>Pythia</th>
+                <th>Zone</th>
+                <th>Avg Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="player-header">AntiCoord_UniBonn</td>
+                <td>0.00</td><td>1.95</td><td>2.01</td><td>2.00</td><td>2.93</td><td>1.26</td>
+                <td class="score-cell">1.69</td>
+              </tr>
+              <tr>
+                <td class="player-header">decaying_trust</td>
+                <td>1.69</td><td>0.71</td><td>0.73</td><td>0.03</td><td>1.62</td><td>1.11</td>
+                <td class="score-cell">0.98</td>
+              </tr>
+              <tr>
+                <td class="player-header">Gradient_Pressure</td>
+                <td>2.10</td><td>0.73</td><td>0.00</td><td>1.91</td><td>2.47</td><td>0.59</td>
+                <td class="score-cell">1.30</td>
+              </tr>
+              <tr>
+                <td class="player-header">Look at the Upshots!</td>
+                <td>2.98</td><td>0.03</td><td>2.84</td><td>0.00</td><td>2.95</td><td>0.61</td>
+                <td class="score-cell">1.57</td>
+              </tr>
+              <tr>
+                <td class="player-header">Pythia of Delphi</td>
+                <td>1.95</td><td>1.87</td><td>2.47</td><td>1.97</td><td>2.50</td><td>1.26</td>
+                <td class="score-cell">2.00</td>
+              </tr>
+              <tr>
+                <td class="player-header">Zone_Adaptive_Pressure</td>
+                <td>1.28</td><td>1.06</td><td>0.56</td><td>0.42</td><td>1.30</td><td>0.76</td>
+                <td class="score-cell">0.90</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- ENVIRONMENT 3: VD -->
+      <article class="env-block brutalist-block env-card-item" id="env-vd">
+        <div class="env-badge-tag">[ ENV 03 ]</div>
+        <h3>Volunteer's Dilemma (VD)</h3>
+        <p class="env-intro-p">
+          Public goods game. One player must volunteer to avoid mutual failure, rewarding strategic asymmetry.
+        </p>
+
+        <h4 class="sub-heading">1. Standings Table — VD</h4>
+        <div class="table-responsive-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Strategy Name</th>
+                <th>Median Score</th>
+                <th>Coop Rating</th>
+                <th>Wins</th>
+                <th>Initial C Rate</th>
+                <th>CC Rate</th>
+                <th>DD Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row-1">
+                <td>01</td>
+                <td class="name-cell"><strong>AntiCoord_UniBonn</strong></td>
+                <td class="score-cell">2.8936</td>
+                <td>48.22%</td>
+                <td>2</td>
+                <td>0%</td>
+                <td>8.81%</td>
+                <td>9.02%</td>
+              </tr>
+              <tr class="highlight-row-2">
+                <td>02</td>
+                <td class="name-cell"><strong>Look at the Upshots!</strong></td>
+                <td class="score-cell">2.7184</td>
+                <td>2.79%</td>
+                <td>4</td>
+                <td>100%</td>
+                <td>2.06%</td>
+                <td>34.72%</td>
+              </tr>
+              <tr class="highlight-row-3">
+                <td>03</td>
+                <td class="name-cell">Gradient_Pressure</td>
+                <td class="score-cell">0.8820</td>
+                <td>67.70%</td>
+                <td>2</td>
+                <td>100%</td>
+                <td>23.58%</td>
+                <td>8.47%</td>
+              </tr>
+              <tr>
+                <td>04</td>
+                <td class="name-cell">Pythia of Delphi</td>
+                <td class="score-cell">0.7592</td>
+                <td>65.30%</td>
+                <td>2</td>
+                <td>100%</td>
+                <td>6.50%</td>
+                <td>10.34%</td>
+              </tr>
+              <tr>
+                <td>05</td>
+                <td class="name-cell">Zone_Adaptive_Pressure</td>
+                <td class="score-cell">-1.7656</td>
+                <td>54.30%</td>
+                <td>2</td>
+                <td>100%</td>
+                <td>32.69%</td>
+                <td>28.92%</td>
+              </tr>
+              <tr>
+                <td>06</td>
+                <td class="name-cell">decaying_trust</td>
+                <td class="score-cell">-2.0720</td>
+                <td>45.82%</td>
+                <td>3</td>
+                <td>100%</td>
+                <td>19.59%</td>
+                <td>33.50%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="sub-heading">2. Head-to-Head Score Matrix Table — VD</h4>
+        <p class="matrix-info">Row Player points earned vs Column Opponent per round:</p>
+        <div class="table-responsive-wrapper matrix-compact-wrapper">
+          <table class="matrix-table compact-matrix">
+            <thead>
+              <tr>
+                <th>Player \ Opponent</th>
+                <th>AntiCoord</th>
+                <th>decaying</th>
+                <th>Gradient</th>
+                <th>Upshots</th>
+                <th>Pythia</th>
+                <th>Zone</th>
+                <th>Avg Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="player-header">AntiCoord_UniBonn</td>
+                <td class="neg-score">-5.52</td><td>4.08</td><td>2.16</td><td class="neg-score">-0.91</td><td>9.61</td><td class="neg-score">-0.47</td>
+                <td class="score-cell">1.49</td>
+              </tr>
+              <tr>
+                <td class="player-header">decaying_trust</td>
+                <td>1.00</td><td class="neg-score">-2.90</td><td>0.02</td><td class="neg-score">-9.73</td><td class="neg-score">-0.66</td><td>0.68</td>
+                <td class="score-cell neg-score">-1.93</td>
+              </tr>
+              <tr>
+                <td class="player-header">Gradient_Pressure</td>
+                <td>3.19</td><td class="neg-score">-1.96</td><td class="neg-score">-1.04</td><td class="neg-score">-1.06</td><td>4.41</td><td class="neg-score">-0.29</td>
+                <td class="score-cell">0.54</td>
+              </tr>
+              <tr>
+                <td class="player-header">Look at the Upshots!</td>
+                <td>9.83</td><td class="neg-score">-9.75</td><td>9.26</td><td class="neg-score">-1.43</td><td>9.72</td><td class="neg-score">-5.31</td>
+                <td class="score-cell">2.05</td>
+              </tr>
+              <tr>
+                <td class="player-header">Pythia of Delphi</td>
+                <td class="neg-score">-1.09</td><td>2.07</td><td>4.46</td><td class="neg-score">-0.97</td><td>4.50</td><td class="neg-score">-0.73</td>
+                <td class="score-cell">1.37</td>
+              </tr>
+              <tr>
+                <td class="player-header">Zone_Adaptive_Pressure</td>
+                <td class="neg-score">-0.31</td><td class="neg-score">-0.09</td><td class="neg-score">-0.44</td><td class="neg-score">-7.55</td><td class="neg-score">-0.39</td><td class="neg-score">-1.33</td>
+                <td class="score-cell neg-score">-1.69</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- ENVIRONMENT 4: INV_PD -->
+      <article class="env-block brutalist-block env-card-item" id="env-inv">
+        <div class="env-badge-tag">[ ENV 04 ]</div>
+        <h3>Inverted Prisoner's Dilemma (Inv_PD)</h3>
+        <p class="env-intro-p">
+          Inverted reward structure rewarding mutual cooperation. Tests adaptive payoff detection capability.
+        </p>
+
+        <h4 class="sub-heading">1. Standings Table — Inv_PD</h4>
+        <div class="table-responsive-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Strategy Name</th>
+                <th>Median Score</th>
+                <th>Coop Rating</th>
+                <th>Wins</th>
+                <th>Initial C Rate</th>
+                <th>CC Rate</th>
+                <th>DD Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row-1">
+                <td>01</td>
+                <td class="name-cell"><strong>Pythia of Delphi</strong></td>
+                <td class="score-cell">3.3928</td>
+                <td>99.00%</td>
+                <td>4</td>
+                <td>100%</td>
+                <td>39.19%</td>
+                <td>0.30%</td>
+              </tr>
+              <tr class="highlight-row-2">
+                <td>02</td>
+                <td class="name-cell"><strong>Gradient_Pressure</strong></td>
+                <td class="score-cell">2.3736</td>
+                <td>73.95%</td>
+                <td>3</td>
+                <td>100%</td>
+                <td>41.35%</td>
+                <td>10.78%</td>
+              </tr>
+              <tr class="highlight-row-3">
+                <td>03</td>
+                <td class="name-cell">AntiCoord_UniBonn</td>
+                <td class="score-cell">2.3324</td>
+                <td>48.47%</td>
+                <td>3</td>
+                <td>0%</td>
+                <td>9.43%</td>
+                <td>9.47%</td>
+              </tr>
+              <tr>
+                <td>04</td>
+                <td class="name-cell">Zone_Adaptive_Pressure</td>
+                <td class="score-cell">2.1064</td>
+                <td>61.49%</td>
+                <td>3</td>
+                <td>100%</td>
+                <td>43.71%</td>
+                <td>25.06%</td>
+              </tr>
+              <tr>
+                <td>05</td>
+                <td class="name-cell">decaying_trust</td>
+                <td class="score-cell">1.9520</td>
+                <td>36.23%</td>
+                <td>1</td>
+                <td>100%</td>
+                <td>20.10%</td>
+                <td>31.37%</td>
+              </tr>
+              <tr>
+                <td>06</td>
+                <td class="name-cell">Look at the Upshots!</td>
+                <td class="score-cell">1.1152</td>
+                <td>2.54%</td>
+                <td>0</td>
+                <td>100%</td>
+                <td>1.80%</td>
+                <td>35.24%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="sub-heading">2. Head-to-Head Score Matrix Table — Inv_PD</h4>
+        <p class="matrix-info">Row Player points earned vs Column Opponent per round:</p>
+        <div class="table-responsive-wrapper matrix-compact-wrapper">
+          <table class="matrix-table compact-matrix">
+            <thead>
+              <tr>
+                <th>Player \ Opponent</th>
+                <th>AntiCoord</th>
+                <th>decaying</th>
+                <th>Gradient</th>
+                <th>Upshots</th>
+                <th>Pythia</th>
+                <th>Zone</th>
+                <th>Avg Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="player-header">AntiCoord_UniBonn</td>
+                <td>2.00</td><td>1.72</td><td>2.66</td><td>4.94</td><td>0.04</td><td>2.30</td>
+                <td class="score-cell">2.28</td>
+              </tr>
+              <tr>
+                <td class="player-header">decaying_trust</td>
+                <td>3.02</td><td>2.17</td><td>1.87</td><td>2.96</td><td>0.08</td><td>1.81</td>
+                <td class="score-cell">1.99</td>
+              </tr>
+              <tr>
+                <td class="player-header">Gradient_Pressure</td>
+                <td>2.19</td><td>2.23</td><td>1.01</td><td>4.80</td><td>1.03</td><td>1.59</td>
+                <td class="score-cell">2.14</td>
+              </tr>
+              <tr>
+                <td class="player-header">Look at the Upshots!</td>
+                <td>0.06</td><td>2.97</td><td>0.11</td><td>1.10</td><td>0.05</td><td>2.37</td>
+                <td class="score-cell">1.11</td>
+              </tr>
+              <tr>
+                <td class="player-header">Pythia of Delphi</td>
+                <td>4.94</td><td>4.83</td><td>1.02</td><td>4.91</td><td>2.50</td><td>1.24</td>
+                <td class="score-cell">3.24</td>
+              </tr>
+              <tr>
+                <td class="player-header">Zone_Adaptive_Pressure</td>
+                <td>2.20</td><td>2.06</td><td>1.84</td><td>3.32</td><td>0.97</td><td>2.14</td>
+                <td class="score-cell">2.09</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- ENVIRONMENT 5: ALL_B -->
+      <article class="env-block brutalist-block env-card-item" id="env-allb">
+        <div class="env-badge-tag">[ ENV 05 ]</div>
+        <h3>All Bad (All_B)</h3>
+        <p class="env-intro-p">
+          Hostile payoff matrix with negative returns. Tests strategy resilience and damage mitigation.
+        </p>
+
+        <h4 class="sub-heading">1. Standings Table — All_B</h4>
+        <div class="table-responsive-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Strategy Name</th>
+                <th>Median Score</th>
+                <th>Coop Rating</th>
+                <th>Wins</th>
+                <th>Initial C Rate</th>
+                <th>CC Rate</th>
+                <th>DD Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row-1">
+                <td>01</td>
+                <td class="name-cell"><strong>Pythia of Delphi</strong></td>
+                <td class="score-cell">2.3544</td>
+                <td>69.54%</td>
+                <td>2</td>
+                <td>100%</td>
+                <td>13.24%</td>
+                <td>5.92%</td>
+              </tr>
+              <tr class="highlight-row-2">
+                <td>02</td>
+                <td class="name-cell"><strong>AntiCoord_UniBonn</strong></td>
+                <td class="score-cell">1.6188</td>
+                <td>48.32%</td>
+                <td>3</td>
+                <td>0%</td>
+                <td>8.83%</td>
+                <td>8.86%</td>
+              </tr>
+              <tr class="highlight-row-3">
+                <td>03</td>
+                <td class="name-cell">Gradient_Pressure</td>
+                <td class="score-cell">1.2892</td>
+                <td>65.43%</td>
+                <td>3</td>
+                <td>100%</td>
+                <td>23.95%</td>
+                <td>9.75%</td>
+              </tr>
+              <tr>
+                <td>04</td>
+                <td class="name-cell">decaying_trust</td>
+                <td class="score-cell">0.2776</td>
+                <td>50.36%</td>
+                <td>2</td>
+                <td>100%</td>
+                <td>23.75%</td>
+                <td>33.34%</td>
+              </tr>
+              <tr>
+                <td>05</td>
+                <td class="name-cell">Zone_Adaptive_Pressure</td>
+                <td class="score-cell">-0.1216</td>
+                <td>57.80%</td>
+                <td>4</td>
+                <td>100%</td>
+                <td>35.94%</td>
+                <td>26.30%</td>
+              </tr>
+              <tr>
+                <td>06</td>
+                <td class="name-cell">Look at the Upshots!</td>
+                <td class="score-cell">-0.3892</td>
+                <td>3.18%</td>
+                <td>0</td>
+                <td>100%</td>
+                <td>2.42%</td>
+                <td>34.70%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 class="sub-heading">2. Head-to-Head Score Matrix Table — All_B</h4>
+        <p class="matrix-info">Row Player points earned vs Column Opponent per round:</p>
+        <div class="table-responsive-wrapper matrix-compact-wrapper">
+          <table class="matrix-table compact-matrix">
+            <thead>
+              <tr>
+                <th>Player \ Opponent</th>
+                <th>AntiCoord</th>
+                <th>decaying</th>
+                <th>Gradient</th>
+                <th>Upshots</th>
+                <th>Pythia</th>
+                <th>Zone</th>
+                <th>Avg Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="player-header">AntiCoord_UniBonn</td>
+                <td class="neg-score">-2.00</td><td>0.95</td><td>1.94</td><td>4.92</td><td class="neg-score">-0.02</td><td>0.31</td>
+                <td class="score-cell">1.02</td>
+              </tr>
+              <tr>
+                <td class="player-header">decaying_trust</td>
+                <td>2.33</td><td class="neg-score">-0.56</td><td class="neg-score">-0.99</td><td class="neg-score">-0.98</td><td>1.55</td><td class="neg-score">-0.48</td>
+                <td class="score-cell">0.15</td>
+              </tr>
+              <tr>
+                <td class="player-header">Gradient_Pressure</td>
+                <td>1.47</td><td class="neg-score">-0.78</td><td class="neg-score">-2.99</td><td>4.60</td><td>2.44</td><td class="neg-score">-1.45</td>
+                <td class="score-cell">0.55</td>
+              </tr>
+              <tr>
+                <td class="player-header">Look at the Upshots!</td>
+                <td>0.04</td><td class="neg-score">-0.98</td><td class="neg-score">-0.09</td><td class="neg-score">-2.90</td><td class="neg-score">-0.01</td><td class="neg-score">-0.87</td>
+                <td class="score-cell neg-score">-0.80</td>
+              </tr>
+              <tr>
+                <td class="player-header">Pythia of Delphi</td>
+                <td>4.88</td><td class="neg-score">-0.11</td><td>2.42</td><td>4.85</td><td>2.50</td><td class="neg-score">-0.25</td>
+                <td class="score-cell">2.38</td>
+              </tr>
+              <tr>
+                <td class="player-header">Zone_Adaptive_Pressure</td>
+                <td>0.22</td><td class="neg-score">-0.23</td><td class="neg-score">-1.17</td><td>0.04</td><td class="neg-score">-0.11</td><td class="neg-score">-1.92</td>
+                <td class="score-cell neg-score">-0.53</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- STANDALONE NOTICE BLOCK 1: Open Source Code Release -->
+    <section class="announcement-block brutalist-block code-release-block">
+      <div class="section-tag">[ CODE RELEASE ANNOUNCEMENT ]</div>
+      <h2>Strategy & Platform Code Release</h2>
+      <p>
+        The complete codebase for all submitted participant strategies along with the full Iteron tournament execution engine will be made publicly available soon. Stay tuned for open repository access!
+      </p>
+    </section>
+
+    <!-- STANDALONE NOTICE BLOCK 2: Future Inferences & Analytics -->
+    <section class="announcement-block brutalist-block inferences-block">
+      <div class="section-tag">[ RESEARCH & FUTURE ANALYTICS ]</div>
+      <h2>Additional Inferences & Insights</h2>
+      <p>
+        Further strategic write-ups, mathematical inferences, and comparative environment behavior breakdowns may be released on this portal in future updates for academic and research exploration.
+      </p>
+    </section>
+
+    <!-- DISCREPANCY & LICENSING BLOCK -->
+    <section class="usage-notice brutalist-block" id="results-usage-policy" aria-labelledby="results-usage-policy-heading">
+      <h2 id="results-usage-policy-heading">Data License & Discrepancy Reporting</h2>
       <ul>
-        <li>Participant submissions remain the intellectual property of their creators.</li>
         <li>
-          Published strategy data is shared under
+          <strong>Open Research License:</strong> Published strategy source code and simulation datasets are shared under
           <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>
-          for research and educational reuse with attribution to the creator and Iteron.
+          for research and educational reuse with attribution to creators and Iteron.
         </li>
         <li>
-          Infographics, analyses, and reports produced by Turing Club/core organizers are organizer-owned
-          and, unless a page states otherwise, are also shared under
-          <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC 4.0</a>.
+          <strong>Report a Discrepancy or Error:</strong> If you spot any calculation error or wish to report a discrepancy, please
+          <a href="mailto:iteron.iiserm@gmail.com?subject=Iteron%20Results%20Discrepancy%20Report" class="inline-link">Email Us to Report a Discrepancy</a>
+          or contact the organizing team directly at
+          <a href="mailto:turingclub@iisermohali.ac.in" class="inline-link">turingclub@iisermohali.ac.in</a>.
         </li>
       </ul>
       <p>
@@ -69,16 +1075,40 @@ import Footer from "../components/common/Footer.astro";
   <Footer />
 </Layout>
 
+<script>
+  // Filter buttons for Environment Sections
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const envItems = document.querySelectorAll<HTMLElement>('.env-card-item');
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      if (!filter) return;
+
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      envItems.forEach((item) => {
+        if (filter === 'all' || item.id === filter) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
 <style>
   .page-container {
     padding: 120px 5% 5rem;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     min-height: 100vh;
   }
 
   .header-box {
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
     padding: 2rem;
     background: #000;
     text-align: center;
@@ -102,107 +1132,401 @@ import Footer from "../components/common/Footer.astro";
     letter-spacing: 2px;
   }
 
-  .pending-state {
-    padding: 4rem 2rem;
+  .winner-announcement {
+    padding: 2.5rem;
     background: #000;
+    border-color: var(--accent-purple);
     text-align: center;
-    position: relative;
-    border-color: var(--text-white);
+    margin-bottom: 2.5rem;
+    box-shadow: 6px 6px 0 var(--accent-purple);
+  }
+
+  .winner-badge {
+    display: inline-block;
+    background: var(--accent-purple);
+    color: #000;
+    font-weight: bold;
+    padding: 4px 14px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+
+  .winner-announcement h2 {
+    font-size: 2.2rem;
+    color: var(--text-white);
+    margin-bottom: 1rem;
+  }
+
+  .winner-announcement p {
+    color: #c8c8c8;
+    font-size: 1.15rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Podium Grid */
+  .podium-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-bottom: 3rem;
+  }
+
+  .podium-card {
+    padding: 2rem;
+    background: #000;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    overflow: hidden;
+    border-color: var(--border-color);
   }
 
-  .chair-decor {
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
-    width: 300px;
-    opacity: 0.3;
-    pointer-events: none;
-    z-index: 0;
-    mix-blend-mode: screen;
+  .rank-1 {
+    border-color: #ffd700;
+    box-shadow: 6px 6px 0 #ffd700;
   }
 
-  .chair-img {
-    width: 100%;
-    height: auto;
-    filter: invert(1);
+  .rank-2 {
+    border-color: #c0c0c0;
+    box-shadow: 5px 5px 0 #c0c0c0;
   }
 
-  .pending-state h2,
-  .pending-state p,
-  .quote-box {
-    position: relative;
-    z-index: 2;
+  .rank-3 {
+    border-color: #cd7f32;
+    box-shadow: 4px 4px 0 #cd7f32;
   }
 
-  .pending-state h2 {
-    font-size: 2.5rem;
+  .rank-tag {
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.8rem;
+  }
+
+  .rank-1 .rank-tag { color: #ffd700; }
+  .rank-2 .rank-tag { color: #c0c0c0; }
+  .rank-3 .rank-tag { color: #cd7f32; }
+
+  .podium-card h3 {
+    font-size: 1.4rem;
     color: var(--text-white);
-    margin-bottom: 1.5rem;
-    font-family: var(--font-display);
-    letter-spacing: 4px;
+    margin-bottom: 0.8rem;
   }
 
-  .pending-state p {
+  .score-num {
+    font-family: var(--font-mono);
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-purple);
+    margin-bottom: 1rem;
+  }
+
+  .score-unit {
+    font-size: 0.9rem;
+    color: #888;
+  }
+
+  .rank-desc {
     color: #a0a0a0;
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
-    font-size: 1.1rem;
-    max-width: 600px;
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
 
-  .deadline-line {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.55rem;
-    flex-wrap: wrap;
+  /* Results Section Block */
+  .results-section {
+    padding: 2.5rem;
+    background: #000;
+    margin-bottom: 3rem;
   }
 
-  .deadline-old {
-    display: inline-block;
-    position: relative;
-    font-weight: 700;
-    /* color: var(--text-white); */
-    padding: 0 0.1rem;
-    line-height: 1.2;
+  .section-tag {
+    font-family: var(--font-mono);
+    color: var(--accent-purple);
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+  }
+
+  .results-section h2 {
+    font-size: 2rem;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtext {
+    color: #a0a0a0;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+
+  .leaderboard-issue-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.2rem;
+  }
+
+  .issue-report-link {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-purple);
+    text-decoration: underline;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .issue-report-link:hover {
+    color: #000;
+    background: var(--accent-purple);
+    text-decoration: none;
+  }
+
+  .matrix-heading-box {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+  }
+
+  /* Table Responsive Wrappers & Compact Formatting */
+  .table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    text-align: left;
+    min-width: 600px;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .data-table th {
+    background: rgba(186, 143, 216, 0.15);
+    color: var(--accent-purple);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .data-table td {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+  }
+
+  /* Compact Matrix Table to prevent horizontal scroll on laptop screens */
+  .matrix-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    text-align: center;
+    table-layout: auto;
+  }
+
+  .matrix-table th,
+  .matrix-table td {
+    padding: 0.55rem 0.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.85rem;
     white-space: nowrap;
   }
 
-  .deadline-old::after {
-    content: "";
-    position: absolute;
-    width: calc(100% + 0.3rem);
-    left: -0.15rem;
-    top: 50%;
-    height: 2px;
-    background: var(--accent-purple);
-    transform: translateY(-50%) rotate(-5deg);
-    box-shadow: 0 0 8px rgba(186, 143, 216, 0.5);
-    pointer-events: none;
-  }
-
-  .deadline-arrow {
+  .matrix-table th {
+    background: #111;
     color: var(--accent-purple);
-    font-weight: 700;
+    letter-spacing: 0.5px;
+    font-weight: bold;
   }
 
-  .deadline-new {
+  .player-header {
+    background: #111;
+    font-weight: bold;
     color: var(--text-white);
-    font-weight: 700;
+    text-align: left !important;
+    padding-left: 0.75rem !important;
   }
 
-  .usage-notice {
-    margin-top: 2rem;
+  .neg-score {
+    /* inherit default table text color */
+  }
+
+  .bold-cell {
+    font-weight: bold;
+  }
+
+  .name-cell {
+    color: var(--text-white);
+  }
+
+  .score-cell {
+    font-weight: bold;
+    color: var(--accent-purple);
+  }
+
+  .highlight-row-1 td { background: rgba(255, 215, 0, 0.04); }
+  .highlight-row-2 td { background: rgba(192, 192, 192, 0.04); }
+  .highlight-row-3 td { background: rgba(205, 127, 50, 0.04); }
+
+  /* Custom SVG Theme Charts */
+  .svg-chart-container {
+    width: 100%;
+    background: #08080a;
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    overflow: hidden;
+  }
+
+  .theme-svg-chart {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Environment Section Block */
+  .env-section-container {
+    margin-bottom: 3rem;
+  }
+
+  .filter-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1.2rem;
+    background: #000;
+    margin-bottom: 2rem;
+  }
+
+  .filter-label {
+    font-family: var(--font-mono);
+    color: var(--accent-purple);
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .filter-btn {
+    padding: 0.55rem 1rem;
+    background: #111;
+    color: var(--text-white);
+    border: 1px solid var(--border-color);
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover {
+    background: var(--accent-purple);
+    color: #000;
+    border-color: var(--accent-purple);
+  }
+
+  .filter-btn.active {
+    background: var(--text-white);
+    color: #000;
     border-color: var(--text-white);
   }
 
+  .env-block {
+    padding: 2.5rem;
+    background: #000;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+
+  .env-badge-tag {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--text-white);
+    color: #000;
+    padding: 2px 10px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+  }
+
+  .env-block h3 {
+    font-size: 2rem;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+  }
+
+  .env-intro-p {
+    color: #c8c8c8;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .sub-heading {
+    font-size: 1.3rem;
+    color: var(--accent-purple);
+    margin-top: 1.8rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  .matrix-info {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Standalone Announcement Notice Blocks */
+  .announcement-block {
+    padding: 2rem;
+    background: #000;
+    margin-bottom: 2.5rem;
+  }
+
+  .code-release-block {
+    border-color: var(--accent-purple);
+    box-shadow: 5px 5px 0 var(--accent-purple);
+  }
+
+  .inferences-block {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 4px 4px 0 rgba(255, 255, 255, 0.4);
+  }
+
+  .announcement-block h2 {
+    font-size: 1.6rem;
+    color: var(--text-white);
+    margin-bottom: 0.8rem;
+  }
+
+  .announcement-block p {
+    color: #c8c8c8;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .usage-notice {
+    border-color: var(--text-white);
+    padding: 2rem;
+    background: #000;
+  }
+
   .usage-notice h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.9rem;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
     letter-spacing: 1px;
   }
 
@@ -211,7 +1535,7 @@ import Footer from "../components/common/Footer.astro";
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.2rem;
   }
 
   .usage-notice li {
@@ -232,54 +1556,24 @@ import Footer from "../components/common/Footer.astro";
   .usage-notice p {
     color: #b9b9b9;
     margin-bottom: 0;
-    max-width: 700px;
-  }
-
-  .quote-box {
-    margin-bottom: 3rem;
-    padding: 2rem;
-    border-left: 4px solid var(--accent-purple);
-    background: rgba(186, 143, 216, 0.05);
-    max-width: 800px;
-    text-align: left;
-  }
-
-  .quote-box p {
-    font-size: 1.4rem;
-    font-style: italic;
-    color: var(--text-white);
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    font-family: var(--font-display);
-  }
-
-  .quote-author {
-    color: var(--accent-purple);
-    font-family: var(--font-mono);
-    font-weight: bold;
-    letter-spacing: 1px;
   }
 
   .inline-link {
     color: var(--accent-purple);
     text-decoration: none;
     font-weight: bold;
-    border-bottom: 1px solid transparent;
-    transition: all 0.2s;
   }
 
   .inline-link:hover {
     color: #000;
     background: var(--accent-purple);
-    border-bottom-color: var(--accent-purple);
   }
 
-  .inline-link:focus-visible {
-    color: #000;
-    background: var(--accent-purple);
-    border-bottom-color: var(--accent-purple);
-    outline: 2px solid var(--accent-purple);
-    outline-offset: 2px;
+  /* Responsive Media Queries */
+  @media (max-width: 900px) {
+    .podium-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 768px) {
@@ -291,42 +1585,56 @@ import Footer from "../components/common/Footer.astro";
       font-size: 2.5rem;
     }
 
-    .pending-state {
-      padding: 2.4rem 1.4rem;
+    .winner-announcement h2 {
+      font-size: 1.7rem;
     }
 
-    .pending-state h2 {
-      font-size: 1.8rem;
-      letter-spacing: 2px;
+    .results-section,
+    .env-block,
+    .svg-chart-container {
+      padding: 1.5rem 1rem;
     }
 
-    .quote-box {
-      padding: 1.25rem;
-      margin-bottom: 2rem;
+    .env-block h3 {
+      font-size: 1.5rem;
     }
 
-    .quote-box p {
-      font-size: 1.1rem;
+    .filter-controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .filter-btn {
+      width: 100%;
+      text-align: center;
     }
   }
 
   @media (max-width: 480px) {
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       letter-spacing: 1px;
-      line-height: 1.15;
     }
 
     .subtitle {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 1px;
-      line-height: 1.5;
     }
 
-    .pending-state p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
+    .winner-announcement {
+      padding: 1.5rem 1rem;
+    }
+
+    .winner-announcement h2 {
+      font-size: 1.35rem;
+    }
+
+    .data-table th,
+    .data-table td,
+    .matrix-table th,
+    .matrix-table td {
+      padding: 0.5rem 0.4rem;
+      font-size: 0.8rem;
     }
   }
 </style>
